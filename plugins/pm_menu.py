@@ -79,8 +79,8 @@ if bot4:
 async def _pmmenu(event):
     chat_id = event.sender_id
     event.sender_id
-    await get_pika_id(event)
-    if not pmpermit_sql.is_approved(chat_id, _pika_id):
+    await get pika_id(event)
+    if not pmpermit_sql.is_approved(chat_id, pika_id):
         chat = await event.get_chat()
         if event.fwd_from:
             return
