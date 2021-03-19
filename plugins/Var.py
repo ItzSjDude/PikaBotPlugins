@@ -13,11 +13,21 @@ class Var(object):
     GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", None)
     GIT_REPO_NAME = os.environ.get("GIT_REPO_NAME", None)
     SUDO_USERS = set(int(x) for x in os.environ.get("SUDO_USERS", "779890498").split())
-    SUDO_USERS1 = set(int(x) for x in os.environ.get("SUDO_USERS1", "779890498").split())
-    SUDO_USERS2 = set(int(x) for x in os.environ.get("SUDO_USERS2", "779890498").split())
-    SUDO_USERS3 = set(int(x) for x in os.environ.get("SUDO_USERS3", "779890498").split())
-    SUDO_USERS4 = set(int(x) for x in os.environ.get("SUDO_USERS4", "779890498").split())
-    WHITELIST_USERS = set(int(x) for x in os.environ.get("WHITELIST_USERS", "779890498").split())
+    SUDO_USERS1 = set(
+        int(x) for x in os.environ.get("SUDO_USERS1", "779890498").split()
+    )
+    SUDO_USERS2 = set(
+        int(x) for x in os.environ.get("SUDO_USERS2", "779890498").split()
+    )
+    SUDO_USERS3 = set(
+        int(x) for x in os.environ.get("SUDO_USERS3", "779890498").split()
+    )
+    SUDO_USERS4 = set(
+        int(x) for x in os.environ.get("SUDO_USERS4", "779890498").split()
+    )
+    WHITELIST_USERS = set(
+        int(x) for x in os.environ.get("WHITELIST_USERS", "779890498").split()
+    )
     BLACKLIST_USERS = set(int(x) for x in os.environ.get("BLACKLIST_USERS", "").split())
     DEVLOPERS = set(int(x) for x in os.environ.get("DEVLOPERS", "779890498").split())
     OWNER_ID = set(int(x) for x in os.environ.get("OWNER_ID", "779890498").split())
@@ -32,7 +42,9 @@ class Var(object):
     G_DRIVE_CLIENT_ID = os.environ.get("G_DRIVE_CLIENT_ID", None)
     G_DRIVE_CLIENT_SECRET = os.environ.get("G_DRIVE_CLIENT_SECRET", None)
     GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", "root")
-    UB_BLACK_LIST_CHAT = set(int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split())
+    UB_BLACK_LIST_CHAT = set(
+        int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split()
+    )
     AUTH_TOKEN_DATA = os.environ.get("AUTH_TOKEN_DATA", None)
     if AUTH_TOKEN_DATA is not None:
         if not os.path.isdir(TMP_DOWNLOAD_DIRECTORY):
@@ -42,7 +54,7 @@ class Var(object):
         t_file.close()
     BOTLOG_CHATID = os.environ.get("BOTLOG_CHATID", None)
 
-    #+++++++++++++++++++++++++++|BORG_CONFIG|+++++++++++++++++++++++++++# 
+    # +++++++++++++++++++++++++++|BORG_CONFIG|+++++++++++++++++++++++++++#
     LOGGER = True
     LOCATION = os.environ.get("LOCATION", None)
     OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
@@ -61,12 +73,12 @@ class Var(object):
     TG_BOT_USER_NAME_BF_HER = os.environ.get("TG_BOT_USER_NAME_BF_HER", None)
     NO_SONGS = bool(os.environ.get("NO_SONGS", False))
     MAX_MESSAGE_SIZE_LIMIT = 4095
-    UB_BLACK_LIST_CHAT = set(int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split())
+    UB_BLACK_LIST_CHAT = set(
+        int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split()
+    )
     MAX_ANTI_FLOOD_MESSAGES = 10
     ANTI_FLOOD_WARN_MODE = ChatBannedRights(
-        until_date=None,
-        view_messages=None,
-        send_messages=True
+        until_date=None, view_messages=None, send_messages=True
     )
     # chat ids or usernames, it is recommended to use chat ids,
     CHATS_TO_MONITOR_FOR_ANTI_FLOOD = []
@@ -81,30 +93,38 @@ class Var(object):
     if PM_LOGGR_BOT_API_ID:
         PM_LOGGR_BOT_API_ID = int(PM_LOGGR_BOT_API_ID)
     DB_URI = os.environ.get("DATABASE_URL", None)
-    NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD = int(os.environ.get("NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD", 5))
-    COMMAND_HAND_LER = os.environ.get("COMMAND_HAND_LER", "\.")
+    NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD = int(
+        os.environ.get("NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD", 5)
+    )
+    COMMAND_HAND_LER = os.environ.get("COMMAND_HAND_LER", "\\.")
     SUDO_USERS = set(int(x) for x in os.environ.get("SUDO_USERS", "967883138").split())
     VERY_STREAM_LOGIN = os.environ.get("VERY_STREAM_LOGIN", None)
     VERY_STREAM_KEY = os.environ.get("VERY_STREAM_KEY", None)
-    GROUP_REG_SED_EX_BOT_S = os.environ.get("GROUP_REG_SED_EX_BOT_S", r"(regex|moku|BananaButler_|rgx|l4mR)bot")
+    GROUP_REG_SED_EX_BOT_S = os.environ.get(
+        "GROUP_REG_SED_EX_BOT_S", r"(regex|moku|BananaButler_|rgx|l4mR)bot"
+    )
     TEMP_DIR = os.environ.get("TEMP_DIR", None)
     CHANNEL_ID = int(os.environ.get("CHANNEL_ID", -100))
-    CHROME_DRIVER = os.environ.get("CHROME_DRIVER", "/app/.chromedriver/bin/chromedriver")
-    GOOGLE_CHROME_BIN = os.environ.get("GOOGLE_CHROME_BIN", "/app/.apt/usr/bin/google-chrome")
+    CHROME_DRIVER = os.environ.get(
+        "CHROME_DRIVER", "/app/.chromedriver/bin/chromedriver"
+    )
+    GOOGLE_CHROME_BIN = os.environ.get(
+        "GOOGLE_CHROME_BIN", "/app/.apt/usr/bin/google-chrome"
+    )
     G_DRIVE_CLIENT_ID = os.environ.get("G_DRIVE_CLIENT_ID", None)
     G_DRIVE_CLIENT_SECRET = os.environ.get("G_DRIVE_CLIENT_SECRET", None)
     GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", None)
     YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
     GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", None)
     MONGO_URI = os.environ.get("MONGO_URI", None)
-    LYDIA_API = os.environ.get("LYDIA_API",None)
+    LYDIA_API = os.environ.get("LYDIA_API", None)
     LOGGER = True
     BOTLOG = sb(os.environ.get("BOTLOG", "False"))
     LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "False"))
     ACTIVATE_ASSISTANT = os.environ.get("ACTIVATE_ASSISTANT", "False")
     AUTOPIC_COMMENT = os.environ.get("AUTOPIC_COMMENT", "")
     AUTOPIC_FONT_COLOUR = os.environ.get("AUTOPIC_FONT_COLOUR", "")
-    AUTOPIC_FONT = os.environ.get("AUTOPIC_FONT", "") 
+    AUTOPIC_FONT = os.environ.get("AUTOPIC_FONT", "")
     AUTO_BIO = os.environ.get("AUTO_BIO", "")
     PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
     CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
@@ -138,6 +158,6 @@ class Var(object):
     G_DRIVE_CLIENT_SECRET = os.environ.get("G_DRIVE_CLIENT_SECRET", None)
     G_DRIVE_AUTH_TOKEN_DATA = os.environ.get("G_DRIVE_AUTH_TOKEN_DATA", None)
     GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", None)
-    TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY","./downloads")
+    TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./downloads")
     LASTFM_API = os.environ.get("LASTFM_API", None)
     LASTFM_SECRET = os.environ.get("LASTFM_SECRET", None)
