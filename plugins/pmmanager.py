@@ -19,8 +19,8 @@ from telethon.tl.functions.users import GetFullUserRequest
 from var import Var
 
 duser = {}
-LOGBOT = os.environ.get("BOTLOG_CHATID", None)
-ANTISPAM = os.environ.get("PM_SPAM_LIMIT", None)
+LOGBOT = get("BOTLOG_CHATID", None)
+ANTISPAM = get("PM_SPAM_LIMIT", None)
 if ANTISPAM is None:
     ANTISPAM = 5
 if LOGBOT:

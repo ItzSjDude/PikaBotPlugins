@@ -120,9 +120,9 @@ if bot4:
 else:
     b4 = b1
 
-emoji = os.environ.get("INLINE_EMOJI", "")
-incols = int(os.environ.get("INLINE_COLUMNS", 3))
-inrows = int(os.environ.get("INLINE_ROWS", 7))
+emoji = get("INLINE_EMOJI", "")
+incols = int(get("INLINE_COLUMNS", 3))
+inrows = int(get("INLINE_ROWS", 7))
 rx = Var.CUSTOM_CMD
 if emoji is not None:
     xl = emoji
@@ -3693,7 +3693,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             await pika_.edit(_pika, buttons=_pikaB)
 
         else:
-            ax = os.environ.get("ALIVE_NAME")
+            ax = get("ALIVE_NAME")
             iq = await pika_.client.get_me()
             if iq.id == pika_id1:
                 ax[0]

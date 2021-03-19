@@ -52,7 +52,7 @@ if 1 == 1:
 
     config = dict(
         {
-            "api_token": os.environ.get("API_TOKEN"),
+            "api_token": get("API_TOKEN"),
             "api_url": "http://api.antiddos.systems",
             "username_colors": [
                 "#fb6169",
