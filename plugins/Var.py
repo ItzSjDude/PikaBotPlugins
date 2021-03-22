@@ -38,7 +38,7 @@ except:
    Pika_Cmd = {}
 
 chat = Var.SUDO_USERS
-TG_HANDLER= os.environ.get("TG_HANDLER", "!")
+TG_HANDLER= get("TG_HANDLER", "!")
 if TG_HANDLER is not None: 
    _plug=f"\{TG_HANDLER}"
 else: 
