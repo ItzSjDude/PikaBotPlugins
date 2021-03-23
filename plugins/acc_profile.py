@@ -18,206 +18,96 @@
 {i}ppic <Reply to pic>
 **Usage**: sets Profile pic\n
 """
-from . import (
-    anpfp,
-    atb,
-    atnm,
-    avpfp,
-    bot,
-    bot2,
-    bot3,
-    bot4,
-    gmpfp,
-    pbio,
-    pika_sudo,
-    pname,
-)
-
-
-@bot.on(pika_sudo(from_client=1, pattern="pbio (.*)"))
 @ItzSjDude(outgoing=True, pattern="pbio (.*)")
-async def _(event):
-    await pbio(event)
+async def pbio(event):
+    if event.fwd_from:
+        return
+    bio = event.pattern_match.group(1)
+    try:
+        await event.client(functions.account.UpdateProfileRequest(about=bio))
+        await event.edit("Succesfully changed my profile bio")
+    except Exception as e:
+        await event.edit(str(e))
 
-
-if bot2:
-
-    @bot2.on(pika_sudo(from_client=2, pattern="pbio (.*)"))
-    async def _(event):
-        await pbio(event)
-
-
-if bot3:
-
-    @bot3.on(pika_sudo(from_client=3, pattern="pbio (.*)"))
-    async def _(event):
-        await pbio(event)
-
-
-if bot4:
-
-    @bot4.on(pika_sudo(from_client=4, pattern="pbio (.*)"))
-    async def _(event):
-        await pbio(event)
-
-
-@bot.on(pika_sudo(from_client=1, pattern="pname ((.|\n)*)"))
 @ItzSjDude(outgoing=True, pattern="pname ((.|\n)*)")
-async def _(event):
-    await pname(event)
+async def pname(event):
+    if event.fwd_from:
+        return
+    names = event.pattern_match.group(1)
+    first_name = names
+    last_name = ""
+    if "\\n" in names:
+        first_name, last_name = names.split("\\n", 1)
+    try:
+        await event.client(
+            functions.account.UpdateProfileRequest(
+                first_name=first_name, last_name=last_name
+            )
+        )
+        await event.edit("My name was changed successfully")
+    except Exception as e:
+        await event.edit(str(e))
 
-
-if bot2:
-
-    @bot2.on(pika_sudo(from_client=2, pattern="pname ((.|\n)*)"))
-    async def _(event):
-        await pname(event)
-
-
-if bot3:
-
-    @bot3.on(pika_sudo(from_client=3, pattern="pname ((.|\n)*)"))
-    async def _(event):
-        await pname(event)
-
-
-if bot4:
-
-    @bot4.on(pika_sudo(from_client=4, pattern="pname ((.|\n)*)"))
-    async def _(event):
-        await pname(event)
-
-
-@bot.on(pika_sudo(from_client=1, pattern="animepfp ?(.*)"))
 @ItzSjDude(outgoing=True, pattern="animepfp ?(.*)")
-async def _(event):
-    await anpfp(event)
+async def anpfp(event):
+    await event.edit(f"{r}")
+    while True:
+        await animepp()
+        file = await event.client.upload_file("donottouch.jpg")
+        await event.client(functions.photos.UploadProfilePhotoRequest(file))
+        os.system("rm -rf donottouch.jpg")
+        await asyncio.sleep(60)
 
-
-if bot2:
-
-    @bot.on(pika_sudo(from_client=2, pattern="animepfp ?(.*)"))
-    async def _(event):
-        await anpfp(event)
-
-
-if bot3:
-
-    @bot3.on(pika_sudo(from_client=3, pattern="animepfp ?(.*)"))
-    async def _(event):
-        await anpfp(event)
-
-
-if bot4:
-
-    @bot4.on(pika_sudo(from_client=4, pattern="animepfp ?(.*)"))
-    async def _(event):
-        await anpfp(event)
-
-
-@bot.on(pika_sudo(from_client=1, pattern="avengerspfp ?(.*)"))
 @ItzSjDude(outgoing=True, pattern="avengerspfp ?(.*)")
-async def _(event):
-    await avpfp(event)
+async def avpfp(event):
+    await event.edit(f"{s}")
+    while True:
+        await avengerspic()
+        file = await event.client.upload_file("donottouch.jpg")
+        await event.client(functions.photos.UploadProfilePhotoRequest(file))
+        os.system("rm -rf donottouch.jpg")
+        await asyncio.sleep(600)
 
-
-if bot2:
-
-    @bot2.on(pika_sudo(from_client=2, pattern="avengerspfp ?(.*)"))
-    async def _(event):
-        await avpfp(event)
-
-
-if bot3:
-
-    @bot3.on(pika_sudo(from_client=3, pattern="avengerspfp ?(.*)"))
-    async def _(event):
-        await avpfp(event)
-
-
-if bot4:
-
-    @bot4.on(pika_sudo(from_client=4, pattern="avengerspfp ?(.*)"))
-    async def _(event):
-        await avpfp(event)
-
-
-@bot.on(pika_sudo(from_client=1, pattern="gamerpfp ?(.*)"))
 @ItzSjDude(outgoing=True, pattern="gamerpfp ?(.*)")
-async def _(event):
-    await gmpfp(event)
+async def gmpfp(event):
+    await event.edit(f"{t}")
+    while True:
+        await gamerpic()
+        file = await event.client.upload_file("donottouch.jpg")
+        await event.client(functions.photos.UploadProfilePhotoRequest(file))
+        os.system("rm -rf donottouch.jpg")
+        await asyncio.sleep(60)
 
-
-if bot2:
-
-    @bot2.on(pika_sudo(from_client=2, pattern="gamerpfp ?(.*)"))
-    async def _(event):
-        await gmpfp(event)
-
-
-if bot3:
-
-    @bot3.on(pika_sudo(from_client=3, pattern="gamerpfp ?(.*)"))
-    async def _(event):
-        await gmpfp(event)
-
-
-if bot4:
-
-    @bot4.on(pika_sudo(from_client=4, pattern="gamerpfp ?(.*)"))
-    async def _(event):
-        await gmpfp(event)
-
-
-@bot.on(pika_sudo(from_client=1, pattern="autoname$"))
 @ItzSjDude(outgoing=True, pattern="autoname$")
-async def _(event):
-    await atnm(event)
+async def atnm(event):
+    if event.fwd_from:
+        return
+    while True:
+        dname = await pikaa(event, "ALIVE_NAME")
+        DM = time.strftime("%d-%m-%y")
+        HM = time.strftime("%H:%M")
+        name = f"🕒{HM} ⚡{dname}⚡ 📅{DM}"
+        pikalog.info(name)
+        try:
+            await event.client(functions.account.UpdateProfileRequest(first_name=name))
+        except FloodWaitError as ex:
+            logger.warning(str(e))
+            await asyncio.sleep(ex.seconds)
+        await asyncio.sleep(DEL_TIME_OUT)
+    await event.edit(f"Auto Name has been started Master")
 
-
-if bot2:
-
-    @bot2.on(pika_sudo(from_client=2, pattern="autoname$"))
-    async def _(event):
-        await atnm(event)
-
-
-if bot3:
-
-    @bot3.on(pika_sudo(from_client=3, pattern="autoname$"))
-    async def _(event):
-        await atnm(event)
-
-
-if bot4:
-
-    @bot4.on(pika_sudo(from_client=4, pattern="autoname$"))
-    async def _(event):
-        await atnm(event)
-
-
-@bot.on(pika_sudo(from_client=1, pattern="autobio$"))
 @ItzSjDude(outgoing=True, pattern="autobio$")
-async def _(event):
-    await atb(event)
-
-
-if bot2:
-
-    @bot2.on(pika_sudo(from_client=2, pattern="autobio$"))
-    async def _(event):
-        await atb(event)
-
-
-if bot3:
-
-    @bot3.on(pika_sudo(from_client=3, pattern="autobio$"))
-    async def _(event):
-        await atb(event)
-
-
-if bot4:
-
-    @bot4.on(pika_sudo(from_client=4, pattern="autobio$"))
-    async def _(event):
-        await atb(event)
+async def atb(event):
+    if event.fwd_from:
+        return
+    while True:
+        DMY = time.strftime("%d.%m.%Y")
+        HM = time.strftime("%H:%M:%S")
+        bio = f"📅 {DMY} | {DBIO} | ⌚️ {HM}"
+        pikalog.info(bio)
+        try:
+            await event.client(functions.account.UpdateProfileRequest(about=bio))
+        except FloodWaitError as ex:
+            logger.warning(str(e))
+            await asyncio.sleep(ex.seconds)
+        await asyncio.sleep(DEL_TIME_OUT)
