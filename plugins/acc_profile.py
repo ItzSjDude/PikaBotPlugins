@@ -18,6 +18,8 @@
 {i}ppic <Reply to pic>
 **Usage**: sets Profile pic\n
 """
+
+from . import *
 @ItzSjDude(outgoing=True, pattern="pbio (.*)")
 async def pbio(event):
     if event.fwd_from:
