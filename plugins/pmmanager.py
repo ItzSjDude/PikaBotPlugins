@@ -8,7 +8,6 @@
 
 import asyncio
 import io
-import os
 
 import pikabot.sql_helper.pmpermit_sql as pmpermit_sql
 from pikabot import *

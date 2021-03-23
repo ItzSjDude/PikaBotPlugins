@@ -20,6 +20,8 @@
 """
 
 from . import *
+
+
 @ItzSjDude(outgoing=True, pattern="pbio (.*)")
 async def pbio(event):
     if event.fwd_from:
@@ -30,6 +32,7 @@ async def pbio(event):
         await event.edit("Succesfully changed my profile bio")
     except Exception as e:
         await event.edit(str(e))
+
 
 @ItzSjDude(outgoing=True, pattern="pname ((.|\n)*)")
 async def pname(event):
@@ -50,6 +53,7 @@ async def pname(event):
     except Exception as e:
         await event.edit(str(e))
 
+
 @ItzSjDude(outgoing=True, pattern="animepfp ?(.*)")
 async def anpfp(event):
     await event.edit(f"{r}")
@@ -59,6 +63,7 @@ async def anpfp(event):
         await event.client(functions.photos.UploadProfilePhotoRequest(file))
         os.system("rm -rf donottouch.jpg")
         await asyncio.sleep(60)
+
 
 @ItzSjDude(outgoing=True, pattern="avengerspfp ?(.*)")
 async def avpfp(event):
@@ -70,6 +75,7 @@ async def avpfp(event):
         os.system("rm -rf donottouch.jpg")
         await asyncio.sleep(600)
 
+
 @ItzSjDude(outgoing=True, pattern="gamerpfp ?(.*)")
 async def gmpfp(event):
     await event.edit(f"{t}")
@@ -79,6 +85,7 @@ async def gmpfp(event):
         await event.client(functions.photos.UploadProfilePhotoRequest(file))
         os.system("rm -rf donottouch.jpg")
         await asyncio.sleep(60)
+
 
 @ItzSjDude(outgoing=True, pattern="autoname$")
 async def atnm(event):
@@ -97,6 +104,7 @@ async def atnm(event):
             await asyncio.sleep(ex.seconds)
         await asyncio.sleep(DEL_TIME_OUT)
     await event.edit(f"Auto Name has been started Master")
+
 
 @ItzSjDude(outgoing=True, pattern="autobio$")
 async def atb(event):
