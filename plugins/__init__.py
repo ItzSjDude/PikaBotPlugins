@@ -96,10 +96,10 @@ try:
     tgbot = bot.tgbot
 except BaseException:
     pass
-if bot: 
-   b1 = bot.me
-else: 
-   b1 = 40040
+if bot:
+    b1 = bot.me
+else:
+    b1 = 40040
 if bot2:
     b2 = bot2.me
 else:
