@@ -12,6 +12,7 @@ Usage: Lol Art
 Usage: Like art
 """
 
+
 @ItzSjDude(pattern="gn$")
 async def gn(event):
     await event.edit(GN)
