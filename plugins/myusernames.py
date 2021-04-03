@@ -1,8 +1,8 @@
 # For @UniBorg
 # (c) Shrimadhav U K
 
-from telethon.tl.functions.channels import GetAdminedPublicChannelsRequest
 from pikabot.utils import ItzSjDude
+from telethon.tl.functions.channels import GetAdminedPublicChannelsRequest
 
 
 @ItzSjDude(outgoing=True, pattern="listmyusernames")

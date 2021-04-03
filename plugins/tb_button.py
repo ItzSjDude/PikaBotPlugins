@@ -3,8 +3,8 @@
 
 import re
 
-from telethon import custom
 from pikabot.utils import ItzSjDude
+from telethon import custom
 
 # regex obtained from:
 # https://github.com/PaulSonOfLars/tgbot/blob/master/tg_bot/modules/helper_funcs/string_handling.py#L23

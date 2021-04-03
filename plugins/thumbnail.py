@@ -9,8 +9,8 @@ import subprocess
 
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
-from PIL import Image
 from pikabot.utils import ItzSjDude
+from PIL import Image
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 
