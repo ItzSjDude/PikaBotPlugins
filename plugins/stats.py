@@ -1,5 +1,5 @@
 from telethon.tl.types import Channel, Chat, User
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 
 
 @ItzSjDude(outgoing=True, pattern=r"stats")

@@ -1,5 +1,5 @@
 """Syntax: .whatscrapp as reply to a message copied from @WhatsCRApp"""
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 
 
 @ItzSjDude(outgoing=True, pattern="whatscrap")

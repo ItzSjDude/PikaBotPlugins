@@ -23,7 +23,7 @@ from io import BytesIO
 import requests
 import telethon
 from PIL import Image
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 
 logger = logging.getLogger(__name__)
 

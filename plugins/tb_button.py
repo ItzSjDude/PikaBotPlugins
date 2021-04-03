@@ -4,7 +4,7 @@
 import re
 
 from telethon import custom
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 
 # regex obtained from:
 # https://github.com/PaulSonOfLars/tgbot/blob/master/tg_bot/modules/helper_funcs/string_handling.py#L23

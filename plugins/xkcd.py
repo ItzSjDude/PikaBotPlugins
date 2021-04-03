@@ -3,7 +3,7 @@ Syntax: .xkcd <search>"""
 from urllib.parse import quote
 
 import requests
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 
 
 @ItzSjDude(outgoing=True, pattern="xkcd ?(.*)")

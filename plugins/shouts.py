@@ -3,7 +3,7 @@ usage: .shout message
 originaly from : @corsicanu_bot
 """
 
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 
 
 @ItzSjDude(outgoing=True, pattern=r"shouts")

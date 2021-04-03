@@ -8,7 +8,7 @@ cmd: .lol
 import asyncio
 import random
 
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 
 
 @ItzSjDude(outgoing=True, pattern=r"lol")

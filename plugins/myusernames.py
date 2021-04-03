@@ -2,7 +2,7 @@
 # (c) Shrimadhav U K
 
 from telethon.tl.functions.channels import GetAdminedPublicChannelsRequest
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 
 
 @ItzSjDude(outgoing=True, pattern="listmyusernames")

@@ -8,7 +8,7 @@ By: @Zero_cool7870
 import json
 import os
 
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 
 
 @ItzSjDude(pattern="sch ?(.*)")

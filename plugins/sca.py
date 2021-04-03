@@ -15,7 +15,7 @@ cancel"""
 
 import asyncio
 
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 
 
 @ItzSjDude(outgoing=True, pattern="sca ?(.*)")

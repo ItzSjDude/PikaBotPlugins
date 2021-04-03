@@ -4,7 +4,7 @@
 """WikiPedia.ORG
 Syntax: .wikipedia Query"""
 import wikipedia
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 
 
 @ItzSjDude(outgoing=True, pattern="wikipedia (.*)")

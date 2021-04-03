@@ -7,7 +7,7 @@ import asyncio
 import io
 import time
 
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 
 
 @ItzSjDude(outgoing=True, pattern="exec ?(.*)")

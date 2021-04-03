@@ -12,7 +12,7 @@ import os
 import time
 
 from telethon.tl.types import DocumentAttributeAudio
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 from youtube_dl import YoutubeDL
 from youtube_dl.utils import (
     ContentTooShortError,

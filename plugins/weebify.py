@@ -4,7 +4,7 @@ By :- @PhycoNinja13b
 Modified by :- @kirito6969
 .weeb <text> """
 
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 
 normiefont = [
     "a",

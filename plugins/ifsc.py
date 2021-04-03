@@ -3,7 +3,7 @@ Syntax: .ifsc rp <IFSC CODE>"""
 import json
 
 import requests
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 
 
 @ItzSjDude(outgoing=True, pattern="ifsc(.*)")

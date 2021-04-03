@@ -1,7 +1,7 @@
 # For Uniborg
 # (c) @INF1N17Y
 
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 
 
 @ItzSjDude(outgoing=True, pattern="mention (.*)")

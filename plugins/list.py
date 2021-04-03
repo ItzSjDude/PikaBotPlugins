@@ -9,7 +9,7 @@ By:- @Zero_cool7870
 
 import os
 
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 
 
 @ItzSjDude(outgoing=True, pattern="ls ?(.*)")

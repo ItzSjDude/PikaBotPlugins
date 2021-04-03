@@ -5,7 +5,7 @@ Syntax: .mashup <text>
 """
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 from userbot import CMD_HELP
 
 

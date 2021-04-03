@@ -11,7 +11,7 @@ import re
 
 import pikabot.sql_helper.blacklist_sql as sql
 import pikabot.sql_helper.blacklistx_sql as sqlx
-from uniborg.util import admin_cmd
+from pikabot.utils import admin_cmd
 from var import Var
 
 try:

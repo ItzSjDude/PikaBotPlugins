@@ -1,6 +1,6 @@
 import asyncio
 
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 from userbot import ALIVE_NAME
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "PikachuUserBot"

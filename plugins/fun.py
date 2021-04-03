@@ -1,6 +1,6 @@
 import random
 
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 
 METOOSTR = [
     "`Me too thanks`",

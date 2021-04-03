@@ -1,6 +1,6 @@
 """Get Poll Info on non supported clients
 Syntax: .get_poll"""
-from uniborg.util import ItzSjDude
+from pikabot.utils import ItzSjDude
 
 
 @ItzSjDude(outgoing=True, pattern="get_poll")
