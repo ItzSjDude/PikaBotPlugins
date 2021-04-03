@@ -3,7 +3,6 @@ import time
 from collections import deque
 
 from pikabot.utils import ItzSjDude
-from SysRuntime import *
 from telethon.tl.functions.channels import LeaveChannelRequest
 from userbot import CMD_HELP, bot
 
