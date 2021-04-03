@@ -211,7 +211,8 @@ CongoStr = [
 ]
 
 
-DEL_TIME_OUT = 60 
+DEL_TIME_OUT = 60
+
 
 def deEmojify(inputString: str) -> str:
     """Remove emojis and other non-safe characters from string"""
