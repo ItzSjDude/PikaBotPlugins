@@ -211,10 +211,7 @@ CongoStr = [
 ]
 
 
-DEL_TIME_OUT = 60
-DUSER = str(ALIVE_NAME) if ALIVE_NAME else "PikaBot"
-DBIO = str(AUTO_BIO) if AUTO_BIO else "Pika is Love 🔥"
-
+DEL_TIME_OUT = 60 
 
 def deEmojify(inputString: str) -> str:
     """Remove emojis and other non-safe characters from string"""
