@@ -8,9 +8,8 @@ Available Commands:
 import asyncio
 
 from pikabot.utils import ItzSjDude
-from userbot import AUTONAME
 
-DEFAULTUSER = str(AUTONAME) if AUTONAME else "PikaBot"
+DEFAULTUSER = "PikaBot"
 
 
 @ItzSjDude(outgoing=True, pattern=r"deploy")
