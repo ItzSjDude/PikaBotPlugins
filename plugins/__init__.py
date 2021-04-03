@@ -32,15 +32,7 @@ from bs4 import BeautifulSoup
 from geopy.geocoders import Nominatim
 from humanize import naturalsize
 from pikabot import *
-from pikabot.handler import *
-from pikabot.main_plugs.pfpdata import *
-from pikabot.main_plugs.plug import *
-from pikabot.main_plugs.SysRuntime import *
-from pikabot.sql_helper.notes_sql import *
-from pikabot.sql_helper.welcome_sql import *
-from pikabot.utils import *
-from pikabot.utils import ItzSjDude
-from pikabot.utils import get_readable_time as grt
+from pikabot import get_readable_time as grt
 from PIL import Image, ImageColor, ImageEnhance, ImageOps
 from pygments.formatters import ImageFormatter
 from pygments.lexers import Python3Lexer
@@ -965,13 +957,6 @@ async def _ungmute(un_gmute):
         await un_gmute.edit(NO_ADMIN)
         return
 
-    # Check if the function running under SQL mode
-    try:
-        from pikabot.sql_helper.gmute_sql import ungmute
-    except AttributeError:
-        await un_gmute.edit(NO_SQL)
-        return
-
     user = await get_user_from_event(un_gmute)
     user = user[0]
     if user:
@@ -988,12 +973,6 @@ async def _ungmute(un_gmute):
     else:
         b = 0
         if await is_pikatg(un_gmute):
-            from pikabot.sql_helper.chats_sql import (
-                add_pika,
-                get_pika_chats,
-                is_pika_exist,
-            )
-
             id = get_pika_chats()
             for _umte in id:
                 try:
@@ -1041,13 +1020,6 @@ async def _gmte(gspdr):
     # If not admin and not creator, return
     if not admin and not creator:
         await gspdr.edit(NO_ADMIN)
-        return
-
-    # Check if the function running under SQL mode
-    try:
-        from pikabot.sql_helper.gmute_sql import gmute
-    except AttributeError:
-        await gspdr.edit(NO_SQL)
         return
 
     user, reason = await get_user_from_event(gspdr)
@@ -1304,10 +1276,6 @@ async def _gusers(show):
 
 
 async def _muter(moot):
-    try:
-        from pikabot.sql_helper.gmute_sql import is_gmuted
-    except AttributeError:
-        return
     _pika_id = await get_pika_id(moot)
     gmuted = is_gmuted(moot.sender_id)
     rights = ChatBannedRights(
@@ -1340,7 +1308,7 @@ async def _muter(moot):
                 await moot.delete()
 
 
-async def gban(event):
+async def _gban(event):
     if event.fwd_from:
         return
     import time
@@ -1363,11 +1331,11 @@ async def gban(event):
     if user.id == bot.uid:
         await pika_msg(a, "**I Can't Gban You Master ☹️**")
         return
-    if gban_sql.is_gbanned(user.id, pika_id):
+    if is_gbanned(user.id, pika_id):
         await pika_msg(a, "**This User Is Already Gbanned.**")
         return
 
-    gban_sql.gban(user.id, pika_id, rson)
+    gban(user.id, pika_id, rson)
     await pika_msg(a, f"**Trying To GBan [{user.first_name}](tg://user?id={user.id})**")
     async for pik in event.client.iter_dialogs():
         if pik.is_group or pik.is_channel:
