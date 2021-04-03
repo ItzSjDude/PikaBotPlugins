@@ -9,10 +9,7 @@
 import asyncio
 import io
 import os
-
-import pikabot.sql_helper.pmpermit_sql as pmpermit_sql
 from pikabot import *
-from pikabot.handler import *
 from pikabot.utils import *
 from telethon import events, functions
 from telethon.tl.functions.users import GetFullUserRequest
@@ -66,14 +63,14 @@ if LOGBOT is not None:
             res = "None"
         if event.is_private:
             _pika_id = await get_pika_id(event)
-            if not pmpermit_sql.is_approved(chat.id, pika_id):
+            if not is_approved(chat.id, pika_id):
                 if chat.id in PM_WARNS:
                     del PM_WARNS[chat.id]
                 if chat.id in PREV_REPLY_MESSAGE:
                     await PREV_REPLY_MESSAGE[chat.id].delete()
                     del PREV_REPLY_MESSAGE[chat.id]
 
-                pmpermit_sql.approve(chat.id, _pika_id, reason=res)
+                approve(chat.id, _pika_id, reason=res)
                 logpm = f"#Approved\n[{chat.first_name}]"
                 try:
                     await event.client.send_message(LOGBOT, logpm)
@@ -104,8 +101,8 @@ if LOGBOT is not None:
                 )
                 await asyncio.sleep(100)
             else:
-                if pmpermit_sql.is_approved(chat.id, _pika_id):
-                    pmpermit_sql.disapprove(chat.id, _pika_id)
+                if is_approved(chat.id, _pika_id):
+                    disapprove(chat.id, _pika_id)
                     await event.edit(
                         "**You Have been Blocked By my master \n           ┏━┓ ┏━┓ \n           ┏┯┯┯┯┯┓  \n           ┠┼┼┼┼┼┨ \n           ┗┷┷┷┷┷┛ \n        Hahahahahah🥺😂**"
                     )
@@ -130,8 +127,8 @@ if LOGBOT is not None:
             if chat.id == 779890498:
                 await event.edit("Sorry, I Can't Disapprove My Master")
             else:
-                if pmpermit_sql.is_approved(chat.id, _pika_id):
-                    pmpermit_sql.disapprove(chat.id, _pika_id)
+                if is_approved(chat.id, _pika_id):
+                    disapprove(chat.id, _pika_id)
                     await event.edit(
                         "Disapproved [{}](tg://user?id={})".format(firstname, chat.id)
                     )
@@ -141,7 +138,7 @@ if LOGBOT is not None:
         if event.fwd_from:
             return
         _pika_id = await get_pika_id(event)
-        approved_users = pmpermit_sql.get_all_approved(_pika_id)
+        approved_users = get_all_approved(_pika_id)
         APPROVED_PMs = "Current Approved PMs\n"
         if len(approved_users) > 0:
             for a_user in approved_users:
@@ -175,8 +172,8 @@ async def huh(event):
     _pika_id = await get_pika_id(event)
     chat = await event.get_chat()
     if event.is_private:
-        if not pmpermit_sql.is_approved(chat.id, _pika_id):
-            pmpermit_sql.approve(chat.id, _pika_id, "**My Boss Is Best🔥**")
+        if not is_approved(chat.id, _pika_id):
+            approve(chat.id, _pika_id, "**My Boss Is Best🔥**")
             await event.client.send_message(chat, "**Boss Meet My Creator**")
 
 
@@ -246,7 +243,7 @@ async def on_pika_pm(event):
     if any([x in event.raw_text for x in ("/start", "1", "2", "3", "4", "5")]):
         return
 
-    if not pmpermit_sql.is_approved(chat_id, _pika_id):
+    if not is_approved(chat_id, _pika_id):
         await do_pm_permit_action(chat_id, event)
 
 
