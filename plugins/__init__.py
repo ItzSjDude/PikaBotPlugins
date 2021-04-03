@@ -23,7 +23,6 @@ from urllib.parse import quote_plus
 
 import bs4
 import heroku3
-import pikabot.sql_helper.gmute_sql as gban_sql
 import pyfiglet
 import pygments
 import requests
