@@ -11,8 +11,6 @@ Usage: Lol Art
 {i}like
 Usage: Like art
 """
-from pikabot.sql_helper.global_variables import *
-
 
 @ItzSjDude(pattern="gn$")
 async def gn(event):
