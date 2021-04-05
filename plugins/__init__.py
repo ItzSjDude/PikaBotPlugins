@@ -855,7 +855,7 @@ async def _mute(spdr):
         return
 
     _tg = await get_pika_tg(spdr)
-    self_user = await get_pika_id(spdr)
+    self_user = await auto_var(spdr)
 
     if user.id == self_user:
         await pika_msg(
@@ -865,7 +865,7 @@ async def _mute(spdr):
 
     # If everything goes well, do announcing and mute
     a = await pika_msg(spdr, _tg, "`Muting...`")
-    pikamute = mute(spdr.chat_id, user.id, self_user)
+    pikamute = mute(self_user, spdr.chat_id, user.id)
     if pikamute is False:
         return await spdr.edit("`Error! User probably already muted.`")
     else:
@@ -901,14 +901,7 @@ async def _unmute(unmot):
     # If not admin and not creator, return
     if not admin and not creator:
         await unmot.edit(NO_ADMIN)
-        return
-
-    # Check if the function running under SQL mode
-    try:
-        from pikabot.sql_helper.mute_sql import unmute
-    except AttributeError:
-        await unmot.edit(NO_SQL)
-        return
+        return 
 
     # If admin or creator, inform the user and start unmuting
     pika_id = await get_pika_id(unmot)
@@ -921,7 +914,7 @@ async def _unmute(unmot):
     else:
         return
 
-    pikaumute = unmute(unmot.chat_id, user.id, pika_id)
+    pikaumute = unmute(pika_id, unmot.chat_id, user.id)
     if pikaumute is False:
         return await pika_msg(a, "`Error! User probably already unmuted.`")
     else:
@@ -967,7 +960,7 @@ async def _ungmute(un_gmute):
     # If pass, inform and start ungmuting
     a = await pika_msg(un_gmute, "```Ungmuting...```", _tg)
 
-    pikaugmute = ungmute(user.id, _pika_id)
+    pikaugmute = ungmute(_pika_id, user.id)
     if pikaugmute is False:
         await pika_msg(a, "`Error! User probably not gmuted.`")
     else:
@@ -1031,7 +1024,7 @@ async def _gmte(gspdr):
     # If pass, inform and start gmuting
     a = await pika_msg(gspdr, "`Grabs a huge, sticky duct tape!`", _tg)
 
-    pikagmute = gmute(user.id, _pika_id)
+    pikagmute = gmute(_pika_id, user.id)
     if pikagmute is False:
         await pika_msg(a, "`Error! User probably already gmuted.\nRe-rolls the tape.`")
     else:
@@ -1291,7 +1284,7 @@ async def _muter(moot):
 
     if not moot.is_private:
         for i in gmuted:
-            if i.sender == str(moot.sender_id) and i.pika_id == _pika_id:
+            if i.sender == str(moot.sender_id) and i.pika == _pika_id:
                 try:
                     await moot.client(
                         EditBannedRequest(moot.chat_id, moot.sender_id, MUTE_RIGHTS)
@@ -1304,7 +1297,7 @@ async def _muter(moot):
 
     if moot.is_private:
         for i in gmuted:
-            if i.sender == str(moot.sender_id) and i.pika_id == _pika_id:
+            if i.sender == str(moot.sender_id) and i.pika == _pika_id:
                 await moot.delete()
 
 
@@ -1331,11 +1324,11 @@ async def _gban(event):
     if user.id == bot.uid:
         await pika_msg(a, "**I Can't Gban You Master ☹️**")
         return
-    if is_gbanned(user.id, pika_id):
+    if is_gbanned(pika_id, user.id):
         await pika_msg(a, "**This User Is Already Gbanned.**")
         return
 
-    gban(user.id, pika_id, rson)
+    gban(pika_id, user.id, rson)
     await pika_msg(a, f"**Trying To GBan [{user.first_name}](tg://user?id={user.id})**")
     async for pik in event.client.iter_dialogs():
         if pik.is_group or pik.is_channel:
@@ -1381,7 +1374,7 @@ async def _remove_notes(event):
     _tg = await get_pika_tg(event)
     _pika_id = await get_pika_id(event)
     notename = event.pattern_match.group(1)
-    if rm_note(event.chat_id, notename, _pika_id) is False:
+    if rm_note(_pika_id, event.chat_id, notename) is False:
         return await pika_msg(
             event, "`Couldn't find note:` **{}**".format(notename), _tg
         )
@@ -1424,7 +1417,7 @@ async def _add_notes(event):
         rep_msg = await event.get_reply_message()
         string = rep_msg.text
     success = "Note {} successfully. Use #{} to get it"
-    if add_note(str(event.chat_id), keyword, string, msg_id, client_id) is False:
+    if add_note(str(client_id), str(event.chat_id), keyword, string, msg_id) is False:
         return await pika_msg(event, success.format("updated", keyword), _tg)
     else:
         return await pika_msg(event, success.format("added", keyword), _tg)
@@ -1435,7 +1428,7 @@ async def note_incm(getnt):
         _pika_id = await get_pika_id(getnt)
         if not (await getnt.get_sender()).bot:
             notename = getnt.text[1:]
-            note = get_note(getnt.chat_id, notename, _pika_id)
+            note = get_note(_pika_id, getnt.chat_id, notename)
             message_id_to_reply = getnt.message.id
             if not message_id_to_reply:
                 message_id_to_reply = None
@@ -5634,7 +5627,7 @@ async def _ping(event):
     if await is_pikatg(event):
         az = f"{bot.me.first_name}'s **Assistant**"
     else:
-        axx = await pikaa(event, "ALIVE_NAME")
+        axx = await auto_var(event, "alivename")
         az = f"𝑴𝒚 𝑩𝒐𝒔𝒔 **{axx}**"
     _tg = await get_pika_tg(event)
     start = pikatime.now()
