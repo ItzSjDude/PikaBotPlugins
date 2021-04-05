@@ -32,6 +32,7 @@ from geopy.geocoders import Nominatim
 from humanize import naturalsize
 from pikabot import *
 from pikabot import get_readable_time as grt
+from pikabot import rawtm
 from pikabot.resources.helpers import *
 from PIL import Image, ImageColor, ImageEnhance, ImageOps
 from pygments.formatters import ImageFormatter
@@ -85,8 +86,8 @@ from telethon.tl.types import (
 from telethon.utils import get_input_location, pack_bot_file_id
 from var import Var
 from var import Var as Config
-from pikabot import rawtm
-UpTime = rawtm['time']
+
+UpTime = rawtm["time"]
 CARBONLANG = "auto"
 LANG = "en"
 
