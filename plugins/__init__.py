@@ -31,8 +31,8 @@ from bs4 import BeautifulSoup
 from geopy.geocoders import Nominatim
 from humanize import naturalsize
 from pikabot import *
-from pikabot.resources.helpers import * 
 from pikabot import get_readable_time as grt
+from pikabot.resources.helpers import *
 from PIL import Image, ImageColor, ImageEnhance, ImageOps
 from pygments.formatters import ImageFormatter
 from pygments.lexers import Python3Lexer
