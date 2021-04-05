@@ -1496,6 +1496,8 @@ async def get_user_sender_id(user, event):
 
 
 async def _alive(event):
+    from pikabot import rawtm
+    UpTime = rawtm["time"]
     pupt = grt((time.time() - UpTime))
     try:
         pic = await pikaa(event, "ALIVE_PIC")
