@@ -86,6 +86,7 @@ from telethon.tl.types import (
 from telethon.utils import get_input_location, pack_bot_file_id
 from var import Var
 from var import Var as Config
+
 CARBONLANG = "auto"
 LANG = "en"
 
@@ -1495,6 +1496,7 @@ async def get_user_sender_id(user, event):
 
 async def _alive(event):
     from pikabot import rawtm
+
     UpTime = rawtm["time"]
     pupt = grt((time.time() - UpTime))
     try:
