@@ -891,7 +891,7 @@ async def _unmute(unmot):
     # If not admin and not creator, return
     if not admin and not creator:
         await unmot.edit(NO_ADMIN)
-        return 
+        return
 
     # If admin or creator, inform the user and start unmuting
     pika_id = await auto_var(unmot)
