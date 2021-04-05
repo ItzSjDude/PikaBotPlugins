@@ -828,16 +828,6 @@ async def _unban(unbon):
 
 
 async def _mute(spdr):
-    """
-    This function is basically muting peeps
-    """
-    # Check if the function running under SQL mo
-    try:
-        from pikabot.sql_helper.mute_sql import mute
-    except AttributeError:
-        await spdr.edit(NO_SQL)
-        return
-
     # Admin or creator check
     chat = await spdr.get_chat()
     admin = chat.admin_rights
