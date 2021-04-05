@@ -101,7 +101,7 @@ async def uploadir(udir_event):
     """ For .uploadir command, allows you to upload everything from a folder in the server"""
     input_str = udir_event.pattern_match.group(1)
     if os.path.exists(input_str):
-        a = await udir_event.reply("Downloading Using Userbot Server....")
+        _axx_ = await udir_event.reply("Downloading Using Userbot Server....")
         lst_of_files = []
         for r, d, f in os.walk(input_str):
             for file in f:
@@ -110,7 +110,7 @@ async def uploadir(udir_event):
                 lst_of_files.append(os.path.join(r, file))
         pikalog.info(lst_of_files)
         uploaded = 0
-        await a.edit(
+        await _axx_.edit(
             "Found {} files. Uploading will start soon. Please wait!".format(
                 len(lst_of_files)
             )
@@ -132,7 +132,7 @@ async def uploadir(udir_event):
                             progress(
                                 d,
                                 t,
-                                a,
+                                _axx_,
                                 c_time,
                                 "Uploading in Progress.......",
                                 single_file,
@@ -170,14 +170,14 @@ async def uploadir(udir_event):
                             )
                         ],
                         progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                            progress(d, t, a, c_time, "Uploading...", single_file)
+                            progress(d, t, _axx_, c_time, "Uploading...", single_file)
                         ),
                     )
                 os.remove(single_file)
                 uploaded = uploaded + 1
-        await a.edit("Uploaded {} files successfully !!".format(uploaded))
+        await _axx_.edit("Uploaded {} files successfully !!".format(uploaded))
     else:
-        await a.edit("404: Directory Not Found")
+        await _axx_.edit("404: Directory Not Found")
 
 
 @ItzSjDude(pattern=r"ul (.*)")
