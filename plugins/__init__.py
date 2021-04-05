@@ -904,7 +904,7 @@ async def _unmute(unmot):
         return 
 
     # If admin or creator, inform the user and start unmuting
-    pika_id = await get_pika_id(unmot)
+    pika_id = await auto_var(unmot)
     _tg = await get_pika_tg(unmot)
     a = await pika_msg(unmot, "```Unmuting...```", _tg)
     user = await get_user_from_event(unmot)
@@ -940,7 +940,7 @@ async def _ungmute(un_gmute):
     # Admin or creator check
     await un_gmute.client.get_me()
     _tg = await get_pika_tg(un_gmute)
-    _pika_id = await get_pika_id(un_gmute)
+    _pika_id = await auto_var(un_gmute)
     chat = await un_gmute.get_chat()
     admin = chat.admin_rights
     creator = chat.creator
@@ -1004,7 +1004,7 @@ async def _gmte(gspdr):
     """ For .gmute command, globally mutes the replied/tagged person """
     # Admin or creator check
     await gspdr.client.get_me()
-    _pika_id = await get_pika_id(gspdr)
+    _pika_id = await auto_var(gspdr)
     _tg = await get_pika_tg(gspdr)
     chat = await gspdr.get_chat()
     admin = chat.admin_rights
@@ -1269,7 +1269,7 @@ async def _gusers(show):
 
 
 async def _muter(moot):
-    _pika_id = await get_pika_id(moot)
+    _pika_id = await auto_var(moot)
     gmuted = is_gmuted(moot.sender_id)
     rights = ChatBannedRights(
         until_date=None,
@@ -1307,7 +1307,7 @@ async def _gban(event):
     import time
 
     _tg = await get_pika_tg(event)
-    pika_id = await get_pika_id(event)
+    pika_id = await auto_var(event)
     st = time.time()
     a = await pika_msg(event, "**GBanning This User !**", _tg)
     suc = 0
@@ -1356,7 +1356,7 @@ async def _allnotes(event):
     if event.fwd_from:
         return
     _tg = await get_pika_tg(event)
-    _pika_id = await get_pika_id(event)
+    _pika_id = await auto_var(event)
     message = "`There are no saved notes in this chat`"
     notes = get_notes(event.chat_id, _pika_id)
     for note in notes:
@@ -1372,7 +1372,7 @@ async def _remove_notes(event):
     if event.fwd_from:
         return
     _tg = await get_pika_tg(event)
-    _pika_id = await get_pika_id(event)
+    _pika_id = await auto_var(event)
     notename = event.pattern_match.group(1)
     if rm_note(_pika_id, event.chat_id, notename) is False:
         return await pika_msg(
@@ -1388,7 +1388,7 @@ async def _add_notes(event):
     if event.fwd_from:
         return
     _tg = await get_pika_tg(event)
-    client_id = await get_pika_id(event)
+    client_id = await auto_var(event)
     keyword = event.pattern_match.group(1)
     string = event.text.partition(keyword)[2]
     msg = await event.get_reply_message()
@@ -1425,7 +1425,7 @@ async def _add_notes(event):
 
 async def note_incm(getnt):
     try:
-        _pika_id = await get_pika_id(getnt)
+        _pika_id = await auto_var(getnt)
         if not (await getnt.get_sender()).bot:
             notename = getnt.text[1:]
             note = get_note(_pika_id, getnt.chat_id, notename)
@@ -5362,7 +5362,7 @@ async def apk(e):
 
 
 async def _welcome(_pika):
-    _pika_id = await get_pika_id(_pika)
+    _pika_id = await auto_var(_pika)
     pika_wel = get_welcome(_pika.chat_id, _pika_id)
     if pika_wel:
         if (_pika.user_joined or _pika.user_added) and not (await _pika.get_user()).bot:
@@ -5427,7 +5427,7 @@ async def _welcome(_pika):
 
 
 async def set_wlcm(_pika):
-    _pika_id = await get_pika_id(_pika)
+    _pika_id = await auto_var(_pika)
     _tg = await is_pikatg(_pika)
     msg = await _pika.get_reply_message()
     string = _pika.pattern_match.group(1)
@@ -5463,7 +5463,7 @@ async def set_wlcm(_pika):
 
 
 async def get_welcm(_pika):
-    _pika_id = await get_pika_id(_pika)
+    _pika_id = await auto_var(_pika)
     pika_wel = get_welcome(_pika.chat_id, _pika_id)
     _tg = await is_pikatg(_pika)
     a = await pika_msg(_pika, "Getting Current Welcome Message, Please Wait...", _tg)
@@ -5487,7 +5487,7 @@ async def get_welcm(_pika):
 
 async def del_welcm(_pika):
     _tg = await is_pikatg(_pika)
-    _pika_id = await get_pika_id(_pika)
+    _pika_id = await auto_var(_pika)
     a = await pika_msg(_pika, "Deleting Welcome Note, Please wait...", _tg)
     if remove_welcome(_pika.chat_id, _pika_id) is True:
         await pika_msg(a, "`Welcome note deleted for this chat.`")
@@ -5497,7 +5497,7 @@ async def del_welcm(_pika):
 
 async def clean_welcm(_pika):
     _tg = await is_pikatg(_pika)
-    _pika_id = await get_pika_id(_pika)
+    _pika_id = await auto_var(_pika)
     a = await pika_msg(
         _pika, "Turning On Welcome Note Auto cleaning AI, Please wait...", _tg
     )

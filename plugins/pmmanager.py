@@ -63,7 +63,7 @@ if LOGBOT is not None:
         if not res:
             res = "None"
         if event.is_private:
-            _pika_id = await get_pika_id(event)
+            _pika_id = await auto_var(event)
             if not is_approved(chat.id, pika_id):
                 if chat.id in PM_WARNS:
                     del PM_WARNS[chat.id]
@@ -95,7 +95,7 @@ if LOGBOT is not None:
         except BaseException:
             pass
         if event.is_private:
-            _pika_id = await get_pika_id(event)
+            _pika_id = await auto_var(event)
             if chat.id == 779890498:
                 await event.edit(
                     "You bitch tried to block my Creator, now i will sleep for 100 seconds"
@@ -123,7 +123,7 @@ if LOGBOT is not None:
         except BaseException:
             pass
         if event.is_private:
-            _pika_id = await get_pika_id(event)
+            _pika_id = await auto_var(event)
 
             if chat.id == 779890498:
                 await event.edit("Sorry, I Can't Disapprove My Master")
@@ -138,7 +138,7 @@ if LOGBOT is not None:
     async def approve_p_m(event):
         if event.fwd_from:
             return
-        _pika_id = await get_pika_id(event)
+        _pika_id = await auto_var(event)
         approved_users = get_all_approved(_pika_id)
         APPROVED_PMs = "Current Approved PMs\n"
         if len(approved_users) > 0:
@@ -170,7 +170,7 @@ if LOGBOT is not None:
 async def huh(event):
     if event.fwd_from:
         return
-    _pika_id = await get_pika_id(event)
+    _pika_id = await auto_var(event)
     chat = await event.get_chat()
     if event.is_private:
         if not is_approved(chat.id, _pika_id):
@@ -220,7 +220,7 @@ async def do_pm_permit_action(chat_id, event):
 
 
 async def on_pika_pm(event):
-    _pika_id = await get_pika_id(event)
+    _pika_id = await auto_var(event)
     pika = await event.client.get_me()
     if event.sender_id == pika.id:
         return
