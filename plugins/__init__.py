@@ -1500,10 +1500,10 @@ async def _alive(event):
     UpTime = rawtm["time"]
     pupt = grt((time.time() - UpTime))
     try:
-        pic = await pikaa(event, "ALIVE_PIC")
+        pic = await auto_var(event, "alivepic")
     except BaseException:
         pic = apic
-    az = await pikaa(event, "ALIVE_NAME")
+    az = await auto_var(event, "alivename")
     await event.delete()
     a = await event.client.send_file(
         event.chat_id, pic, caption=alivestr.format(pupt, az)
