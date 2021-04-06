@@ -1275,22 +1275,24 @@ async def _muter(moot):
     )
 
     if not moot.is_private:
-        for i in gmuted:
-            if i.sender == str(moot.sender_id) and i.pika == _pika_id:
-                try:
-                    await moot.client(
-                        EditBannedRequest(moot.chat_id, moot.sender_id, MUTE_RIGHTS)
+        if gmuted: 
+            for i in gmuted:
+                if i.sender == str(moot.sender_id) and i.pika == _pika_id:
+                    try:
+                        await moot.client(
+                            EditBannedRequest(moot.chat_id, moot.sender_id, MUTE_RIGHTS)
+                        )
+                    except BadRequestError:
+                        return
+                    await moot.reply(
+                        "Globally Muted User Detected : **MUTED SUCCESSFULLY**"
                     )
-                except BadRequestError:
-                    return
-                await moot.reply(
-                    "Globally Muted User Detected : **MUTED SUCCESSFULLY**"
-                )
 
     if moot.is_private:
-        for i in gmuted:
-            if i.sender == str(moot.sender_id) and i.pika == _pika_id:
-                await moot.delete()
+        if gmuted: 
+            for i in gmuted:
+                if i.sender == str(moot.sender_id) and i.pika == _pika_id:
+                    await moot.delete()
 
 
 async def _gban(event):
