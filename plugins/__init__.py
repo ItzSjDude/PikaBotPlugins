@@ -1275,7 +1275,7 @@ async def _muter(moot):
     )
 
     if not moot.is_private:
-        if gmuted: 
+        if gmuted:
             for i in gmuted:
                 if i.sender == str(moot.sender_id) and i.pika == _pika_id:
                     try:
@@ -1289,7 +1289,7 @@ async def _muter(moot):
                     )
 
     if moot.is_private:
-        if gmuted: 
+        if gmuted:
             for i in gmuted:
                 if i.sender == str(moot.sender_id) and i.pika == _pika_id:
                     await moot.delete()
