@@ -856,7 +856,7 @@ async def _mute(spdr):
         return
 
     # If everything goes well, do announcing and mute
-    a = await pika_msg(spdr, _tg, "`Muting...`")
+    a = await pika_msg(spdr, "`Muting...`", _tg)
     pikamute = mute(self_user, spdr.chat_id, user.id)
     if pikamute is False:
         return await spdr.edit("`Error! User probably already muted.`")
