@@ -14,25 +14,30 @@ from . import codename_info, device_info, dspecs, magisk, twrp
 
 
 @ItzSjDude(outgoing=True, pattern="magisk$")
+@ItzSjDude(sudo=True, pattern="magisk$")
 async def _(request):
     await magisk(request)
 
 
 @ItzSjDude(outgoing=True, pattern=r"device(?: |$)(\S*)")
+@ItzSjDude(sudo=True, pattern=r"device(?: |$)(\S*)")
 async def _(request):
     await device_info(request)
 
 
 @ItzSjDude(outgoing=True, pattern=r"codename(?: |)([\S]*)(?: |)([\s\S]*)")
+@ItzSjDude(sudo=True, pattern=r"codename(?: |)([\S]*)(?: |)([\s\S]*)")
 async def _(request):
     await codename_info(request)
 
 
 @ItzSjDude(outgoing=True, pattern=r"specs(?: |)([\S]*)(?: |)([\s\S]*)")
+@ItzSjDude(sudo=True, pattern=r"specs(?: |)([\S]*)(?: |)([\s\S]*)")
 async def _(request):
     await dspecs(request)
 
 
 @ItzSjDude(outgoing=True, pattern=r"twrp(?: |$)(\S*)")
+@ItzSjDude(sudo=True, pattern=r"twrp(?: |$)(\S*)")
 async def _(request):
     await twrp(request)
