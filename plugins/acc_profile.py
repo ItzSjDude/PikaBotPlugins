@@ -18,24 +18,13 @@
 {i}ppic <Reply to pic>
 **Usage**: sets Profile pic\n
 """
-from . import (
-    anpfp,
-    atb,
-    atnm,
-    avpfp,
-    bot,
-    bot2,
-    bot3,
-    bot4,
-    gmpfp,
-    pbio,
-    pname,
-)
+from . import anpfp, atb, atnm, avpfp, gmpfp, pbio, pname
 
 
 @ItzSjDude(outgoing=True, pattern="pbio (.*)")
 async def _(event):
     await pbio(event)
+
 
 @ItzSjDude(outgoing=True, pattern="pname ((.|\n)*)")
 async def _(event):
@@ -56,9 +45,11 @@ async def _(event):
 async def _(event):
     await gmpfp(event)
 
+
 @ItzSjDude(outgoing=True, pattern="autoname$")
 async def _(event):
     await atnm(event)
+
 
 @ItzSjDude(outgoing=True, pattern="autobio$")
 async def _(event):
