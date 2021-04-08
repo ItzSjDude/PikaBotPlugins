@@ -7,5 +7,6 @@ from . import _alive
 
 
 @ItzSjDude(outgoing=True, pattern=r"alive$")
+@ItzSjDude(sudo=True, pattern=r"alive$")
 async def _(event):
     await _alive(event)
