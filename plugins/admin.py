@@ -50,97 +50,94 @@ from . import (
     _ungmute,
     _unmute,
     admin_cmd,
-    bot2,
-    bot3,
-    bot4,
 )
 
 
-#@bot.on(pika_sudo(from_client=1, pattern=r"setgpic$"))
+# @bot.on(pika_sudo(from_client=1, pattern=r"setgpic$"))
 @ItzSjDude(groups_only=True, pattern=r"setgpic$")
 async def _(gpic):
     await _setgpic(gpic)
 
 
-#@bot.on(pika_sudo(from_client=1, pattern=r"promote(?: |$)(.*)"))
+# @bot.on(pika_sudo(from_client=1, pattern=r"promote(?: |$)(.*)"))
 @ItzSjDude(groups_only=True, pattern=r"promote(?: |$)(.*)")
 async def _(promt):
     await _promote(promt)
 
 
-#@bot.on(pika_sudo(from_client=1, pattern=r"demote(?: |$)(.*)"))
+# @bot.on(pika_sudo(from_client=1, pattern=r"demote(?: |$)(.*)"))
 @ItzSjDude(groups_only=True, pattern=r"demote(?: |$)(.*)")
 async def _(dmod):
     await _demote(dmod)
 
 
-#@bot.on(pika_sudo(from_client=1, pattern=r"ban(?: |$)(.*)"))
+# @bot.on(pika_sudo(from_client=1, pattern=r"ban(?: |$)(.*)"))
 @ItzSjDude(groups_only=True, pattern=r"ban(?: |$)(.*)")
 async def _(bon):
     await _ban(bon)
 
 
-#@bot.on(pika_sudo(from_client=1, pattern=r"unban(?: |$)(.*)"))
+# @bot.on(pika_sudo(from_client=1, pattern=r"unban(?: |$)(.*)"))
 @ItzSjDude(groups_only=True, pattern=r"unban(?: |$)(.*)")
 async def _(unbon):
     await _unban(unbon)
 
 
-#@bot.on(pika_sudo(from_client=1, pattern=r"mute(?: |$)(.*)"))
+# @bot.on(pika_sudo(from_client=1, pattern=r"mute(?: |$)(.*)"))
 @ItzSjDude(groups_only=True, pattern=r"mute(?: |$)(.*)")
 async def _(spdr):
     await _mute(spdr)
 
 
-#@bot.on(pika_sudo(from_client=1, pattern=r"unmute(?: |$)(.*)"))
+# @bot.on(pika_sudo(from_client=1, pattern=r"unmute(?: |$)(.*)"))
 @ItzSjDude(groups_only=True, pattern=r"unmute(?: |$)(.*)")
 async def _(unmot):
     await _unmute(unmot)
 
 
-#@bot.on(pika_sudo(from_client=1, pattern=r"ungmute(?: |$)(.*)"))
+# @bot.on(pika_sudo(from_client=1, pattern=r"ungmute(?: |$)(.*)"))
 @ItzSjDude(groups_only=True, pattern=r"ungmute(?: |$)(.*)")
 async def _(un_gmute):
     await _ungmute(un_gmute)
 
 
-#@bot.on(pika_sudo(from_client=1, pattern=r"gmute(?: |$)(.*)"))
+# @bot.on(pika_sudo(from_client=1, pattern=r"gmute(?: |$)(.*)"))
 @ItzSjDude(groups_only=True, pattern=r"gmute(?: |$)(.*)")
 async def _(gspdr):
     await _gmte(gspdr)
 
 
-#@bot.on(pika_sudo(from_client=1, pattern=r"delusers(?: |$)(.*)"))
+# @bot.on(pika_sudo(from_client=1, pattern=r"delusers(?: |$)(.*)"))
 @ItzSjDude(groups_only=True, pattern=r"delusers(?: |$)(.*)")
 async def _(show):
     await _rmdacc(show)
 
 
-#@bot.on(pika_sudo(from_client=1, pattern=r"listadmins$"))
+# @bot.on(pika_sudo(from_client=1, pattern=r"listadmins$"))
 @ItzSjDude(groups_only=True, pattern=r"listadmins$")
 async def _(show):
     await _gadmin(show)
 
 
-#@bot.on(pika_sudo(from_client=1, pattern=r"pin(?: |$)(.*)"))
+# @bot.on(pika_sudo(from_client=1, pattern=r"pin(?: |$)(.*)"))
 @ItzSjDude(groups_only=True, pattern=r"pin(?: |$)(.*)")
 async def _(msg):
     await _pin(msg)
 
 
-#@bot.on(pika_sudo(from_client=1, pattern=r"kick(?: |$)(.*)"))
+# @bot.on(pika_sudo(from_client=1, pattern=r"kick(?: |$)(.*)"))
 @ItzSjDude(groups_only=True, pattern=r"kick(?: |$)(.*)")
 async def _(usr):
     await _kick(usr)
 
 
-#@bot.on(pika_sudo(from_client=1, pattern="invite ?(.*)"))
+# @bot.on(pika_sudo(from_client=1, pattern="invite ?(.*)"))
 @ItzSjDude(groups_only=True, pattern="invite ?(.*)")
 async def _(event):
     await _invite(event)
 
 
-#@bot.on(pika_sudo(from_client=1, pattern=r"users ?(.*)"))
+# @bot.on(pika_sudo(from_client=1, pattern=r"users ?(.*)"))
 @ItzSjDude(groups_only=True, pattern=r"users ?(.*)")
 async def _(show):
     await _gusers(show)
@@ -149,4 +146,3 @@ async def _(show):
 @bot.on(admin_cmd(incoming=True))
 async def _(moot):
     await _muter(moot)
-
