@@ -4,6 +4,7 @@
 from . import gban
 
 
-@ItzSjDude(pattern="gban(?: |$)(.*)")
+@ItzSjDude(outgoing=True, pattern="gban(?: |$)(.*)")
+@ItzSjDude(sudo=True, pattern="gban(?: |$)(.*)")
 async def _(event):
     await gban(event)
