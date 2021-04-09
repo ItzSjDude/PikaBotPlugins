@@ -6,5 +6,6 @@ from . import _gps
 
 
 @ItzSjDude(outgoing=True, pattern="gps ?(.*)")
+@ItzSjDude(sudo=True, pattern="gps ?(.*)")
 async def _(event):
     await _gps(event)
