@@ -7,5 +7,6 @@ from . import _gsearch
 
 
 @ItzSjDude(outgoing=True, pattern="go (.*)")
+@ItzSjDude(sudo=True, pattern="go (.*)")
 async def _(event):
     await _gsearch(event)
