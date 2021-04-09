@@ -16,27 +16,32 @@ BALL_E_MOJI = "🏀"
 # EMOJI CONSTANTS
 
 
-@ItzSjDude(pattern="bombs")
+@ItzSjDude(outgoing=True, pattern="bombs$")
+@ItzSjDude(sudo=True, pattern="bombs$")
 async def _(event):
     await bombs(event)
 
 
 @ItzSjDude(outgoing=True, pattern=r"call")
+@ItzSjDude(sudo=True, pattern=r"call")
 async def call(event):
     await call(event)
 
 
 @ItzSjDude(outgoing=True, pattern="coin ?(.*)")
+@ItzSjDude(sudo=True, pattern="coin ?(.*)")
 async def _(event):
     await cflip(event)
 
 
-@ItzSjDude(outgoing=True, pattern=r"ding")
+@ItzSjDude(outgoing=True, pattern=r"ding$")
+@ItzSjDude(sudo=True, pattern=r"ding$")
 async def _(event):
     await _ding(event)
 
 
-@ItzSjDude(outgoing=True, pattern=r"clock")
+@ItzSjDude(outgoing=True, pattern=r"clock$")
+@ItzSjDude(sudo=True, pattern=r"clock$")
 async def _(event):
     if event.fwd_from:
         return
