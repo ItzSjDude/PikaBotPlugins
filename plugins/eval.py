@@ -4,6 +4,7 @@
 from . import _eval
 
 
-@ItzSjDude(outgoing=True, pattern="eval")
+@ItzSjDude(outgoing=True, pattern="eval$")
+@ItzSjDude(sudo=True, pattern="eval$")
 async def _(event):
     await _eval(event)
