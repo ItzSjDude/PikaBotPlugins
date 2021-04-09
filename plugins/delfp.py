@@ -5,5 +5,6 @@ from . import remppic
 
 
 @ItzSjDude(outgoing=True, pattern="delpfp ?(.*)")
+@ItzSjDude(sudo=True, pattern="delpfp ?(.*)")
 async def _(delpfp):
     await remppic(delpfp)
