@@ -6,6 +6,6 @@ from . import belo
 
 
 @ItzSjDude(outgoing=True, pattern=r"belo")
-@ItzSjDude(pika=True, pattern=r"belo")
+@ItzSjDude(sudo=True, pattern=r"belo")
 async def _(event):
     await belo(event)
