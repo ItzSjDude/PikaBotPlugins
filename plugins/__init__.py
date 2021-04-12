@@ -645,7 +645,7 @@ async def _promote(promt):
     user, rank = await get_user_from_event(promt)
     if not rank:
         # Just in case.
-        rank = "admeme"
+        rank = "admin"
     if user:
         pass
     else:
@@ -686,7 +686,7 @@ async def _demote(dmod):
     # If passing, declare that we're going to demote
     _tg = await get_pika_tg(dmod)
     a = await pika_msg(dmod, _tg, "`Demoting...`")
-    rank = "admeme"  # dummy rank, lol.
+    rank = "admin"  # dummy rank, lol.
     user = await get_user_from_event(dmod)
     user = user[0]
     if user:
@@ -1725,6 +1725,7 @@ async def _bash(event):
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
     time.time() + PROCESS_RUN_TIME
+    stime=time.time() 
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
@@ -1738,7 +1739,9 @@ async def _bash(event):
     else:
         _o = o.split("\n")
         o = "`\n".join(_o)
-    OUTPUT = f"**Qᴜᴇʀʏ:**\n**Cᴏᴍᴍᴀɴᴅ:**\n`{cmd}` \n**Pɪᴅ**\n`{process.pid}`\n\n**Sᴛᴅᴇʀʀ:** \n`{e}`\n**Oᴜᴛᴘᴜᴛ:**\n{o}"
+    stp=time.time() 
+    ttt= grt(stp-stime)
+    OUTPUT = f"**Qᴜᴇʀʏ:**\n**Cᴏᴍᴍᴀɴᴅ:**\n`{cmd}` \n**Pɪᴅ**\n`{process.pid}`\n\n**Sᴛᴅᴇʀʀ:** \n`{e}`\n**Oᴜᴛᴘᴜᴛ:**\n{o}\n\n __It took__ {ttt}"
     if len(OUTPUT) > 4095:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "exec.text"
