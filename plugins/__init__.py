@@ -1725,7 +1725,7 @@ async def _bash(event):
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
     time.time() + PROCESS_RUN_TIME
-    stime=time.time() 
+    stime = time.time()
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
@@ -1739,8 +1739,8 @@ async def _bash(event):
     else:
         _o = o.split("\n")
         o = "`\n".join(_o)
-    stp=time.time() 
-    ttt= grt(stp-stime)
+    stp = time.time()
+    ttt = grt(stp - stime)
     OUTPUT = f"**Qᴜᴇʀʏ:**\n**Cᴏᴍᴍᴀɴᴅ:**\n`{cmd}` \n**Pɪᴅ**\n`{process.pid}`\n\n**Sᴛᴅᴇʀʀ:** \n`{e}`\n**Oᴜᴛᴘᴜᴛ:**\n{o}\n\n __It took__ {ttt}"
     if len(OUTPUT) > 4095:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
