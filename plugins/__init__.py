@@ -1734,7 +1734,9 @@ async def _bash(event):
                 )
             except Exception as err:
                 print(err)
-                await pika_msg(xa, f"**INPUT:**\n```{text}```\n\n**ERROR:**\n```{err}```")
+                await pika_msg(
+                    xa, f"**INPUT:**\n```{text}```\n\n**ERROR:**\n```{err}```"
+                )
             output += f"**{code}**\n"
             output += process.stdout.read()[:-1].decode("utf-8")
             output += "\n"
