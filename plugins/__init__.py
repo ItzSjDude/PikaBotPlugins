@@ -1734,9 +1734,7 @@ async def _bash(event):
                 )
             except Exception as err:
                 print(err)
-                await edit_or_reply(
-                    message, text=f"**INPUT:**\n```{text}```\n\n**ERROR:**\n```{err}```"
-                )
+                await pika_msg(xa, f"**INPUT:**\n```{text}```\n\n**ERROR:**\n```{err}```")
             output += f"**{code}**\n"
             output += process.stdout.read()[:-1].decode("utf-8")
             output += "\n"
@@ -1773,7 +1771,7 @@ async def _bash(event):
             await event.client.send_file(
                 event.chat.id,
                 "output.txt",
-                reply_to_message_id=event.message_id,
+                reply_to=event.message_id,
                 caption="`Output`",
             )
             os.remove("output.txt")
