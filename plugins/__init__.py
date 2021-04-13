@@ -1719,42 +1719,61 @@ async def _bash(event):
     if event.fwd_from:
         return
     _tg = await get_pika_tg(event)
-    PROCESS_RUN_TIME = 100
-    cmd = event.pattern_match.group(1)
-    reply_to_id = event.message.id
-    if event.reply_to_msg_id:
-        reply_to_id = event.reply_to_msg_id
-    time.time() + PROCESS_RUN_TIME
-    stime = time.time()
-    process = await asyncio.create_subprocess_shell(
-        cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
-    )
-    stdout, stderr = await process.communicate()
-    e = stderr.decode()
-    if not e:
-        e = "No Error"
-    o = stdout.decode()
-    if not o:
-        o = "**Tip**: \n`If you want to see the results of your code, I suggest printing them to stdout.`"
+    text = event.text.split(None, 1)[1]
+    xa= await pika_msg(event, "**Processing...**", _tg)
+    if '\n' in text:
+        code = text.split('\n')
+        output = ''
+        for x in code:
+            shell = re.split(""" (?=(?:[^'"]|'[^']*'|"[^"]*")*$)""", x)
+            try:
+                process = subprocess.Popen(
+                    shell, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                )
+            except Exception as err:
+                print(err)
+                await edit_or_reply(
+                    message,
+                    text=f"**INPUT:**\n```{text}```\n\n**ERROR:**\n```{err}```")
+            output += f'**{code}**\n'
+            output += process.stdout.read()[:-1].decode('utf-8')
+            output += '\n'
     else:
-        _o = o.split("\n")
-        o = "`\n".join(_o)
-    stp = time.time()
-    ttt = grt(stp - stime)
-    OUTPUT = f"**Qᴜᴇʀʏ:**\n**Cᴏᴍᴍᴀɴᴅ:**\n`{cmd}` \n**Pɪᴅ**\n`{process.pid}`\n\n**Sᴛᴅᴇʀʀ:** \n`{e}`\n**Oᴜᴛᴘᴜᴛ:**\n{o}\n\n __It took__ {ttt}"
-    if len(OUTPUT) > 4095:
-        with io.BytesIO(str.encode(OUTPUT)) as out_file:
-            out_file.name = "exec.text"
-            await event.client.send_file(
-                event.chat_id,
-                out_file,
-                force_document=True,
-                allow_cache=False,
-                caption=cmd,
-                reply_to=reply_to_id,
+        shell = re.split(""" (?=(?:[^'"]|'[^']*'|"[^"]*")*$)""", text)
+        for a in range(len(shell)):
+            shell[a] = shell[a].replace('"', '')
+        try:
+            process = subprocess.Popen(
+                shell, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
             )
-            await event.delete()
-    await pika_msg(event, OUTPUT, _tg)
+        except Exception as err:
+            print(err)
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            errors = traceback.format_exception(
+                etype=exc_type, value=exc_obj, tb=exc_tb,
+            )
+            await pika_msg(xa, 
+                text=f"**INPUT:**\n```{text}```\n\n**ERROR:**\n```{''.join(errors)}```")
+            return
+        output = process.stdout.read()[:-1].decode('utf-8')
+    if str(output) == '\n':
+        output = None
+    if output:
+        if len(output) > 4096:
+            with open('output.txt', 'w+') as file:
+                file.write(output)
+            await event.client.send_file(
+                event.chat.id,
+                'output.txt',
+                reply_to_message_id=event.message_id,
+                caption='`Output`',
+            )
+            os.remove('output.txt')
+            return
+        await pika_msg(xa, f"**INPUT:**\n```{text}```\n\n**OUTPUT:**\n```{output}```"
+        )
+    else:
+        await pika_msg(xa, '**INPUT:**\n```{text}```\n\n**OUTPUT: **\n`No output`')
 
 
 async def batch_upload(event):
