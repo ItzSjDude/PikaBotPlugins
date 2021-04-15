@@ -201,7 +201,7 @@ async def do_pm_permit_action(chat_id, event):
         # the_message += f"Media: {message_media}"
         try:
             await event.client.send_message(
-                entity=Var.BOTLOG_CHATID,
+                entity=pdb.Botlog_chat,
                 message=the_message,
                 # reply_to=,
                 # parse_mode="html",
@@ -224,7 +224,7 @@ async def on_pika_pm(event):
     pika = await event.client.get_me()
     if event.sender_id == pika.id:
         return
-    if Var.BOTLOG_CHATID is None:
+    if pdb.Botlog_chat is None:
         return
     if not event.is_private:
         return

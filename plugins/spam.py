@@ -22,7 +22,7 @@ Usage: Gives you Gendgster Feeling
 
 import asyncio
 
-BOTLOG = Var.BOTLOG_CHATID
+BOTLOG = pdb.Botlog_chat
 
 
 @ItzSjDude(outgoing=True, pattern="spam (.*)")

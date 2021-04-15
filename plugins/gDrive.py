@@ -290,12 +290,12 @@ async def create_token_file(token_file, event):
         CLIENT_ID, CLIENT_SECRET, OAUTH_SCOPE, redirect_uri=REDIRECT_URI
     )
     authorize_url = flow.step1_get_authorize_url()
-    async with event.client.conversation(int(Var.BOTLOG_CHATID)) as conv:
+    async with event.client.conversation(int(pdb.Botlog_chat)) as conv:
         await conv.send_message(
             f"Go to the following link in your browser: {authorize_url} and reply the code"
         )
         response = conv.wait_event(
-            events.NewMessage(outgoing=True, chats=int(Var.BOTLOG_CHATID))
+            events.NewMessage(outgoing=True, chats=int(pdb.Botlog_chat))
         )
         response = await response
         code = response.message.message.strip()

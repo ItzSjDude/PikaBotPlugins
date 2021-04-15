@@ -61,7 +61,7 @@ async def _(event):
         await event.delete()
         try:
             await event.client.send_message(  # pylint:disable=E0602
-                Var.BOTLOG_CHATID, f"My Boss Want {reason}"  # pylint:disable=E0602
+                pdb.Botlog_chat, f"My Boss Want {reason}"  # pylint:disable=E0602
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             logger.warn(str(e))  # pylint:disable=E0602
