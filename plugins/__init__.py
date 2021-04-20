@@ -3548,7 +3548,6 @@ async def aexec(code, event):
 async def helper(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@"):
         event.pattern_match.group(1)
-        if tgbotusername:
         help_string = f"""Pïkå¢hµ Úsêrßð† {helpstr}"""
         results = await event.client.inline_query(  # pylint:disable=E0602
             pdb.Bf_uname, help_string
