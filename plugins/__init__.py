@@ -3558,7 +3558,7 @@ async def helper(event):
         await event.delete()
 
 
-if pdb.Bf_token is not None and tgbot is not None:
+if pdb.Omega is not None and tgbot is not None:
 
     @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
     async def inline_handler(pika_):
