@@ -14,7 +14,6 @@ from pikabot import *
 from pikabot.utils import *
 from telethon import events, functions
 from telethon.tl.functions.users import GetFullUserRequest
-from var import Var
 
 duser = {}
 LOGBOT = os.environ.get("BOTLOG_CHATID", None)
