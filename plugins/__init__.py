@@ -89,7 +89,7 @@ from var import Var as Config
 
 CARBONLANG = "auto"
 LANG = "en"
-
+UpTime = time.time
 try:
     from pikabot import bot, bot2, bot3, bot4
 except BaseException:
@@ -1506,9 +1506,6 @@ async def get_user_sender_id(user, event):
 
 
 async def _alive(event):
-    from pikabot import rawtm
-
-    UpTime = rawtm["time"]
     pupt = grt((time.time() - UpTime))
     try:
         pic = await auto_var(event, "alivepic")
