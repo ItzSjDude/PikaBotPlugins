@@ -473,6 +473,15 @@ def androidfilehost(url: str) -> str:
         reply += f"[{name}]({dl_url}) "
     return reply
 
+Ccache = [] 
+if bot:
+   Ccache.append(bot.uid)
+if bot2:
+   Ccache.append(bot2.uid)
+if bot3:
+   Ccache.append(bot3.uid)
+if bot4:
+   Ccache.append(bot4.uid)
 
 def useragent():
     """
@@ -3566,7 +3575,7 @@ if pdb.Omega is not None and tgbot is not None:
         result = None
         query = pika_.text
         _pikaa_ = (pika_.query).user_id
-        if _pikaa_ == await get_pika_id(pika_) and query.startswith("Pïkå¢hµ"):
+        if _pikaa_ in Ccache and query.startswith("Pïkå¢hµ"):
             rev_text = query[::-1]
             buttons = paginate_help(0, bot.pika_cmd, "helpme")
             result = builder.article(
@@ -3596,7 +3605,7 @@ if pdb.Omega is not None and tgbot is not None:
     @tgbot.on(Pika_CallBack(data=re.compile(rb"helpme_prev\((.+?)\)")))
     async def _pikacallback(pika_):
         _pikaa_ = (pika_.query).user_id
-        if _pikaa_ == await get_pika_id(pika_) and query.startswith("Pïkå¢hµ"):
+        if _pikaa_ in Ccache and query.startswith("Pïkå¢hµ"):
             pikacmds = bot.pika_cmd
             c_p_n = int(pika_.data_match.group(1).decode("UTF-8"))
             buttons = paginate_help(
@@ -3633,7 +3642,7 @@ if pdb.Omega is not None and tgbot is not None:
     @tgbot.on(Pika_CallBack(data=re.compile(b"us_plugin_(.*)")))
     async def _pikacallback(pika_):
         _pikaa_ = (pika_.query).user_id
-        if _pikaa_ == await get_pika_id(pika_) and query.startswith("Pïkå¢hµ"):
+        if _pikaa_ in Ccache and query.startswith("Pïkå¢hµ"):
             a = randint(0, 9)
             _rx_ = f"{_emo_[a]}" + f" {rx}"
             _pikacmds = bot.pika_cmd
@@ -3653,7 +3662,7 @@ if pdb.Omega is not None and tgbot is not None:
     @tgbot.on(Pika_CallBack(data=re.compile(b"pikab(.*)")))
     async def _pikacallback(pika_):
         _pikaa_ = (pika_.query).user_id
-        if _pikaa_ == await get_pika_id(pika_) and query.startswith("Pïkå¢hµ"):
+        if _pikaa_ in Ccache and query.startswith("Pïkå¢hµ"):
             _pika = f"""Pïkå¢hµ Úsêrßð† {helpstr}"""
             _pikacmds = bot.pika_cmd
             _pika += "\n**Currently Loaded Plugins**: {}".format(len(_pikacmds))
@@ -3666,7 +3675,7 @@ if pdb.Omega is not None and tgbot is not None:
     @tgbot.on(Pika_CallBack(data=re.compile(b"tools(.*)")))
     async def _pikacallback(pika_):
         _pikaa_ = (pika_.query).user_id
-        if _pikaa_ == await get_pika_id(pika_) and query.startswith("Pïkå¢hµ"):
+        if _pikaa_ in Ccache and query.startswith("Pïkå¢hµ"):
             a = randint(0, 9)
             _rx_ = f"{_emo_[a]}" + f" {rx}"
             _pikacmds = bot.pika_cmd
