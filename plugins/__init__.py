@@ -3590,7 +3590,6 @@ if pdb.Omega is not None and tgbot is not None:
 
     @tgbot.on(Pika_CallBack(data=re.compile(rb"helpme_next\((.+?)\)")))
     async def _pikacallback(pika_):
-        query = pika_.text
         _pikaa_ = (pika_.query).user_id
         if _pikaa_ in Ccache and query.startswith("Pïkå¢hµ"):
             pikacmds = bot.pika_cmd
@@ -3605,7 +3604,6 @@ if pdb.Omega is not None and tgbot is not None:
 
     @tgbot.on(Pika_CallBack(data=re.compile(rb"helpme_prev\((.+?)\)")))
     async def _pikacallback(pika_):
-        query = pika_.text
         _pikaa_ = (pika_.query).user_id
         if _pikaa_ in Ccache and query.startswith("Pïkå¢hµ"):
             pikacmds = bot.pika_cmd
