@@ -89,7 +89,7 @@ from var import Var as Config
 
 CARBONLANG = "auto"
 LANG = "en"
-UpTime = time.time
+UpTime = time.time()
 try:
     from pikabot import bot, bot2, bot3, bot4
 except BaseException:
