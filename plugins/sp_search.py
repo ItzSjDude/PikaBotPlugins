@@ -8,9 +8,6 @@ By: @Zero_cool7870
 import json
 import os
 
-from pikabot.utils import ItzSjDude
-
-
 @ItzSjDude(pattern="sch ?(.*)")
 async def sp_search(event):
     search_str = event.pattern_match.group(1)
