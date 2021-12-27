@@ -22,8 +22,6 @@ from telethon.tl.types import (
     InputPeerChat,
     MessageEntityMentionName,
 )
-from userbot import CMD_HELP
-
 
 def parse_arguments(message: str, valid: List[str]) -> (dict, str):
     options = {}
@@ -380,18 +378,3 @@ async def fetch_info(replied_user, **kwargs):
     )
 
 
-CMD_HELP.update(
-    {
-        "android": "`.u(ser) [options] (username|id)`"
-        "Or, in response to a message"
-        "`.u(ser) [options]`"
-        "Options:"
-        "`.id`: Show only the user's ID"
-        "`.general`: Show general user info"
-        "`.bot`: Show bot related info"
-        "`.misc`: Show miscelanious info"
-        "`.all`: Show all info (overrides other options)"
-        "`.mention`: Inline mention the user"
-        "`.forward`: Follow forwarded message"
-    }
-)
