@@ -1,7 +1,6 @@
 # For @UniBorg
 # (c) Shrimadhav U K
 
-from pikabot.utils import ItzSjDude
 from telethon.tl.functions.channels import GetAdminedPublicChannelsRequest
 
 
