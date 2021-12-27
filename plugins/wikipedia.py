@@ -4,8 +4,6 @@
 """WikiPedia.ORG
 Syntax: .wikipedia Query"""
 import wikipedia
-from pikabot.utils import ItzSjDude
-
 
 @ItzSjDude(outgoing=True, pattern="wikipedia (.*)")
 async def _(event):
