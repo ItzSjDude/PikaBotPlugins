@@ -1,7 +1,5 @@
 """ Whatever Plugin by Noobs of Telegram i.e. @pureindialover """
 
-from pikabot.utils import ItzSjDude
-
 
 @ItzSjDude(outgoing=True, pattern=r"lmoon")
 async def test(event):
