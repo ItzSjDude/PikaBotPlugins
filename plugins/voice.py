@@ -7,9 +7,6 @@ import os
 import subprocess
 
 from gtts import gTTS
-from pikabot.utils import ItzSjDude
-from userbot import CMD_HELP
-
 
 @ItzSjDude(outgoing=True, pattern="voice (.*)")
 async def _(event):
@@ -77,12 +74,4 @@ async def _(event):
         await event.edit(str(e))
 
 
-CMD_HELP.update(
-    {
-        "voice": " Google Text to Speech\
-\nAvailable Commands:\
-\n.voice LanguageCode as reply to a message\
-\n\n.voice LangaugeCode | text to speak\
-"
-    }
-)
+
