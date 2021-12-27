@@ -3,9 +3,6 @@ import os
 import time
 import zipfile
 
-from pikabot.utils import ItzSjDude
-
-
 @ItzSjDude(outgoing=True, pattern="compress ?(.*)")
 async def _(event):
 
