@@ -5,7 +5,7 @@ import asyncio
 import os
 import time
 
-from INFINIX.utils import ItzSjDude, progress
+ , progress
 
 
 @Infinix(outgoing=True, pattern="convert (.*)")  # pylint:disable=E0602
