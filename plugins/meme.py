@@ -6,9 +6,6 @@ By : - @Zero_cool7870
 """
 import asyncio
 
-from pikabot.utils import ItzSjDude
-
-
 @ItzSjDude(outgoing=True, pattern=r"meme")
 async def meme(event):
     if event.fwd_from:
