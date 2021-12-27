@@ -1,4 +1,4 @@
-from pikabot.utils import ItzSjDude
+
 from telethon.tl.types import Channel, Chat, User
 
 
