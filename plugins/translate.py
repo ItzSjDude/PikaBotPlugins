@@ -5,8 +5,6 @@ Available Commands:
 
 import emoji
 from googletrans import Translator
-from pikabot.utils import ItzSjDude
-
 
 @ItzSjDude(outgoing=True, pattern="tr")
 async def _(event):
