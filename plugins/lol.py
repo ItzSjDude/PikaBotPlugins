@@ -8,9 +8,6 @@ cmd: .lol
 import asyncio
 import random
 
-from pikabot.utils import ItzSjDude
-
-
 @ItzSjDude(outgoing=True, pattern=r"lol")
 async def _(event):
 
