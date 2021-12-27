@@ -1,7 +1,5 @@
 """Get Poll Info on non supported clients
 Syntax: .get_poll"""
-from pikabot.utils import ItzSjDude
-
 
 @ItzSjDude(outgoing=True, pattern="get_poll")
 async def _(event):
