@@ -2,7 +2,6 @@
 command: .singer singer name - song name
 by @quiec
 """
-from pikabot.utils import ItzSjDude
 from PyLyrics import *
 
 
