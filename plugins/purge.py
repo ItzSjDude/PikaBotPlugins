@@ -6,11 +6,7 @@
 """ Userbot module for purging unneeded messages(usually spam or ot). """
 
 from asyncio import sleep
-
-from pikabot.utils import ItzSjDude
 from telethon.errors import rpcbaseerrors
-from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP
-
 
 @ItzSjDude(outgoing=True, pattern=r"purge")
 async def fastpurger(purg):
