@@ -1,9 +1,6 @@
 # For Uniborg
 # (c) @INF1N17Y
 
-from pikabot.utils import ItzSjDude
-
-
 @ItzSjDude(outgoing=True, pattern="mention (.*)")
 async def _(event):
     if event.fwd_from:
