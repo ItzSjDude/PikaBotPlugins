@@ -1,6 +1,4 @@
 """Syntax: .whatscrapp as reply to a message copied from @WhatsCRApp"""
-from pikabot.utils import ItzSjDude
-
 
 @ItzSjDude(outgoing=True, pattern="whatscrap")
 async def _(event):
