@@ -3,7 +3,6 @@
 
 import asyncio
 
-from pikabot.utils import ItzSjDude
 from telethon import functions
 
 
