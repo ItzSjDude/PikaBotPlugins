@@ -7,9 +7,6 @@ Available Commands:
 
 import asyncio
 
-from pikabot.utils import ItzSjDude
-
-
 @ItzSjDude(outgoing=True, pattern="ok")
 async def _(event):
     if event.fwd_from:
