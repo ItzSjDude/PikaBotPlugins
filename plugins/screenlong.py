@@ -4,7 +4,6 @@ Syntax: .screenlong <Website URL>"""
 import io
 import traceback
 
-from pikabot.utils import ItzSjDude
 from selenium import webdriver
 
 
