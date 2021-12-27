@@ -3,11 +3,9 @@
 video meme mashup:
 Syntax: .mashup <text>
 """
-from pikabot.utils import ItzSjDude
+
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from userbot import CMD_HELP
-
 
 @ItzSjDude(outgoing=True, pattern="mashup ?(.*)")
 async def _(event):
