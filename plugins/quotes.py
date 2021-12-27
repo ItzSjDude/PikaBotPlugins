@@ -1,7 +1,6 @@
 import random
 
 import requests
-from pikabot.utils import ItzSjDude
 
 
 @ItzSjDude(outgoing=True, pattern="quote ?(.*)")
