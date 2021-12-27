@@ -7,9 +7,6 @@ Available Commands:
 
 import asyncio
 
-from pikabot.utils import ItzSjDude
-
-
 @ItzSjDude(outgoing=True, pattern=r"padmin")
 async def _(event):
 
