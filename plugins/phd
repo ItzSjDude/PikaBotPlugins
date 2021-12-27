@@ -8,7 +8,6 @@ import asyncio
 
 import requests
 from bs4 import BeautifulSoup
-from pikabot.utils import ItzSjDude
 from telethon.errors.rpcerrorlist import (
     UserAlreadyParticipantError,
     YouBlockedUserError,
