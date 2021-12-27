@@ -83,8 +83,6 @@ from telethon.tl.types import (
     MessageMediaPhoto,
 )
 from telethon.utils import get_input_location, pack_bot_file_id
-from var import Var
-from var import Var as Config
 
 CARBONLANG = "auto"
 LANG = "en"
