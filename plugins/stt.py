@@ -3,7 +3,6 @@ Syntax: .sttext <Language Code> as reply to a speech message"""
 import os
 
 import requests
-from pikabot.utils import ItzSjDude
 
 
 @ItzSjDude(outgoing=True, pattern="sttext (.*)")
