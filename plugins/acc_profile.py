@@ -21,43 +21,43 @@
 from . import anpfp, atb, atnm, avpfp, gmpfp, pbio, pname
 
 
-@ItzSjDude(outgoing=True, pattern="pbio (.*)")
-@ItzSjDude(sudo=True, pattern="pbio (.*)")
+@Infinix(outgoing=True, pattern="pbio (.*)")
+@Infinix(sudo=True, pattern="pbio (.*)")
 async def _(event):
     await pbio(event)
 
 
-@ItzSjDude(outgoing=True, pattern="pname ((.|\n)*)")
-@ItzSjDude(sudo=True, pattern="pname ((.|\n)*)")
+@Infinix(outgoing=True, pattern="pname ((.|\n)*)")
+@Infinix(sudo=True, pattern="pname ((.|\n)*)")
 async def _(event):
     await pname(event)
 
 
-@ItzSjDude(outgoing=True, pattern="animepfp ?(.*)")
-@ItzSjDude(sudo=True, pattern="animepfp ?(.*)")
+@Infinix(outgoing=True, pattern="animepfp ?(.*)")
+@Infinix(sudo=True, pattern="animepfp ?(.*)")
 async def _(event):
     await anpfp(event)
 
 
-@ItzSjDude(outgoing=True, pattern="avengerspfp ?(.*)")
-@ItzSjDude(sudo=True, pattern="avengerspfp ?(.*)")
+@Infinix(outgoing=True, pattern="avengerspfp ?(.*)")
+@Infinix(sudo=True, pattern="avengerspfp ?(.*)")
 async def _(event):
     await avpfp(event)
 
 
-@ItzSjDude(outgoing=True, pattern="gamerpfp ?(.*)")
-@ItzSjDude(sudo=True, pattern="gamerpfp ?(.*)")
+@Infinix(outgoing=True, pattern="gamerpfp ?(.*)")
+@Infinix(sudo=True, pattern="gamerpfp ?(.*)")
 async def _(event):
     await gmpfp(event)
 
 
-@ItzSjDude(outgoing=True, pattern="autoname$")
-@ItzSjDude(sudo=True, pattern="autoname$")
+@Infinix(outgoing=True, pattern="autoname$")
+@Infinix(sudo=True, pattern="autoname$")
 async def _(event):
     await atnm(event)
 
 
-@ItzSjDude(outgoing=True, pattern="autobio$")
-@ItzSjDude(sudo=True, pattern="autobio$")
+@Infinix(outgoing=True, pattern="autobio$")
+@Infinix(sudo=True, pattern="autobio$")
 async def _(event):
     await atb(event)

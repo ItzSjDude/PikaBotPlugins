@@ -3,7 +3,7 @@
 
 import random
 
-@ItzSjDude(outgoing=True, pattern=r"jainder(.*)")
+@Infinix(outgoing=True, pattern=r"jainder(.*)")
 async def _(event):
     if event.fwd_from:
         return

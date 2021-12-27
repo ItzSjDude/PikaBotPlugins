@@ -9,11 +9,11 @@ Available message types to lock/unlock are:
 from . import _locks, _rmlocks
 
 
-@ItzSjDude(outgoing=True, pattern=r"lock ?(.*)")
+@Infinix(outgoing=True, pattern=r"lock ?(.*)")
 async def _(event):
     await _locks(event)
 
 
-@ItzSjDude(outgoing=True, pattern=r"unlock ?(.*)")
+@Infinix(outgoing=True, pattern=r"unlock ?(.*)")
 async def _(event):
     await _rmlocks(event)

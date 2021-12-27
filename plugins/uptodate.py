@@ -33,7 +33,7 @@ RESTARTING_APP = "re-starting heroku application"
 
 
 # @command(outgoing=True, pattern="^.update", outgoing=True)
-@ItzSjDude(outgoing=True, pattern=r"update")
+@Infinix(outgoing=True, pattern=r"update")
 async def updater(message):
     try:
         repo = git.Repo()

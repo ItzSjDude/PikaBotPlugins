@@ -3,7 +3,7 @@ import os
 import time
 import zipfile
 
-@ItzSjDude(outgoing=True, pattern="compress ?(.*)")
+@Infinix(outgoing=True, pattern="compress ?(.*)")
 async def _(event):
 
     if event.fwd_from:

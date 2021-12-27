@@ -6,7 +6,7 @@ import asyncio
 from telethon import functions
 
 
-@ItzSjDude(outgoing=True, pattern="(.*)")
+@Infinix(outgoing=True, pattern="(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -25,7 +25,7 @@ async def _(event):
             await event.edit(animation_chars[i % 27])
 
 
-@ItzSjDude(pattern="dc")  # pylint:disable=E0602
+@Infinix(pattern="dc")  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -35,7 +35,7 @@ async def _(event):
     await event.edit(result.stringify())
 
 
-@ItzSjDude(pattern="config")  # pylint:disable=E0602
+@Infinix(pattern="config")  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return

@@ -19,7 +19,7 @@ from telethon.tl.types import (
 )
 
 
-@ItzSjDude(pattern="unbanall ?(.*)")
+@Infinix(pattern="unbanall ?(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -49,7 +49,7 @@ async def _(event):
         await event.edit("{}: {} unbanned".format(event.chat_id, p))
 
 
-@ItzSjDude(pattern="ikuck ?(.*)")
+@Infinix(pattern="ikuck ?(.*)")
 async def _(event):
     if event.fwd_from:
         return

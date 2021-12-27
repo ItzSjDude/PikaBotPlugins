@@ -17,7 +17,7 @@ if not os.path.isdir(extracted):
     os.makedirs(extracted)
 
 
-@ItzSjDude(pattern="unzip")
+@Infinix(pattern="unzip")
 async def _(event):
     if event.fwd_from:
         return

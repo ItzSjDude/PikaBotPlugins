@@ -66,7 +66,7 @@ if 1 == 1:
         }
     )
 
-    @ItzSjDude(outgoing=True, pattern="chat(.*)")
+    @Infinix(outgoing=True, pattern="chat(.*)")
     async def quotecmd(message):  # noqa: C901
         """Quote a message.
         Usage: .quote [template]

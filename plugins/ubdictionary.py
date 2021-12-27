@@ -5,7 +5,7 @@
 Syntax: .ud Query"""
 import urbandict
 
-@ItzSjDude(outgoing=True, pattern="ud (.*)")
+@Infinix(outgoing=True, pattern="ud (.*)")
 async def _(event):
     if event.fwd_from:
         return

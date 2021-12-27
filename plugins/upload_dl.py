@@ -19,7 +19,7 @@ from pySmartDL import SmartDL
 from telethon.tl.types import DocumentAttributeVideo
 
 
-@ItzSjDude(pattern=r"dl(?: |$)(.*)")
+@Infinix(pattern=r"dl(?: |$)(.*)")
 async def download(target_file):
     """ For .dl command, download files to the userbot's server. """
     pik = await target_file.reply("Processing using userbot server ( ◜‿◝ )♡")
@@ -94,7 +94,7 @@ async def download(target_file):
         await pik.edit("Reply to a message to download to my local server.")
 
 
-@ItzSjDude(pattern=r"uploadir (.*)")
+@Infinix(pattern=r"uploadir (.*)")
 async def uploadir(udir_event):
     """ For .uploadir command, allows you to upload everything from a folder in the server"""
     input_str = udir_event.pattern_match.group(1)
@@ -178,7 +178,7 @@ async def uploadir(udir_event):
         await _axx_.edit("404: Directory Not Found")
 
 
-@ItzSjDude(pattern=r"ul (.*)")
+@Infinix(pattern=r"ul (.*)")
 async def upload(u_event):
     """ For .upload command, allows you to upload a file from the userbot's server """
     b = await u_event.reply("Processing ...")
@@ -254,7 +254,7 @@ def extract_w_h(file):
         return width, height
 
 
-@ItzSjDude(pattern=r"uploadas(stream|vn|all) (.*)")
+@Infinix(pattern=r"uploadas(stream|vn|all) (.*)")
 async def uploadas(uas_event):
     """ For .uploadas command, allows you to specify some arguments for upload. """
     r = await uas_event.reply("Processing ...")

@@ -2,11 +2,11 @@
 {i}pack <reply to msg filename.extension>
 
 """
-# Made by @ItzSjDude. All Rights reserved
+# Made by @Infinix. All Rights reserved
 
 from . import _pack
 
 
-@ItzSjDude(pattern="pack ?(.*)")
+@Infinix(pattern="pack ?(.*)")
 async def _(event):
     await _pack(event)

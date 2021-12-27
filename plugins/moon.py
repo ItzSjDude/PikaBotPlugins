@@ -13,7 +13,7 @@ Available Commands:
 
 import asyncio
 
-@ItzSjDude(outgoing=True, pattern=r"smoon")
+@Infinix(outgoing=True, pattern=r"smoon")
 async def _(event):
 
     if event.fwd_from:
@@ -48,7 +48,7 @@ async def _(event):
         await event.edit(animation_chars[i % 8])
 
 
-@ItzSjDude(outgoing=True, pattern=r"tmoon")
+@Infinix(outgoing=True, pattern=r"tmoon")
 async def _(event):
 
     if event.fwd_from:

@@ -34,7 +34,7 @@ async def set_not_afk(event):
         afk_time = None  # pylint:disable=E0602
 
 
-@ItzSjDude(pattern=r"afk ?(.*)")
+@Infinix(pattern=r"afk ?(.*)")
 async def _(event):
     if event.fwd_from:
         return

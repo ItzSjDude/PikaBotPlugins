@@ -7,16 +7,16 @@ Available Commands:
 from . import _invite, _telegraph, apk
 
 
-@ItzSjDude(outgoing=True, pattern="app (.*)")
+@Infinix(outgoing=True, pattern="app (.*)")
 async def _(e):
     await apk(e)
 
 
-@ItzSjDude(outgoing=True, pattern="invite ?(.*)")
+@Infinix(outgoing=True, pattern="invite ?(.*)")
 async def _(event):
     await _invite(event)
 
 
-@ItzSjDude(outgoing=True, pattern="t(m|t) ?(.*)")
+@Infinix(outgoing=True, pattern="t(m|t) ?(.*)")
 async def _(event):
     await _telegraph(event)

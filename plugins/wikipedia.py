@@ -5,7 +5,7 @@
 Syntax: .wikipedia Query"""
 import wikipedia
 
-@ItzSjDude(outgoing=True, pattern="wikipedia (.*)")
+@Infinix(outgoing=True, pattern="wikipedia (.*)")
 async def _(event):
     if event.fwd_from:
         return

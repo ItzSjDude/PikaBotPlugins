@@ -15,7 +15,7 @@ cancel"""
 
 import asyncio
 
-@ItzSjDude(outgoing=True, pattern="sca ?(.*)")
+@Infinix(outgoing=True, pattern="sca ?(.*)")
 async def _(event):
     if event.fwd_from:
         return

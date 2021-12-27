@@ -1,6 +1,6 @@
 import asyncio
 
-@ItzSjDude(outgoing=True, pattern=r"solarsystem")
+@Infinix(outgoing=True, pattern=r"solarsystem")
 async def _(event):
     if event.fwd_from:
         return

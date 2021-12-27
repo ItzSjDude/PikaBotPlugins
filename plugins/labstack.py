@@ -4,7 +4,7 @@ import subprocess
 
 import requests
 
-@ItzSjDude(outgoing=True, pattern="labstack ?(.*)")
+@Infinix(outgoing=True, pattern="labstack ?(.*)")
 async def labstack(event):
     if event.fwd_from:
         return

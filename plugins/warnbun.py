@@ -2,7 +2,7 @@
 from telethon.tl.types import ChannelParticipantsAdmins
 
 
-@ItzSjDude(pattern="warn1")
+@Infinix(pattern="warn1")
 async def _(event):
     if event.fwd_from:
         return
@@ -23,7 +23,7 @@ async def _(event):
     await event.delete()
 
 
-@ItzSjDude(pattern="warn2")
+@Infinix(pattern="warn2")
 async def _(event):
     if event.fwd_from:
         return
@@ -44,7 +44,7 @@ async def _(event):
     await event.delete()
 
 
-@ItzSjDude(pattern="warn3")
+@Infinix(pattern="warn3")
 async def _(event):
     if event.fwd_from:
         return
@@ -63,7 +63,7 @@ async def _(event):
     await event.delete()
 
 
-@ItzSjDude(pattern="warn0")
+@Infinix(pattern="warn0")
 async def _(event):
     if event.fwd_from:
         return
@@ -82,7 +82,7 @@ async def _(event):
     await event.delete()
 
 
-@ItzSjDude(pattern="ocb")
+@Infinix(pattern="ocb")
 async def _(event):
     if event.fwd_from:
         return
@@ -101,7 +101,7 @@ async def _(event):
     await event.delete()
 
 
-@ItzSjDude(pattern="fw")
+@Infinix(pattern="fw")
 async def _(event):
     if event.fwd_from:
         return

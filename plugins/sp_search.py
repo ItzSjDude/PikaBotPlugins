@@ -8,7 +8,7 @@ By: @Zero_cool7870
 import json
 import os
 
-@ItzSjDude(pattern="sch ?(.*)")
+@Infinix(pattern="sch ?(.*)")
 async def sp_search(event):
     search_str = event.pattern_match.group(1)
 

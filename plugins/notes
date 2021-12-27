@@ -3,17 +3,17 @@ from INFINIX import bot, bot2, bot3, bot4
 from . import _add_notes, _allnotes, _remove_notes, admin_cmd, note_incm
 
 
-@ItzSjDude(outgoing=True, pattern="notes$")
+@Infinix(outgoing=True, pattern="notes$")
 async def _(event):
     await _allnotes(event)
 
 
-@ItzSjDude(outgoing=True, pattern=r"save (\w*)")
+@Infinix(outgoing=True, pattern=r"save (\w*)")
 async def _(event):
     await _add_notes(event)
 
 
-@ItzSjDude(outgoing=True, pattern=r"clear (\w*)")
+@Infinix(outgoing=True, pattern=r"clear (\w*)")
 async def _(event):
     await _remove_notes(event)
 

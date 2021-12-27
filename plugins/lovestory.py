@@ -4,7 +4,7 @@
 import asyncio
 
 
-@ItzSjDude(outgoing=True, pattern="lovestory")
+@Infinix(outgoing=True, pattern="lovestory")
 async def _(event):
 
     if event.fwd_from:

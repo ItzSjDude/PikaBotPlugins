@@ -2,6 +2,6 @@
 {i}json <reply to msg>"""
 
 
-@ItzSjDude(outgoing=True, pattern="json")
+@Infinix(outgoing=True, pattern="json")
 async def _(event):
     await _json(event)

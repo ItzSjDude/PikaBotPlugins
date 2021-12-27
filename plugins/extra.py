@@ -4,7 +4,7 @@ from collections import deque
 
 from telethon.tl.functions.channels import LeaveChannelRequest
 
-@ItzSjDude(outgoing=True, pattern="leave$")
+@Infinix(outgoing=True, pattern="leave$")
 async def leave(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("`I iz Leaving dis Lol Group kek!`")
@@ -15,7 +15,7 @@ async def leave(e):
             await e.edit("`But Boss! This is Not A Chat`")
 
 
-@ItzSjDude(outgoing=True, pattern=";_;$")
+@Infinix(outgoing=True, pattern=";_;$")
 async def fun(e):
     t = ";__;"
     for j in range(10):
@@ -23,7 +23,7 @@ async def fun(e):
         await e.edit(t)
 
 
-@ItzSjDude(outgoing=True, pattern="yo$")
+@Infinix(outgoing=True, pattern="yo$")
 async def Ooo(e):
     t = "yo"
     for j in range(15):
@@ -31,7 +31,7 @@ async def Ooo(e):
         await e.edit(t)
 
 
-@ItzSjDude(outgoing=True, pattern="Oof$")
+@Infinix(outgoing=True, pattern="Oof$")
 async def Oof(e):
     t = "Oof"
     for j in range(15):
@@ -39,19 +39,19 @@ async def Oof(e):
         await e.edit(t)
 
 
-@ItzSjDude(outgoing=True, pattern="ccry$")
+@Infinix(outgoing=True, pattern="ccry$")
 async def cry(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("(;´༎ຶД༎ຶ)")
 
 
-@ItzSjDude(outgoing=True, pattern="fp$")
+@Infinix(outgoing=True, pattern="fp$")
 async def facepalm(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("🤦‍♂")
 
 
-@ItzSjDude(outgoing=True, pattern="moon$")
+@Infinix(outgoing=True, pattern="moon$")
 async def _(event):
     if event.fwd_from:
         return
@@ -62,19 +62,19 @@ async def _(event):
         deq.rotate(1)
 
 
-@ItzSjDude(outgoing=True, pattern="source$")
+@Infinix(outgoing=True, pattern="source$")
 async def source(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(f"{sys4}")
 
 
-@ItzSjDude(outgoing=True, pattern="readme$")
+@Infinix(outgoing=True, pattern="readme$")
 async def reedme(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(f"{sys4}/blob/master/README.md")
 
 
-@ItzSjDude(outgoing=True, pattern="heart$")
+@Infinix(outgoing=True, pattern="heart$")
 async def _(event):
     if event.fwd_from:
         return
@@ -85,7 +85,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@ItzSjDude(outgoing=True, pattern="fap$")
+@Infinix(outgoing=True, pattern="fap$")
 async def _(event):
     if event.fwd_from:
         return

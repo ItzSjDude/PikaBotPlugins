@@ -5,7 +5,7 @@
 import asyncio
 
 
-@ItzSjDude(outgoing=True, pattern="undlt")
+@Infinix(outgoing=True, pattern="undlt")
 async def _(event):
     if event.fwd_from:
         return

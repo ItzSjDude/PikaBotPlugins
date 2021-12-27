@@ -7,6 +7,6 @@
 from . import findcolour
 
 
-@ItzSjDude(outgoing=True, pattern="color (.*)")
+@Infinix(outgoing=True, pattern="color (.*)")
 async def _(event):
     await findcolour(event)

@@ -6,7 +6,7 @@
 from . import _fuck
 
 
-@ItzSjDude(outgoing=True, pattern=r"(.*)")
-@ItzSjDude(sudo=True, pattern=r"(.*)")
+@Infinix(outgoing=True, pattern=r"(.*)")
+@Infinix(sudo=True, pattern=r"(.*)")
 async def _(event):
     await _fuck(event)

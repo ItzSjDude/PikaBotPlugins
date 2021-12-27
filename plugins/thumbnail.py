@@ -37,7 +37,7 @@ def get_video_thumb(file, output=None, width=320):
         return output
 
 
-@ItzSjDude(outgoing=True, pattern="savethumbnail")
+@Infinix(outgoing=True, pattern="savethumbnail")
 async def _(event):
     if event.fwd_from:
         return
@@ -73,7 +73,7 @@ async def _(event):
         await event.edit("Reply to a photo to save custom thumbnail")
 
 
-@ItzSjDude(outgoing=True, pattern="clearthumbnail")
+@Infinix(outgoing=True, pattern="clearthumbnail")
 async def _(event):
     if event.fwd_from:
         return
@@ -82,7 +82,7 @@ async def _(event):
     await event.edit("✅ Custom thumbnail cleared succesfully.")
 
 
-@ItzSjDude(outgoing=True, pattern="getthumbnail")
+@Infinix(outgoing=True, pattern="getthumbnail")
 async def _(event):
     if event.fwd_from:
         return

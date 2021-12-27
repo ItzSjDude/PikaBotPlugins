@@ -3,7 +3,7 @@ import random
 import requests
 
 
-@ItzSjDude(outgoing=True, pattern="quote ?(.*)")
+@Infinix(outgoing=True, pattern="quote ?(.*)")
 async def quote_search(event):
     if event.fwd_from:
         return

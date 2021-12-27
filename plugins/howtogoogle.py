@@ -9,6 +9,6 @@ from . import _ggl
 # By @ loxxi
 
 
-@ItzSjDude(outgoing=True, pattern="ggl(.*)")
+@Infinix(outgoing=True, pattern="ggl(.*)")
 async def _(event):
     await _ggl(event)

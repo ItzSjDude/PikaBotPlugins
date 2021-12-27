@@ -3,7 +3,7 @@ logger = logging.getLogger(__name__)
 if 1 == 1:
     name = "Profile Photos"
 
-    @ItzSjDude(outgoing=True, pattern="poto(.*)")
+    @Infinix(outgoing=True, pattern="poto(.*)")
     async def potocmd(event):
         id = "".join(event.raw_text.split(maxsplit=2)[1:])
         user = await event.get_reply_message()

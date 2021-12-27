@@ -4,7 +4,7 @@
 from . import _ftext
 
 
-@ItzSjDude(outgoing=True, pattern="ftext ?(.*)")
-@ItzSjDude(sudo=True, pattern="ftext ?(.*)")
+@Infinix(outgoing=True, pattern="ftext ?(.*)")
+@Infinix(sudo=True, pattern="ftext ?(.*)")
 async def _(event):
     await _ftext(event)

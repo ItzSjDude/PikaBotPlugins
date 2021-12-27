@@ -64,7 +64,7 @@ weebyfont = [
 ]
 
 
-@ItzSjDude(outgoing=True, pattern="weeb ?(.*)")
+@Infinix(outgoing=True, pattern="weeb ?(.*)")
 async def weebify(event):
 
     args = event.pattern_match.group(1)

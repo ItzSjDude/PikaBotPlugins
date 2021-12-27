@@ -5,7 +5,7 @@
 import random
 
 
-@ItzSjDude(outgoing=True, pattern=r"react (.*)")
+@Infinix(outgoing=True, pattern=r"react (.*)")
 async def _(event):
     if event.fwd_from:
         return

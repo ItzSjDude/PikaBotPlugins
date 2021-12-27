@@ -1,6 +1,6 @@
 """Syntax: .whatscrapp as reply to a message copied from @WhatsCRApp"""
 
-@ItzSjDude(outgoing=True, pattern="whatscrap")
+@Infinix(outgoing=True, pattern="whatscrap")
 async def _(event):
     if event.fwd_from:
         return

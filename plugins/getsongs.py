@@ -8,7 +8,7 @@ import os
 
 from selenium import webdriver
 
-@ItzSjDude(pattern="getsong( (.*)|$)")
+@Infinix(pattern="getsong( (.*)|$)")
 async def _(event):
     reply_to_id = event.message.id
     if event.reply_to_msg_id:

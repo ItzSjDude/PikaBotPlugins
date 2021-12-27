@@ -7,7 +7,7 @@
 {i}tagall"""
 
 
-@ItzSjDude(pattern="tagall")
+@Infinix(pattern="tagall")
 async def _(event):
     if event.fwd_from:
         return

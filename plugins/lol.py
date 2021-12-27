@@ -8,7 +8,7 @@ cmd: .lol
 import asyncio
 import random
 
-@ItzSjDude(outgoing=True, pattern=r"lol")
+@Infinix(outgoing=True, pattern=r"lol")
 async def _(event):
 
     if event.fwd_from:

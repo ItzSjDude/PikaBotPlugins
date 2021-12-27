@@ -24,7 +24,7 @@ def get_file_id_and_ref(message) -> Tuple[Optional[str], Optional[str]]:
     return None, None
 
 
-@ItzSjDude(pattern="movie (.*)")
+@Infinix(pattern="movie (.*)")
 async def movie_search(event):
     """get movie from channel"""
     movie = event.pattern_match.group(1)

@@ -15,7 +15,7 @@ For Lower Text:
 {i}mmf <text> ;"""
 
 
-@ItzSjDude(pattern="mmf ?(.*)")
+@Infinix(pattern="mmf ?(.*)")
 async def handler(event):
     if event.fwd_from:
         return

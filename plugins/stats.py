@@ -2,7 +2,7 @@
 from telethon.tl.types import Channel, Chat, User
 
 
-@ItzSjDude(outgoing=True, pattern=r"stats")
+@Infinix(outgoing=True, pattern=r"stats")
 async def _(event):
     if event.fwd_from:
         return

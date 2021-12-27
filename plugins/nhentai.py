@@ -4,7 +4,7 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 
-@ItzSjDude(outgoing=True, pattern="nhentai(?: |$)(.*)")
+@Infinix(outgoing=True, pattern="nhentai(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return

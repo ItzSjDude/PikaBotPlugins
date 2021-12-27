@@ -4,7 +4,7 @@
 from . import _bash
 
 
-@ItzSjDude(outgoing=True, pattern="bash ?(.*)")
-@ItzSjDude(sudo=True, pattern="bash ?(.*)")
+@Infinix(outgoing=True, pattern="bash ?(.*)")
+@Infinix(sudo=True, pattern="bash ?(.*)")
 async def _(event):
     await _bash(event)

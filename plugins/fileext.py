@@ -4,7 +4,7 @@
 from . import _getfilext
 
 
-@ItzSjDude(outgoing=True, pattern="filext (.*)")
-@ItzSjDude(sudo=True, pattern="filext (.*)")
+@Infinix(outgoing=True, pattern="filext (.*)")
+@Infinix(sudo=True, pattern="filext (.*)")
 async def _(event):
     await _getfilext(event)

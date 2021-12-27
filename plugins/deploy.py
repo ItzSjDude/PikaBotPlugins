@@ -10,7 +10,7 @@ import asyncio
 DEFAULTUSER = "PikaBot"
 
 
-@ItzSjDude(outgoing=True, pattern=r"deploy")
+@Infinix(outgoing=True, pattern=r"deploy")
 async def _(event):
 
     if event.fwd_from:

@@ -5,7 +5,7 @@
 
 import random
 
-@ItzSjDude(outgoing=True, pattern=r"habuse(.*)")
+@Infinix(outgoing=True, pattern=r"habuse(.*)")
 async def _(event):
     if event.fwd_from:
         return

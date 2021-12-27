@@ -5,7 +5,7 @@ Say something interesting...
 from . import belo
 
 
-@ItzSjDude(outgoing=True, pattern=r"belo")
-@ItzSjDude(sudo=True, pattern=r"belo")
+@Infinix(outgoing=True, pattern=r"belo")
+@Infinix(sudo=True, pattern=r"belo")
 async def _(event):
     await belo(event)

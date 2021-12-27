@@ -6,7 +6,7 @@ By : - @Zero_cool7870
 """
 import asyncio
 
-@ItzSjDude(outgoing=True, pattern=r"meme")
+@Infinix(outgoing=True, pattern=r"meme")
 async def meme(event):
     if event.fwd_from:
         return
@@ -53,7 +53,7 @@ usage:- .flower
 """
 
 
-@ItzSjDude(outgoing=True, pattern=r"flower")
+@Infinix(outgoing=True, pattern=r"flower")
 async def meme(event):
     if event.fwd_from:
         return

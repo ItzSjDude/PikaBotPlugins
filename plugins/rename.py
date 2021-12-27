@@ -36,7 +36,7 @@ def get_video_thumb(file, output=None, width=90):
         return output
 
 
-@ItzSjDude(outgoing=True, pattern="rename (.*)")
+@Infinix(outgoing=True, pattern="rename (.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -68,7 +68,7 @@ async def _(event):
         await event.edit("Syntax // `.rename file.name` as reply to a Telegram media")
 
 
-@ItzSjDude(outgoing=True, pattern="rnupload (.*)")
+@Infinix(outgoing=True, pattern="rnupload (.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -117,7 +117,7 @@ async def _(event):
         await event.edit("Syntax // .rnupload file.name as reply to a Telegram media")
 
 
-@ItzSjDude(outgoing=True, pattern="rnstreamupload (.*)")
+@Infinix(outgoing=True, pattern="rnstreamupload (.*)")
 async def _(event):
     if event.fwd_from:
         return

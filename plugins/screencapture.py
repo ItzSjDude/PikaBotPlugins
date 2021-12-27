@@ -5,7 +5,7 @@ import io
 
 import requests
 
-@ItzSjDude(outgoing=True, pattern="screencapture (.*)")
+@Infinix(outgoing=True, pattern="screencapture (.*)")
 async def _(event):
     if event.fwd_from:
         return

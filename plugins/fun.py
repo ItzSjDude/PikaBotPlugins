@@ -85,8 +85,8 @@ INSULT_STRINGS = [
 # ===========================================
 
 
-@ItzSjDude(outgoing=True, pattern="run ?(.*)")
-@ItzSjDude(sudo=True, pattern="run ?(.*)")
+@Infinix(outgoing=True, pattern="run ?(.*)")
+@Infinix(sudo=True, pattern="run ?(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -96,8 +96,8 @@ async def _(event):
     await event.edit(reply_text)
 
 
-@ItzSjDude(outgoing=True, pattern="metoo ?(.*)")
-@ItzSjDude(sudo=True, pattern="metoo ?(.*)")
+@Infinix(outgoing=True, pattern="metoo ?(.*)")
+@Infinix(sudo=True, pattern="metoo ?(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -107,8 +107,8 @@ async def _(event):
     await event.edit(reply_text)
 
 
-@ItzSjDude(outgoing=True, pattern="rapee ?(.*)")
-@ItzSjDude(sudo=True, pattern="rapee ?(.*)")
+@Infinix(outgoing=True, pattern="rapee ?(.*)")
+@Infinix(sudo=True, pattern="rapee ?(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -118,8 +118,8 @@ async def _(event):
     await event.edit(reply_text)
 
 
-@ItzSjDude(outgoing=True, pattern="insultt ?(.*)")
-@ItzSjDude(sudo=True, pattern="rapee ?(.*)")
+@Infinix(outgoing=True, pattern="insultt ?(.*)")
+@Infinix(sudo=True, pattern="rapee ?(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -129,8 +129,8 @@ async def _(event):
     await event.edit(reply_text)
 
 
-@ItzSjDude(outgoing=True, pattern="proo ?(.*)")
-@ItzSjDude(sudo=True, pattern="proo ?(.*)")
+@Infinix(outgoing=True, pattern="proo ?(.*)")
+@Infinix(sudo=True, pattern="proo ?(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -140,8 +140,8 @@ async def _(event):
     await event.edit(reply_text)
 
 
-@ItzSjDude(outgoing=True, pattern="abusee ?(.*)")
-@ItzSjDude(sudo=True, pattern="proo ?(.*)")
+@Infinix(outgoing=True, pattern="abusee ?(.*)")
+@Infinix(sudo=True, pattern="proo ?(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -151,8 +151,8 @@ async def _(event):
     await event.edit(reply_text)
 
 
-@ItzSjDude(outgoing=True, pattern="geyy ?(.*)")
-@ItzSjDude(sudo=True, pattern="geyy ?(.*)")
+@Infinix(outgoing=True, pattern="geyy ?(.*)")
+@Infinix(sudo=True, pattern="geyy ?(.*)")
 async def _(event):
     if event.fwd_from:
         return

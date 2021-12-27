@@ -5,6 +5,6 @@
 from . import _rmbg
 
 
-@ItzSjDude(outgoing=True, pattern="rmbg ?(.*)")
+@Infinix(outgoing=True, pattern="rmbg ?(.*)")
 async def _(event):
     await _rmbg(event)

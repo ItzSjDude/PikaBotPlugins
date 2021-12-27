@@ -4,6 +4,6 @@
 from . import _getinfo
 
 
-@ItzSjDude(outgoing=True, pattern="info(.*)")
+@Infinix(outgoing=True, pattern="info(.*)")
 async def _(event):
     await _getinfo(event)

@@ -261,7 +261,7 @@ csclist = [
 csclist = sorted(csclist)
 
 
-@ItzSjDude(pattern=r"check", outgoing=True)
+@Infinix(pattern=r"check", outgoing=True)
 async def checker(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("Fetching Information, Wait!")
@@ -364,7 +364,7 @@ async def checker(e):
         await e.delete()
 
 
-@ItzSjDude(pattern="otaup", outgoing=True)
+@Infinix(pattern="otaup", outgoing=True)
 async def checker(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("Fetching Information, Wait!")

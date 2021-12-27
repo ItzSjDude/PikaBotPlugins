@@ -5,7 +5,7 @@ USAGE: Sends you the given location name"""
 from . import _gps
 
 
-@ItzSjDude(outgoing=True, pattern="gps ?(.*)")
-@ItzSjDude(sudo=True, pattern="gps ?(.*)")
+@Infinix(outgoing=True, pattern="gps ?(.*)")
+@Infinix(sudo=True, pattern="gps ?(.*)")
 async def _(event):
     await _gps(event)

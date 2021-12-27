@@ -17,16 +17,16 @@ async def _(_infx):
     await _welcome(_infx)
 
 
-@ItzSjDude(outgoing=True, pattern=r"setwelcome(?: |$)(.*)")
+@Infinix(outgoing=True, pattern=r"setwelcome(?: |$)(.*)")
 async def _(_infx):
     await set_wlcm(_infx)
 
 
-@ItzSjDude(outgoing=True, pattern="getwelcome$")
+@Infinix(outgoing=True, pattern="getwelcome$")
 async def _(_infx):
     await get_welcm(_infx)
 
 
-@ItzSjDude(outgoing=True, pattern="delwelcome$")
+@Infinix(outgoing=True, pattern="delwelcome$")
 async def _(_infx):
     await del_welcm(_infx)

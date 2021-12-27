@@ -4,7 +4,7 @@
 import asyncio
 
 
-@ItzSjDude(outgoing=True, pattern="type (.*)")
+@Infinix(outgoing=True, pattern="type (.*)")
 async def _(event):
     if event.fwd_from:
         return

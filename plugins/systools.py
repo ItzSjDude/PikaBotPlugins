@@ -11,21 +11,21 @@
 from . import _dyno, _logs, _restart, _vars
 
 
-@ItzSjDude(outgoing=True, pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)")
+@Infinix(outgoing=True, pattern=r"(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)")
 async def _(var):
     await _vars(var)
 
 
-@ItzSjDude(outgoing=True, pattern=r"usage(?: |$)")
+@Infinix(outgoing=True, pattern=r"usage(?: |$)")
 async def _(dyno):
     await _dyno(dyno)
 
 
-@ItzSjDude(outgoing=True, pattern="restart")
+@Infinix(outgoing=True, pattern="restart")
 async def _(rstrt):
     await _restart(rstrt)
 
 
-@ItzSjDude(outgoing=True, pattern=r"logs")
+@Infinix(outgoing=True, pattern=r"logs")
 async def _(dyno):
     await _logs(dyno)

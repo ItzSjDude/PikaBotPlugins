@@ -4,7 +4,7 @@ from urllib.parse import quote
 
 import requests
 
-@ItzSjDude(outgoing=True, pattern="xkcd ?(.*)")
+@Infinix(outgoing=True, pattern="xkcd ?(.*)")
 async def _(event):
     if event.fwd_from:
         return

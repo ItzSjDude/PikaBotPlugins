@@ -5,7 +5,7 @@ import os
 import requests
 
 
-@ItzSjDude(outgoing=True, pattern="sttext (.*)")
+@Infinix(outgoing=True, pattern="sttext (.*)")
 async def _(event):
     if event.fwd_from:
         return

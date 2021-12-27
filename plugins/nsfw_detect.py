@@ -9,7 +9,7 @@ import os
 import requests
 
 
-@ItzSjDude(pattern=r"nsfw")
+@Infinix(pattern=r"nsfw")
 async def detect_(event):
     """detect nsfw"""
     reply = await event.client.download_media(

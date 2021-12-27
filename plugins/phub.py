@@ -1,7 +1,7 @@
 import asyncio
 
 
-@ItzSjDude(pattern="phub")
+@Infinix(pattern="phub")
 async def _(event):
 
     if event.fwd_from:
@@ -32,7 +32,7 @@ async def _(event):
         await event.edit(animation_chars[i % 10])
 
 
-@ItzSjDude(pattern=r"amore")
+@Infinix(pattern=r"amore")
 async def _(event):
 
     if event.fwd_from:
@@ -62,7 +62,7 @@ async def _(event):
         await event.edit(animation_chars[i % 10])
 
 
-@ItzSjDude(pattern=r"sexy")
+@Infinix(pattern=r"sexy")
 async def _(event):
 
     if event.fwd_from:

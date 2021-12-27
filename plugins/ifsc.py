@@ -5,7 +5,7 @@ import json
 import requests
 
 
-@ItzSjDude(outgoing=True, pattern="ifsc(.*)")
+@Infinix(outgoing=True, pattern="ifsc(.*)")
 async def _(event):
     if event.fwd_from:
         return

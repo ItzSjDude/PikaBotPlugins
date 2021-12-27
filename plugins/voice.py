@@ -8,7 +8,7 @@ import subprocess
 
 from gtts import gTTS
 
-@ItzSjDude(outgoing=True, pattern="voice (.*)")
+@Infinix(outgoing=True, pattern="voice (.*)")
 async def _(event):
     if event.fwd_from:
         return

@@ -10,7 +10,7 @@
 from random import randint
 from time import sleep
 
-@ItzSjDude(outgoing=True, pattern="random")
+@Infinix(outgoing=True, pattern="random")
 async def randomise(items):
     """ For .random command, get a random item from the list of items. """
     if not items.text[0].isalpha() and items.text[0] not in ("/", "#", "@", "!"):
@@ -25,7 +25,7 @@ async def randomise(items):
         )
 
 
-@ItzSjDude(outgoing=True, pattern="sleep( [0-9]+)?$")
+@Infinix(outgoing=True, pattern="sleep( [0-9]+)?$")
 async def sleepybot(time):
     """ For .sleep command, let the userbot snooze for a few second. """
     message = time.text

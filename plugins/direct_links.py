@@ -16,7 +16,7 @@ OSDN-GitHub
 """
 
 
-@ItzSjDude(outgoing=True, pattern=r"direct(?: |$)([\s\S]*)")
-@ItzSjDude(sudo=True, pattern=r"direct(?: |$)([\s\S]*)")
+@Infinix(outgoing=True, pattern=r"direct(?: |$)([\s\S]*)")
+@Infinix(sudo=True, pattern=r"direct(?: |$)([\s\S]*)")
 async def _(request):
     await dlg(request)

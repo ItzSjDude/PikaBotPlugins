@@ -31,7 +31,7 @@ from telethon import events
 #G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 
 
-@ItzSjDude(pattern="ugdrive ?(.*)")
+@Infinix(pattern="ugdrive ?(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -113,7 +113,7 @@ async def _(event):
         await mone.edit("File Not found in local server. Give me a file path :((")
 
 
-@ItzSjDude(pattern="drivesch ?(.*)")
+@Infinix(pattern="drivesch ?(.*)")
 async def sch(event):
     if event.fwd_from:
         return
@@ -189,7 +189,7 @@ async def gsearch(http, query, filename):
     return msg
 
 
-@ItzSjDude(pattern="gdrivedir ?(.*)")
+@Infinix(pattern="gdrivedir ?(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -366,7 +366,7 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
     return download_url
 
 
-@ItzSjDude(pattern="gfolder ?(.*)")
+@Infinix(pattern="gfolder ?(.*)")
 async def _(event):
     if event.fwd_from:
         return

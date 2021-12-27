@@ -54,91 +54,91 @@ from . import (
 
 
 # @bot.on(infx_sudo(from_client=1, pattern=r"setgpic$"))
-@ItzSjDude(groups_only=True, pattern=r"setgpic$")
+@Infinix(groups_only=True, pattern=r"setgpic$")
 async def _(gpic):
     await _setgpic(gpic)
 
 
-@ItzSjDude(groups_only=True, pattern=r"promote(?: |$)(.*)")
-@ItzSjDude(sudo=True, pattern=r"promote(?: |$)(.*)")
+@Infinix(groups_only=True, pattern=r"promote(?: |$)(.*)")
+@Infinix(sudo=True, pattern=r"promote(?: |$)(.*)")
 async def _(promt):
     await _promote(promt)
 
 
-@ItzSjDude(groups_only=True, pattern=r"demote(?: |$)(.*)")
-@ItzSjDude(sudo=True, pattern=r"demote(?: |$)(.*)")
+@Infinix(groups_only=True, pattern=r"demote(?: |$)(.*)")
+@Infinix(sudo=True, pattern=r"demote(?: |$)(.*)")
 async def _(dmod):
     await _demote(dmod)
 
 
-@ItzSjDude(groups_only=True, pattern=r"ban(?: |$)(.*)")
-@ItzSjDude(sudo=True, pattern=r"ban(?: |$)(.*)")
+@Infinix(groups_only=True, pattern=r"ban(?: |$)(.*)")
+@Infinix(sudo=True, pattern=r"ban(?: |$)(.*)")
 async def _(bon):
     await _ban(bon)
 
 
-@ItzSjDude(groups_only=True, pattern=r"unban(?: |$)(.*)")
-@ItzSjDude(sudo=True, pattern=r"unban(?: |$)(.*)")
+@Infinix(groups_only=True, pattern=r"unban(?: |$)(.*)")
+@Infinix(sudo=True, pattern=r"unban(?: |$)(.*)")
 async def _(unbon):
     await _unban(unbon)
 
 
-@ItzSjDude(groups_only=True, pattern=r"mute(?: |$)(.*)")
-@ItzSjDude(sudo=True, pattern=r"mute(?: |$)(.*)")
+@Infinix(groups_only=True, pattern=r"mute(?: |$)(.*)")
+@Infinix(sudo=True, pattern=r"mute(?: |$)(.*)")
 async def _(spdr):
     await _mute(spdr)
 
 
-@ItzSjDude(groups_only=True, pattern=r"unmute(?: |$)(.*)")
-@ItzSjDude(sudo=True, pattern=r"unmute(?: |$)(.*)")
+@Infinix(groups_only=True, pattern=r"unmute(?: |$)(.*)")
+@Infinix(sudo=True, pattern=r"unmute(?: |$)(.*)")
 async def _(unmot):
     await _unmute(unmot)
 
 
-@ItzSjDude(groups_only=True, pattern=r"ungmute(?: |$)(.*)")
-@ItzSjDude(sudo=True, pattern=r"ungmute(?: |$)(.*)")
+@Infinix(groups_only=True, pattern=r"ungmute(?: |$)(.*)")
+@Infinix(sudo=True, pattern=r"ungmute(?: |$)(.*)")
 async def _(un_gmute):
     await _ungmute(un_gmute)
 
 
-@ItzSjDude(groups_only=True, pattern=r"gmute(?: |$)(.*)")
-@ItzSjDude(sudo=True, pattern=r"gmute(?: |$)(.*)")
+@Infinix(groups_only=True, pattern=r"gmute(?: |$)(.*)")
+@Infinix(sudo=True, pattern=r"gmute(?: |$)(.*)")
 async def _(gspdr):
     await _gmte(gspdr)
 
 
-@ItzSjDude(groups_only=True, pattern=r"delusers(?: |$)(.*)")
-@ItzSjDude(sudo=True, pattern=r"delusers(?: |$)(.*)")
+@Infinix(groups_only=True, pattern=r"delusers(?: |$)(.*)")
+@Infinix(sudo=True, pattern=r"delusers(?: |$)(.*)")
 async def _(show):
     await _rmdacc(show)
 
 
-@ItzSjDude(groups_only=True, pattern=r"listadmins$")
-@ItzSjDude(sudo=True, pattern=r"listadmins$")
+@Infinix(groups_only=True, pattern=r"listadmins$")
+@Infinix(sudo=True, pattern=r"listadmins$")
 async def _(show):
     await _gadmin(show)
 
 
-@ItzSjDude(groups_only=True, pattern=r"pin(?: |$)(.*)")
-@ItzSjDude(sudo=True, pattern=r"pin(?: |$)(.*)")
+@Infinix(groups_only=True, pattern=r"pin(?: |$)(.*)")
+@Infinix(sudo=True, pattern=r"pin(?: |$)(.*)")
 async def _(msg):
     await _pin(msg)
 
 
-@ItzSjDude(groups_only=True, pattern=r"kick(?: |$)(.*)")
-@ItzSjDude(sudo=True, pattern=r"kick(?: |$)(.*)")
+@Infinix(groups_only=True, pattern=r"kick(?: |$)(.*)")
+@Infinix(sudo=True, pattern=r"kick(?: |$)(.*)")
 async def _(usr):
     await _kick(usr)
 
 
-@ItzSjDude(groups_only=True, pattern="invite ?(.*)")
-@ItzSjDude(sudo=True, pattern="invite ?(.*)")
+@Infinix(groups_only=True, pattern="invite ?(.*)")
+@Infinix(sudo=True, pattern="invite ?(.*)")
 async def _(event):
     await _invite(event)
 
 
-@ItzSjDude(groups_only=True, pattern=r"users ?(.*)")
-@ItzSjDude(sudo=True, pattern=r"users ?(.*)")
+@Infinix(groups_only=True, pattern=r"users ?(.*)")
+@Infinix(sudo=True, pattern=r"users ?(.*)")
 async def _(show):
     await _gusers(show)
 

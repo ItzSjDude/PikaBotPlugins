@@ -7,7 +7,7 @@ Syntax: .mashup <text>
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-@ItzSjDude(outgoing=True, pattern="mashup ?(.*)")
+@Infinix(outgoing=True, pattern="mashup ?(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -36,7 +36,7 @@ async def _(event):
             )
 
 
-@ItzSjDude(outgoing=True, pattern="mash ?(.*)")
+@Infinix(outgoing=True, pattern="mash ?(.*)")
 async def _(event):
     if event.fwd_from:
         return

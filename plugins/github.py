@@ -3,7 +3,7 @@
 from . import _github
 
 
-@ItzSjDude(outgoing=True, pattern="github (.*)")
-@ItzSjDude(sudo=True, pattern="github (.*)")
+@Infinix(outgoing=True, pattern="github (.*)")
+@Infinix(sudo=True, pattern="github (.*)")
 async def _(event):
     await _github(event)

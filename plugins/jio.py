@@ -8,7 +8,7 @@ Available Commands:
 
 import asyncio
 
-@ItzSjDude(outgoing=True, pattern=r"jio")
+@Infinix(outgoing=True, pattern=r"jio")
 async def _(event):
 
     if event.fwd_from:

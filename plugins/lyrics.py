@@ -5,7 +5,7 @@ by @quiec
 from PyLyrics import *
 
 
-@ItzSjDude(outgoing=True, pattern="singer (.*)")
+@Infinix(outgoing=True, pattern="singer (.*)")
 async def _(event):
     if event.fwd_from:
         return

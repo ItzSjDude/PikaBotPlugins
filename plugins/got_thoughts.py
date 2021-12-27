@@ -10,7 +10,7 @@ command .gott
 import asyncio
 import random
 
-@ItzSjDude(outgoing=True, pattern=r"gott")
+@Infinix(outgoing=True, pattern=r"gott")
 async def _(event):
 
     if event.fwd_from:

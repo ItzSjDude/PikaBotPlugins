@@ -13,21 +13,21 @@ Usage: Like art
 """
 
 
-@ItzSjDude(pattern="gn$")
+@Infinix(pattern="gn$")
 async def gn(event):
     await event.edit(GN)
 
 
-@ItzSjDude(pattern="gm$")
+@Infinix(pattern="gm$")
 async def gm(event):
     await event.edit(GM)
 
 
-@ItzSjDude(pattern="lul$")
+@Infinix(pattern="lul$")
 async def _(event):
     await event.edit(LOL)
 
 
-@ItzSjDude(pattern="like$")
+@Infinix(pattern="like$")
 async def _(event):
     await event.edit(LIKE)

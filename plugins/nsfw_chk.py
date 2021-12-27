@@ -10,7 +10,7 @@ import urllib
 import requests
 
 
-@ItzSjDude(pattern=r"boobs")
+@Infinix(pattern=r"boobs")
 async def boobs(event):
     if not os.path.isdir(Var.TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Var.TEMP_DOWNLOAD_DIRECTORY)
@@ -26,7 +26,7 @@ async def boobs(event):
     await a.delete()
 
 
-@ItzSjDude(pattern=r"butts")
+@Infinix(pattern=r"butts")
 async def butts(event):
     if not os.path.isdir(Var.TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Var.TEMP_DOWNLOAD_DIRECTORY)

@@ -8,7 +8,7 @@ import time
 from INFINIX.utils import ItzSjDude, progress
 
 
-@ItzSjDude(outgoing=True, pattern="convert (.*)")  # pylint:disable=E0602
+@Infinix(outgoing=True, pattern="convert (.*)")  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return

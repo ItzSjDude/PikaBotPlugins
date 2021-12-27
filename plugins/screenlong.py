@@ -7,7 +7,7 @@ import traceback
 from selenium import webdriver
 
 
-@ItzSjDude(outgoing=True, pattern="screenlong (.*)")
+@Infinix(outgoing=True, pattern="screenlong (.*)")
 async def _(event):
     if event.fwd_from:
         return

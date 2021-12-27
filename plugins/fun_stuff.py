@@ -15,32 +15,32 @@ BALL_E_MOJI = "🏀"
 # EMOJI CONSTANTS
 
 
-@ItzSjDude(outgoing=True, pattern="bombs$")
-@ItzSjDude(sudo=True, pattern="bombs$")
+@Infinix(outgoing=True, pattern="bombs$")
+@Infinix(sudo=True, pattern="bombs$")
 async def _(event):
     await bombs(event)
 
 
-@ItzSjDude(outgoing=True, pattern=r"call")
-@ItzSjDude(sudo=True, pattern=r"call")
+@Infinix(outgoing=True, pattern=r"call")
+@Infinix(sudo=True, pattern=r"call")
 async def call(event):
     await call(event)
 
 
-@ItzSjDude(outgoing=True, pattern="coin ?(.*)")
-@ItzSjDude(sudo=True, pattern="coin ?(.*)")
+@Infinix(outgoing=True, pattern="coin ?(.*)")
+@Infinix(sudo=True, pattern="coin ?(.*)")
 async def _(event):
     await cflip(event)
 
 
-@ItzSjDude(outgoing=True, pattern=r"ding$")
-@ItzSjDude(sudo=True, pattern=r"ding$")
+@Infinix(outgoing=True, pattern=r"ding$")
+@Infinix(sudo=True, pattern=r"ding$")
 async def _(event):
     await _ding(event)
 
 
-@ItzSjDude(outgoing=True, pattern=r"clock$")
-@ItzSjDude(sudo=True, pattern=r"clock$")
+@Infinix(outgoing=True, pattern=r"clock$")
+@Infinix(sudo=True, pattern=r"clock$")
 async def _(event):
     if event.fwd_from:
         return
@@ -51,7 +51,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@ItzSjDude(outgoing=True, pattern=f"({DART_E_MOJI}|{DICE_E_MOJI}|{BALL_E_MOJI}) ?(.*)")
+@Infinix(outgoing=True, pattern=f"({DART_E_MOJI}|{DICE_E_MOJI}|{BALL_E_MOJI}) ?(.*)")
 async def _(event):
     if event.fwd_from:
         return

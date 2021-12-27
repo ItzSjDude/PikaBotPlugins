@@ -16,7 +16,7 @@ from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
 
 
-@ItzSjDude(outgoing=True, pattern="phd ?(.*)")
+@Infinix(outgoing=True, pattern="phd ?(.*)")
 async def _(event):
 
     if event.fwd_from:

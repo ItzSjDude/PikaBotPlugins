@@ -5,7 +5,7 @@
 from . import _fleave
 
 
-@ItzSjDude(outgoing=True, pattern=r"fleave")
-@ItzSjDude(sudo=True, pattern=r"fleave")
+@Infinix(outgoing=True, pattern=r"fleave")
+@Infinix(sudo=True, pattern=r"fleave")
 async def _(event):
     await _fleave(event)

@@ -2,7 +2,7 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 
-@ItzSjDude(outgoing=True, pattern="mask(.*)")
+@Infinix(outgoing=True, pattern="mask(.*)")
 async def _(event):
     if event.fwd_from:
         return

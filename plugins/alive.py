@@ -1,12 +1,12 @@
 """Alive Plugin for Pikabot
 {i}alive
 """
-# Made by @ItzSjDude. All Rights Reserved
+# Made by @Infinix. All Rights Reserved
 
 from . import _alive
 
 
-@ItzSjDude(outgoing=True, pattern=r"alive$")
-@ItzSjDude(sudo=True, pattern=r"alive$")
+@Infinix(outgoing=True, pattern=r"alive$")
+@Infinix(sudo=True, pattern=r"alive$")
 async def _(event):
     await _alive(event)

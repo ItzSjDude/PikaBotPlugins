@@ -6,7 +6,7 @@ Available Commands:
 import emoji
 from googletrans import Translator
 
-@ItzSjDude(outgoing=True, pattern="tr")
+@Infinix(outgoing=True, pattern="tr")
 async def _(event):
     if event.fwd_from:
         return

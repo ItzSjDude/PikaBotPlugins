@@ -3,7 +3,7 @@ usage: .shout message
 originaly from : @corsicanu_bot
 """
 
-@ItzSjDude(outgoing=True, pattern=r"shouts")
+@Infinix(outgoing=True, pattern=r"shouts")
 async def shout(args):
     if args.fwd_from:
         return

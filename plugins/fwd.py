@@ -4,7 +4,7 @@
 from . import _fwd
 
 
-@ItzSjDude(outgoing=True, pattern="fwd(.*)")
-@ItzSjDude(sudo=True, pattern="fwd(.*)")
+@Infinix(outgoing=True, pattern="fwd(.*)")
+@Infinix(sudo=True, pattern="fwd(.*)")
 async def _(event):
     await _fwd(event)

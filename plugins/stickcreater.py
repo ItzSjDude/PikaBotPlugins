@@ -13,7 +13,7 @@ from telethon.tl.types import InputMessagesFilterDocument
 # RegEx by https://t.me/c/1220993104/500653 ( @SnapDragon7410 )
 
 
-@ItzSjDude(outgoing=True, pattern=r"stcr ?(?:(.*?) \| )?(.*)")
+@Infinix(outgoing=True, pattern=r"stcr ?(?:(.*?) \| )?(.*)")
 async def sticklet(event):
     R = random.randint(0, 256)
     G = random.randint(0, 256)
@@ -53,7 +53,7 @@ async def sticklet(event):
         ((512 - width) / 2, (512 - height) / 2), sticktext, font=font, fill=(R, G, B)
     )
     image_stream = io.BytesIO()
-    image_stream.name = "@ItzSjDude.webp"
+    image_stream.name = "@Infinix.webp"
     image.save(image_stream, "WebP")
     image_stream.seek(0)
     # finally, reply the sticker

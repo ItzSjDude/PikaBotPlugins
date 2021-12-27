@@ -7,7 +7,7 @@ import time
 
 import aiohttp
 
-@ItzSjDude(outgoing=True, pattern="weathers (.*)")
+@Infinix(outgoing=True, pattern="weathers (.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -53,7 +53,7 @@ async def _(event):
         await event.edit(response_api["message"])
 
 
-@ItzSjDude(outgoing=True, pattern="wttr (.*)")
+@Infinix(outgoing=True, pattern="wttr (.*)")
 async def _(event):
     if event.fwd_from:
         return

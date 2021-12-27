@@ -6,7 +6,7 @@
 from . import deepfryer
 
 
-@ItzSjDude(outgoing=True, pattern="deepfry(?: |$)(.*)")
-@ItzSjDude(sudo=True, pattern="deepfry(?: |$)(.*)")
+@Infinix(outgoing=True, pattern="deepfry(?: |$)(.*)")
+@Infinix(sudo=True, pattern="deepfry(?: |$)(.*)")
 async def _(event):
     await deepfryer(event)

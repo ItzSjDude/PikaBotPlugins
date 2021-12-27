@@ -9,7 +9,7 @@ Available Commands:
 import asyncio
 
 
-@ItzSjDude(outgoing=True, pattern="lucky")
+@Infinix(outgoing=True, pattern="lucky")
 async def _(event):
 
     if event.fwd_from:

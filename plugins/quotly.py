@@ -3,7 +3,7 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-@ItzSjDude(outgoing=True, pattern=r"qbot(?: |$)(.*)")
+@Infinix(outgoing=True, pattern=r"qbot(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return

@@ -1,6 +1,6 @@
 import asyncio
 
-@ItzSjDude(outgoing=True, pattern=r"snake")
+@Infinix(outgoing=True, pattern=r"snake")
 async def _(event):
 
     if event.fwd_from:

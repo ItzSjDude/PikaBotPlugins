@@ -1,6 +1,6 @@
 from asyncio import wait
 
-@ItzSjDude(outgoing=True, pattern="repeat ?(.*)")
+@Infinix(outgoing=True, pattern="repeat ?(.*)")
 async def _(event):
     message = event.text[10:]
     count = int(event.text[8:10])

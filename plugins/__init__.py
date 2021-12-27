@@ -4869,7 +4869,7 @@ async def _ncode(event):
     os.remove("out.png")
 
 
-# © @ItzSjDude , dont remove credits bsdk else u gay * 100
+# © @Infinix , dont remove credits bsdk else u gay * 100
 
 
 async def _reveal(event):
@@ -4947,7 +4947,7 @@ async def _rmbg(event):
     if "image" not in contentType:
         await infx_msg(
             a,
-            "ReMove.BG API returned Errors. Please report to @ItzSjDudeSupport\n`{}".format(
+            "ReMove.BG API returned Errors. Please report to @InfinixSupport\n`{}".format(
                 output_file_name.content.decode("UTF-8")
             ),
         )

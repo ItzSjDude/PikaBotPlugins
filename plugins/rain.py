@@ -3,7 +3,7 @@ import asyncio
 from collections import deque
 
 
-@ItzSjDude(outgoing=True, pattern=r"km_rain2")
+@Infinix(outgoing=True, pattern=r"km_rain2")
 async def _(event):
     if event.fwd_from:
         return

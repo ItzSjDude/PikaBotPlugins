@@ -6,7 +6,7 @@
 from . import _carbon
 
 
-@ItzSjDude(outgoing=True, pattern="carbon")
-@ItzSjDude(sudo=True, pattern="carbon")
+@Infinix(outgoing=True, pattern="carbon")
+@Infinix(sudo=True, pattern="carbon")
 async def _(e):
     await _carbon(e)

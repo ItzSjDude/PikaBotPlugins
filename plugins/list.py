@@ -9,7 +9,7 @@ By:- @Zero_cool7870
 
 import os
 
-@ItzSjDude(outgoing=True, pattern="ls ?(.*)")
+@Infinix(outgoing=True, pattern="ls ?(.*)")
 async def lst(event):
     if event.fwd_from:
         return

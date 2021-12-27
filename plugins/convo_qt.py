@@ -6,7 +6,7 @@
 from . import _convoqt
 
 
-@ItzSjDude(outgoing=True, pattern=r"convoqt$")
-@ItzSjDude(sudo=True, pattern=r"convoqt$")
+@Infinix(outgoing=True, pattern=r"convoqt$")
+@Infinix(sudo=True, pattern=r"convoqt$")
 async def _(event):
     await _convoqt(event)

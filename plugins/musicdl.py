@@ -8,7 +8,7 @@ from telethon.errors.rpcerrorlist import (
 from telethon.tl.functions.messages import ImportChatInviteRequest
 
 
-@ItzSjDude(outgoing=True, pattern="sdd ?(.*)")
+@Infinix(outgoing=True, pattern="sdd ?(.*)")
 async def _(event):
     if event.fwd_from:
         return

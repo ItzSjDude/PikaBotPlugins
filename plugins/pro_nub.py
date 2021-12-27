@@ -10,7 +10,7 @@
 
 import asyncio
 
-@ItzSjDude(outgoing=True, pattern="unoob")
+@Infinix(outgoing=True, pattern="unoob")
 async def _(event):
 
     if event.fwd_from:
@@ -41,7 +41,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
 
 
-@ItzSjDude(outgoing=True, pattern="menoob")
+@Infinix(outgoing=True, pattern="menoob")
 async def _(event):
 
     if event.fwd_from:
@@ -72,7 +72,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
 
 
-@ItzSjDude(outgoing=True, pattern="upro")
+@Infinix(outgoing=True, pattern="upro")
 async def _(event):
 
     if event.fwd_from:
@@ -102,7 +102,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
 
 
-@ItzSjDude(outgoing=True, pattern="mepro")
+@Infinix(outgoing=True, pattern="mepro")
 async def _(event):
 
     if event.fwd_from:

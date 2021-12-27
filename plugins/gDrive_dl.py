@@ -5,7 +5,7 @@ usage: {i}gdl File-Link
 # By: @Zero_cool7870
 
 
-@ItzSjDude(pattern=r"gdl", outgoing=True)
-@ItzSjDude(pattern=r"gdl", sudo=True)
+@Infinix(pattern=r"gdl", outgoing=True)
+@Infinix(pattern=r"gdl", sudo=True)
 async def _(event):
     await _gdl(event)

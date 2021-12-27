@@ -1,13 +1,13 @@
 """Songs Plugin for Pikabot
 {i}song <song name>
 """
-# Made By @ItzSjDude. All rights Reserved
+# Made By @Infinix. All rights Reserved
 
 
 import asyncio
 
 
-@ItzSjDude(pattern="song (.*)")
+@Infinix(pattern="song (.*)")
 async def _(event):
     chat = "@songdl_Bot"
     input_str = str(event.text[6:])

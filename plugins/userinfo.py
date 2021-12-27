@@ -284,7 +284,7 @@ class TGDoc:
         return "\n\n".join([str(section) for section in self.sections])
 
 
-@ItzSjDude(pattern=r"u(?:ser)?(\s+[\S\s]+|$)", outgoing=True)
+@Infinix(pattern=r"u(?:ser)?(\s+[\S\s]+|$)", outgoing=True)
 async def who(event: NewMessage.Event):
     """ For .user command, get info about a user. """
     if event.fwd_from:

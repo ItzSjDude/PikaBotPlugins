@@ -13,7 +13,7 @@ Available Commands:
 import asyncio
 
 
-@ItzSjDude(outgoing=True, pattern=r"nakal")
+@Infinix(outgoing=True, pattern=r"nakal")
 async def _(event):
 
     if event.fwd_from:

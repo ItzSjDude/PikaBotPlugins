@@ -25,7 +25,7 @@ import asyncio
 BOTLOG = pdb.Botlog_chat
 
 
-@ItzSjDude(outgoing=True, pattern="spam (.*)")
+@Infinix(outgoing=True, pattern="spam (.*)")
 async def spammer(e):
     counter = int(e.pattern_match.group(1).split(" ", 1)[0])
     spam_message = str(e.pattern_match.group(1).split(" ", 1)[1])
@@ -37,7 +37,7 @@ async def spammer(e):
         )
 
 
-@ItzSjDude(outgoing=True, pattern="bigspam (.*)")
+@Infinix(outgoing=True, pattern="bigspam (.*)")
 async def bigspam(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@"):
         message = e.text
@@ -52,7 +52,7 @@ async def bigspam(e):
             )
 
 
-@ItzSjDude(outgoing=True, pattern="gangsta$")
+@Infinix(outgoing=True, pattern="gangsta$")
 async def whoizme(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@"):
         await e.edit("EVERyBOdy")
@@ -72,7 +72,7 @@ async def whoizme(e):
         await e.edit("EVERyBOdy iZ GangSTur UNtIL I ArRivE 🔥")
 
 
-@ItzSjDude(outgoing=True, pattern="nikal$")
+@Infinix(outgoing=True, pattern="nikal$")
 async def whoizme(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@"):
         await e.edit("NikAl")
@@ -92,7 +92,7 @@ async def whoizme(e):
         await e.edit("NikAl lAwDe PehLi FuRsaT Me NikAL <--")
 
 
-@ItzSjDude(outgoing=True, pattern="rspam (.*)")
+@Infinix(outgoing=True, pattern="rspam (.*)")
 async def repeats(e):
     message = e.text[8:]
     count = int(e.text[6:8])
@@ -101,7 +101,7 @@ async def repeats(e):
     await e.delete()
 
 
-@ItzSjDude(outgoing=True, pattern="picspam (.*)")
+@Infinix(outgoing=True, pattern="picspam (.*)")
 async def tiny_pic_spam(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@"):
         message = e.text
@@ -117,7 +117,7 @@ async def tiny_pic_spam(e):
             )
 
 
-@ItzSjDude(outgoing=True, pattern="delayspam (.*)")
+@Infinix(outgoing=True, pattern="delayspam (.*)")
 async def spammer(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@"):
         message = e.text

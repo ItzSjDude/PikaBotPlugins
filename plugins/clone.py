@@ -5,7 +5,7 @@ from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 
 
-@ItzSjDude(outgoing=True, pattern="clone ?(.*)")
+@Infinix(outgoing=True, pattern="clone ?(.*)")
 async def _(event):
     if event.fwd_from:
         return

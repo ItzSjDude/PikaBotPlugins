@@ -5,6 +5,6 @@
 from . import _speedtest
 
 
-@ItzSjDude(outgoing=True, pattern="speedtest ?(.*)")
+@Infinix(outgoing=True, pattern="speedtest ?(.*)")
 async def _(event):
     await _speedtest(event)

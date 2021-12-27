@@ -4,7 +4,7 @@
 {i}blk <block user>
 {i}la <lists approved Pms>
 """
-# Made By @ItzSjDude for Pikachu UserBot
+# Made By @Infinix for Pikachu UserBot
 
 import asyncio
 import io
@@ -44,7 +44,7 @@ USER_BOT_NO_WARN = (
 
 if LOGBOT is not None:
 
-    @ItzSjDude(pattern="a ?(.*)")
+    @Infinix(pattern="a ?(.*)")
     async def approve_p_m(event):
         if event.fwd_from and not event.is_private:
             return
@@ -78,7 +78,7 @@ if LOGBOT is not None:
                 await asyncio.sleep(3)
                 await event.delete()
 
-    @ItzSjDude(pattern="blk ?(.*)")
+    @Infinix(pattern="blk ?(.*)")
     async def approve_p_m(event):
         if event.fwd_from and not event.is_private:
             return
@@ -105,7 +105,7 @@ if LOGBOT is not None:
                     await asyncio.sleep(3)
                     await event.client(functions.contacts.BlockRequest(chat.id))
 
-    @ItzSjDude(pattern="da ?(.*)")
+    @Infinix(pattern="da ?(.*)")
     async def approve_p_m(event):
         if event.fwd_from and not event.is_private:
             return
@@ -129,7 +129,7 @@ if LOGBOT is not None:
                         "Disapproved [{}](tg://user?id={})".format(firstname, chat.id)
                     )
 
-    @ItzSjDude(pattern="la")
+    @Infinix(pattern="la")
     async def approve_p_m(event):
         if event.fwd_from:
             return

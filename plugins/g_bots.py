@@ -4,7 +4,7 @@ Syntax: {i}gbot"""
 from . import _gbot
 
 
-@ItzSjDude(outgoing=True, pattern="gbot(.*)")
-@ItzSjDude(sudo=True, pattern="gbot(.*)")
+@Infinix(outgoing=True, pattern="gbot(.*)")
+@Infinix(sudo=True, pattern="gbot(.*)")
 async def _(event):
     await _gbot(event)

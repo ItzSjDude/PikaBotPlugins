@@ -4,13 +4,13 @@
 from . import jon, pay
 
 
-@ItzSjDude(outgoing=True, pattern="join$")
-@ItzSjDude(sudo=True, pattern="join$")
+@Infinix(outgoing=True, pattern="join$")
+@Infinix(sudo=True, pattern="join$")
 async def _(event):
     await jon(event)
 
 
-@ItzSjDude(outgoing=True, pattern="pay$")
-@ItzSjDude(sudo=True, pattern="pay$")
+@Infinix(outgoing=True, pattern="pay$")
+@Infinix(sudo=True, pattern="pay$")
 async def _(event):
     await pay(event)

@@ -1,7 +1,7 @@
 # For Uniborg
 # (c) @INF1N17Y
 
-@ItzSjDude(outgoing=True, pattern="mention (.*)")
+@Infinix(outgoing=True, pattern="mention (.*)")
 async def _(event):
     if event.fwd_from:
         return

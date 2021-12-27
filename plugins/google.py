@@ -6,7 +6,7 @@ Available Commands:
 from . import _gsearch
 
 
-@ItzSjDude(outgoing=True, pattern="go (.*)")
-@ItzSjDude(sudo=True, pattern="go (.*)")
+@Infinix(outgoing=True, pattern="go (.*)")
+@Infinix(sudo=True, pattern="go (.*)")
 async def _(event):
     await _gsearch(event)
