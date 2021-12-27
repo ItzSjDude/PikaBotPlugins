@@ -1,4 +1,3 @@
-from pikabot.utils import *
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
