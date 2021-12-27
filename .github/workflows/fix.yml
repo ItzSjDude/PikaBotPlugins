@@ -9,7 +9,7 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@master
         with:
           find: "from INFINIX.utils import ItzSjDude"
-          replace: ""
+          replace: " "
           include: "plugins/**"
       - name: Create Pull Request
         uses: stefanzweifel/git-auto-commit-action@v4
