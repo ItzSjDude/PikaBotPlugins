@@ -1,8 +1,5 @@
 from asyncio import wait
 
-from pikabot.utils import ItzSjDude
-
-
 @ItzSjDude(outgoing=True, pattern="repeat ?(.*)")
 async def _(event):
     message = event.text[10:]
