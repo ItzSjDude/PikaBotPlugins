@@ -13,13 +13,11 @@ import time
 
 import requests
 from cowpy import cow
-from pikabot import *
-from pikabot.utils import ItzSjDude as register
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 
 
-@register(outgoing=True, pattern=r"(\w+)say (.*)")
+@ItzSjDude(outgoing=True, pattern=r"(\w+)say (.*)")
 async def univsaye(cowmsg):
     """ For .cowsay module, userbot wrapper for cow which says things. """
     if not cowmsg.text[0].isalpha() and cowmsg.text[0] not in ("/", "#", "@", "!"):
@@ -36,7 +34,7 @@ async def univsaye(cowmsg):
         await cowmsg.edit(f"`{cheese.milk(text).replace('`', '´')}`")
 
 
-@register(outgoing=True, pattern=":/$")
+@ItzSjDude(outgoing=True, pattern=":/$")
 async def kek(keks):
     if not keks.text[0].isalpha() and keks.text[0] not in ("/", "#", "@", "!"):
         """ Check yourself ;)"""
@@ -46,7 +44,7 @@ async def kek(keks):
             await keks.edit(":" + uio[i % 2])
 
 
-@register(pattern="slap(?: |$)(.*)", outgoing=True)
+@ItzSjDude(pattern="slap(?: |$)(.*)", outgoing=True)
 async def who(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         """ slaps a user, or get slapped if not a reply. """
@@ -125,7 +123,7 @@ async def slap(replied_user, event):
     return caption
 
 
-@register(outgoing=True, pattern="-_-$")
+@ItzSjDude(outgoing=True, pattern="-_-$")
 async def lol(lel):
     if not lel.text[0].isalpha() and lel.text[0] not in ("/", "#", "@", "!"):
         """ Ok... """
@@ -135,7 +133,7 @@ async def lol(lel):
             await lel.edit(okay)
 
 
-@register(outgoing=True, pattern=";_;$")
+@ItzSjDude(outgoing=True, pattern=";_;$")
 async def fun(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         t = ";__;"
@@ -144,21 +142,21 @@ async def fun(e):
             await e.edit(t)
 
 
-@register(outgoing=True, pattern="cry$")
+@ItzSjDude(outgoing=True, pattern="cry$")
 async def cry(e):
     """ y u du dis, i cry everytime !! """
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(random.choice(CRI))
 
 
-@register(outgoing=True, pattern="insult$")
+@ItzSjDude(outgoing=True, pattern="insult$")
 async def insult(e):
     """ I make you cry !! """
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(random.choice(INSULT_STRINGS))
 
 
-@register(outgoing=True, pattern="cp(?: |$)(.*)")
+@ItzSjDude(outgoing=True, pattern="cp(?: |$)(.*)")
 async def copypasta(cp_e):
     """ Copypasta the famous meme """
     if not cp_e.text[0].isalpha() and cp_e.text[0] not in ("/", "#", "@", "!"):
@@ -193,7 +191,7 @@ async def copypasta(cp_e):
         await cp_e.edit(reply_text)
 
 
-@register(outgoing=True, pattern="vapor(?: |$)(.*)")
+@ItzSjDude(outgoing=True, pattern="vapor(?: |$)(.*)")
 async def vapor(vpr):
     """ Vaporize everything! """
     if not vpr.text[0].isalpha() and vpr.text[0] not in ("/", "#", "@", "!"):
@@ -219,7 +217,7 @@ async def vapor(vpr):
         await vpr.edit("".join(reply_text))
 
 
-@register(outgoing=True, pattern="repo$")
+@ItzSjDude(outgoing=True, pattern="repo$")
 async def source(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(
@@ -227,7 +225,7 @@ async def source(e):
         )
 
 
-@register(outgoing=True, pattern="str(?: |$)(.*)")
+@ItzSjDude(outgoing=True, pattern="str(?: |$)(.*)")
 async def stretch(stret):
     """ Stretch it."""
     if not stret.text[0].isalpha() and stret.text[0] not in ("/", "#", "@", "!"):
@@ -249,7 +247,7 @@ async def stretch(stret):
         await stret.edit(reply_text)
 
 
-@register(outgoing=True, pattern="zal(?: |$)(.*)")
+@ItzSjDude(outgoing=True, pattern="zal(?: |$)(.*)")
 async def zal(zgfy):
     """ Invoke the feeling of chaos. """
     if not zgfy.text[0].isalpha() and zgfy.text[0] not in ("/", "#", "@", "!"):
@@ -286,7 +284,7 @@ async def zal(zgfy):
         await zgfy.edit("".join(reply_text))
 
 
-@register(outgoing=True, pattern="pkill$")
+@ItzSjDude(outgoing=True, pattern="pkill$")
 async def killing(killed):
     """ Dont Kill Too much -_-"""
     if not killed.text[0].isalpha() and killed.text[0] not in ("/", "#", "@", "!"):
@@ -297,7 +295,7 @@ async def killing(killed):
             )
 
 
-@register(outgoing=True, pattern="bt$")
+@ItzSjDude(outgoing=True, pattern="bt$")
 async def bluetext(bte):
     """ Believe me, you will find this useful. """
     if not bte.text[0].isalpha() and bte.text[0] not in ("/", "#", "@", "!"):
@@ -308,7 +306,7 @@ async def bluetext(bte):
             )
 
 
-@register(outgoing=True, pattern="rape$")
+@ItzSjDude(outgoing=True, pattern="rape$")
 async def raping(raped):
     """ Dont Rape Too much -_-"""
     if not raped.text[0].isalpha() and raped.text[0] not in ("/", "#", "@", "!"):
@@ -317,7 +315,7 @@ async def raping(raped):
         await raped.edit(reply_text)
 
 
-@register(outgoing=True, pattern="pro$")
+@ItzSjDude(outgoing=True, pattern="pro$")
 async def proo(pros):
     """ String for Pros only -_-"""
     if not pros.text[0].isalpha() and pros.text[0] not in ("/", "#", "@", "!"):
@@ -326,7 +324,7 @@ async def proo(pros):
         await pros.edit(reply_text)
 
 
-@register(outgoing=True, pattern="fuk$")
+@ItzSjDude(outgoing=True, pattern="fuk$")
 async def chutiya(fuks):
     """ String for fhu only -_-"""
     if not fuks.text[0].isalpha() and fuks.text[0] not in ("/", "#", "@", "!"):
@@ -335,7 +333,7 @@ async def chutiya(fuks):
         await fuks.edit(reply_text)
 
 
-@register(outgoing=True, pattern="chu$")
+@ItzSjDude(outgoing=True, pattern="chu$")
 async def chutiya(chus):
     """ String for Chu only -_-"""
     if not chus.text[0].isalpha() and chus.text[0] not in ("/", "#", "@", "!"):
@@ -344,7 +342,7 @@ async def chutiya(chus):
         await chus.edit(reply_text)
 
 
-@register(outgoing=True, pattern="thanos$")
+@ItzSjDude(outgoing=True, pattern="thanos$")
 async def thanos(thanos):
     """ String for thanos only -_-"""
     if not thanos.text[0].isalpha() and thanos.text[0] not in ("/", "#", "@", "!"):
@@ -353,7 +351,7 @@ async def thanos(thanos):
         await thanos.edit(reply_text)
 
 
-@register(outgoing=True, pattern="hardabuse$")
+@ItzSjDude(outgoing=True, pattern="hardabuse$")
 async def fuckedd(abusehard):
     """ Dont Use this Too much bsdk -_-"""
     if not abusehard.text[0].isalpha() and abusehard.text[0] not in (
@@ -367,7 +365,7 @@ async def fuckedd(abusehard):
         await abusehard.edit(reply_text)
 
 
-@register(outgoing=True, pattern="gey$")
+@ItzSjDude(outgoing=True, pattern="gey$")
 async def geys(geyed):
     """ Use only for gey ppl -_-"""
     if not geyed.text[0].isalpha() and geyed.text[0] not in ("/", "#", "@", "!"):
@@ -376,7 +374,7 @@ async def geys(geyed):
         await geyed.edit(reply_text)
 
 
-@register(outgoing=True, pattern="abuse$")
+@ItzSjDude(outgoing=True, pattern="abuse$")
 async def abusing(abused):
     """ Dont Abuse Too much bsdk -_-"""
     if not abused.text[0].isalpha() and abused.text[0] not in ("/", "#", "@", "!"):
@@ -385,7 +383,7 @@ async def abusing(abused):
         await abused.edit(reply_text)
 
 
-@register(outgoing=True, pattern="owo(?: |$)(.*)")
+@ItzSjDude(outgoing=True, pattern="owo(?: |$)(.*)")
 async def faces(owo):
     """ UwU """
     if not owo.text[0].isalpha() and owo.text[0] not in ("/", "#", "@", "!"):
@@ -409,35 +407,35 @@ async def faces(owo):
         await owo.edit(reply_text)
 
 
-@register(outgoing=True, pattern="react$")
+@ItzSjDude(outgoing=True, pattern="react$")
 async def react_meme(react):
     """ Make your userbot react to everything. """
     if not react.text[0].isalpha() and react.text[0] not in ("/", "#", "@", "!"):
         await react.edit(random.choice(FACEREACTS))
 
 
-@register(outgoing=True, pattern="shg$")
+@ItzSjDude(outgoing=True, pattern="shg$")
 async def shrugger(shg):
     r""" ¯\_(ツ)_/¯ """
     if not shg.text[0].isalpha() and shg.text[0] not in ("/", "#", "@", "!"):
         await shg.edit(random.choice(SHGS))
 
 
-@register(outgoing=True, pattern="noob$")
+@ItzSjDude(outgoing=True, pattern="noob$")
 async def metoo(hahayes):
     """ Haha yes """
     if not hahayes.text[0].isalpha() and hahayes.text[0] not in ("/", "#", "@", "!"):
         await hahayes.edit(random.choice(NOOBSTR))
 
 
-@register(outgoing=True, pattern="rendi$")
+@ItzSjDude(outgoing=True, pattern="rendi$")
 async def metoo(hahayes):
     """ Haha yes """
     if not hahayes.text[0].isalpha() and hahayes.text[0] not in ("/", "#", "@", "!"):
         await hahayes.edit(random.choice(RENDISTR))
 
 
-@register(outgoing=True, pattern="oof$")
+@ItzSjDude(outgoing=True, pattern="oof$")
 async def Oof(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         t = "Oof"
@@ -446,13 +444,13 @@ async def Oof(e):
             await e.edit(t)
 
 
-@register(outgoing=True, pattern="10iq$")
+@ItzSjDude(outgoing=True, pattern="10iq$")
 async def iqless(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("♿")
 
 
-@register(outgoing=True, pattern="mock(?: |$)(.*)")
+@ItzSjDude(outgoing=True, pattern="mock(?: |$)(.*)")
 async def spongemocktext(mock):
     """ Do it and find the real fun. """
     if not mock.text[0].isalpha() and mock.text[0] not in ("/", "#", "@", "!"):
@@ -477,7 +475,7 @@ async def spongemocktext(mock):
         await mock.edit("".join(reply_text))
 
 
-@register(outgoing=True, pattern="clap(?: |$)(.*)")
+@ItzSjDude(outgoing=True, pattern="clap(?: |$)(.*)")
 async def claptext(memereview):
     """ Praise people! """
     if not memereview.text[0].isalpha() and memereview.text[0] not in (
@@ -501,7 +499,7 @@ async def claptext(memereview):
         await memereview.edit(reply_text)
 
 
-@register(outgoing=True, pattern="smk (.*)")
+@ItzSjDude(outgoing=True, pattern="smk (.*)")
 async def smrk(smk):
     if not smk.text[0].isalpha() and smk.text[0] not in ("/", "#", "@", "!"):
         textx = await smk.get_reply_message()
@@ -520,7 +518,7 @@ async def smrk(smk):
         await smk.edit(reply_text)
 
 
-@register(
+@ItzSjDude(
     outgoing=True,
     pattern="lfy (.*)",
 )
@@ -545,84 +543,3 @@ async def let_me_google_that_for_you(lmgtfy_q):
             )
 
 
-CMD_HELP.update(
-    {
-        "memes": ".cowsay\
-\nUsage: cow which says things.\
-\n\n.milksay\
-\nUsage: Weird Milk that can speak\
-\n\n:/\
-\nUsage: Check yourself ;)\
-\n\n-_-\
-\nUsage: Ok...\
-\n\n;_;\
-\nUsage: Like `-_-` but crying.\
-\n\n.cp\
-\nUsage: Copypasta the famous meme\
-\n\n.vapor\
-\nUsage: Vaporize everything!\
-\n\n.str\
-\nUsage: Stretch it.\
-\n\n.10iq\
-\nUsage: You retard !!\
-\n\n.zal\
-\nUsage: Invoke the feeling of chaos.\
-\n\n.oof\
-\nUsage: Ooooof\
-\n\n.moon\
-\nUsage: kensar moon animation.\
-\n\n.clock\
-\nUsage: kensar clock animation.\
-\n\n.earth\
-\nUsage: kensar earth animation.\
-\n\n.hi\
-\nUsage: Greet everyone!\
-\n\n.coinflip <heads/tails>\
-\nUsage: Flip a coin !!\
-\n\n.owo\
-\nUsage: UwU\
-\n\n.react\
-\nUsage: Make your userbot react to everything.\
-\n\n.slap\
-\nUsage: reply to slap them with random objects !!\
-\n\n.cry\
-\nUsage: y u du dis, i cri.\
-\n\n.shg\
-\nUsage: Shrug at it !!\
-\n\n.runs\
-\nUsage: Run, run, RUNNN! [`.disable runs`: disable | `.enable runs`: enable]\
-\n\n.metoo\
-\nUsage: Haha yes\
-\n\n.mock\
-\nUsage: Do it and find the real fun.\
-\n\n.clap\
-\nUsage: Praise people!\
-\n\n.f <emoji/character>\
-\nUsage: Pay Respects.\
-\n\n.bt\
-\nUsage: Believe me, you will find this useful.\
-\n\n.smk <text/reply>\
-\nUsage: A shit module for ツ , who cares.\
-\n\n.type\
-\nUsage: Just a small command to make your keyboard become a typewriter!\
-\n\n.lfy <query>\
-\nUsage: Let me Google that for you real quick !!\
-\n\n.decide\
-\nUsage: Make a quick decision.\
-\n\n.abusehard\
-\nUsage: You already got that! Ain't?.\
-\n\n.chu\
-\nUsage: Incase, the person infront of you is....\
-\n\n.fuk\
-\nUsage: The onlu word that can be used fucking everywhere.\
-\n\n.thanos\
-\nUsage: Try and then Snap.\
-\n\n.noob\
-\nUsage: Whadya want to know? Are you a NOOB?\
-\n\n.pro\
-\nUsage: If you think you're pro, try this.\
-\n\n.abuse\
-\nUsage: Protects you from unwanted peeps.\
-\n\n\nThanks to 🅱️ottom🅱️ext🅱️ot (@NotAMemeBot) for some of these."
-    }
-)
