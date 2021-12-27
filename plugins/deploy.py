@@ -7,8 +7,6 @@ Available Commands:
 
 import asyncio
 
-from pikabot.utils import ItzSjDude
-
 DEFAULTUSER = "PikaBot"
 
 
