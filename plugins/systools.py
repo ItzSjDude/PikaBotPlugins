@@ -6,7 +6,7 @@
 {i}logs
 **Usage**: Sends your botlogs in current chat\n
 {i}restart
-**Usage**: Restarts Pikabot"""
+**Usage**: Restarts Infxbot"""
 
 from . import _dyno, _logs, _restart, _vars
 

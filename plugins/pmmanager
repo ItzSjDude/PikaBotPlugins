@@ -1,10 +1,10 @@
-"""Pm Manager of Pikabot
+"""Pm Manager of Infxbot
 {i}a <approves pm>
 {i}da <disapproves Pm>
 {i}blk <block user>
 {i}la <lists approved Pms>
 """
-# Made By @Infinix for Pikachu UserBot
+# Made By @Infinix for Infxchu UserBot
 
 import asyncio
 import io
@@ -33,7 +33,7 @@ CUSTOM_MIDDLE_PMP = (
 )
 USER_BOT_WARN_ZERO = "`You were spamming my peru master's inbox, henceforth your retarded lame ass has been blocked by my master's userbot.` "
 USER_BOT_NO_WARN = (
-    "`Hello ! This is` **[Pikachu Userbot](t.me/PikachuUserbot)**\n"
+    "`Hello ! This is` **[Infxchu Userbot](t.me/InfxchuUserbot)**\n"
     "`Private Messaging Security Protocol ⚠️`\n\n"
     "**You Have Trespassed To My Boss\n"
     f"{duser}'s Inbox**\n\n"

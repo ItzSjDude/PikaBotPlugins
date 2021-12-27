@@ -33,7 +33,7 @@ async def _(event):
     after_tr_text = translated.text
     # TODO: emojify the :
     # either here, or before translation
-    output_str = """**Translated By Pikabot**\n\nSource **( {} )**\n\nTranslation **( {} )**
+    output_str = """**Translated By Infxbot**\n\nSource **( {} )**\n\nTranslation **( {} )**
          {}""".format(
         translated.src, lan, after_tr_text
     )

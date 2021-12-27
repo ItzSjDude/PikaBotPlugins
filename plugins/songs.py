@@ -1,4 +1,4 @@
-"""Songs Plugin for Pikabot
+"""Songs Plugin for Infxbot
 {i}song <song name>
 """
 # Made By @Infinix. All rights Reserved
@@ -25,7 +25,7 @@ async def _(event):
             await event.client.send_file(
                 event.chat_id,
                 ac,
-                caption=f"**{input_str}\nUploaded by [Pikabot](t.me/PikachuUserbot)**",
+                caption=f"**{input_str}\nUploaded by [Infxbot](t.me/InfxchuUserbot)**",
             )
             await chut.delete()
         else:

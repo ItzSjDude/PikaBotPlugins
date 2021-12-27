@@ -1,7 +1,7 @@
-"""Ping Module for Pikabot
+"""Ping Module for Infxbot
 {i}infx"""
 
-# Made by @Infinix for Pikabot
+# Made by @Infinix for Infxbot
 from . import _ping
 
 

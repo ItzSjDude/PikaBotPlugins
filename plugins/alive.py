@@ -1,4 +1,4 @@
-"""Alive Plugin for Pikabot
+"""Alive Plugin for Infxbot
 {i}alive
 """
 # Made by @Infinix. All Rights Reserved

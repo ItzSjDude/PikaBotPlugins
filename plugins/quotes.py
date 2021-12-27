@@ -12,7 +12,7 @@ async def quote_search(event):
     input_url = "https://bots.shrimadhavuk.me/Telegram/GoodReadsQuotesBot/?q={}".format(
         search_string
     )
-    headers = {"USER-AGENT": "Pikabot"}
+    headers = {"USER-AGENT": "Infxbot"}
     try:
         response = requests.get(input_url, headers=headers).json()
     except BaseException:

@@ -2573,7 +2573,7 @@ async def _carbon(e):
         await e.client.send_file(
             e.chat_id,
             file,
-            caption="<< Here's your carbon, \n Carbonised by [PikaBot](t.me/PikachuUserBot)>> ",
+            caption="<< Here's your carbon, \n Carbonised by [InfxBot](t.me/InfxchuUserBot)>> ",
             force_document=True,
             reply_to=e.message.reply_to_msg_id,
         )
@@ -2734,12 +2734,12 @@ async def findcolour(event):
             input_str = input_str.replace("#", "#COLOR_")
             await event.client.send_file(
                 event.chat_id,
-                "PikaBot.png",
+                "InfxBot.png",
                 force_document=False,
                 caption=input_str,
                 reply_to=message_id,
             )
-            os.remove("PikaBot.png")
+            os.remove("InfxBot.png")
             await event.delete()
     else:
         await event.edit("Syntax: `.color <color_code>`")
@@ -3296,7 +3296,7 @@ async def dict(event):
         return
     input_str = event.pattern_match.group(1)
     input_url = "https://bots.shrimadhavuk.me/dictionary/?s={}".format(input_str)
-    headers = {"USER-AGENT": "PikaBot"}
+    headers = {"USER-AGENT": "InfxBot"}
     caption_str = f"Meaning of __{input_str}__\n"
     try:
         response = requests.get(input_url, headers=headers).json()
@@ -3346,7 +3346,7 @@ async def _ding(event):
         "⬜⬜⬛⬜⬜\n⬜⬜⬛⬜⬜\n⬜⬜🔴⬜⬜",
         "⬜⬜⬛⬜⬜\n⬜⬛⬜⬜⬜\n🔴⬜⬜⬜⬜",
         "🔴⬛⬛⬜⬜\n⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜",
-        "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜\n⬜[I Am Here mdafuk'in Bitch](t.me/PikachuUserbot) ⬜\n⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜",
+        "⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜\n⬜[I Am Here mdafuk'in Bitch](t.me/InfxchuUserbot) ⬜\n⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜",
     ]
 
     for i in animation_ttl:
@@ -3572,7 +3572,7 @@ if pdb.Omega is not None and tgbot is not None:
             rev_text = query[::-1]
             buttons = paginate_help(0, bot.infx_cmd, "helpme")
             result = builder.article(
-                "©Pikachu Userbot Help",
+                "©Infxchu Userbot Help",
                 text="{}\nCurrently Loaded Plugins: {}".format(
                     query, len(bot.infx_cmd)
                 ),
@@ -3592,7 +3592,7 @@ if pdb.Omega is not None and tgbot is not None:
             await infx_.edit(buttons=buttons)
 
         else:
-            _alert_ = "Please get your own PikaBot, and don't use mine!"
+            _alert_ = "Please get your own InfxBot, and don't use mine!"
             await infx_.answer(_alert_, cache_time=0, alert=True)
 
     @tgbot.on(Infx_CallBack(data=re.compile(rb"helpme_prev\((.+?)\)")))
@@ -3607,29 +3607,29 @@ if pdb.Omega is not None and tgbot is not None:
             await infx_.edit(buttons=buttons)
 
         else:
-            _alert_ = "Please get your own PikaBot, and don't use mine!"
+            _alert_ = "Please get your own InfxBot, and don't use mine!"
             await infx_.answer(_alert_, cache_time=0, alert=True)
 
     @tgbot.on(Infx_CallBack(data=re.compile(b"restart")))
     async def _infxcallback(infx_):
         _infxa_ = (infx_.query).user_id
         if _infxa_ in Ccache:
-            await infx_.edit("Pika Pi! Restarting wait for 1 Min!")
+            await infx_.edit("Infx Pi! Restarting wait for 1 Min!")
             await asyncio.sleep(4)
             await infx_.delete()
             infx_start()
         else:
-            _alert_ = "You can't Restart me, Get your own Pikachu Userbot"
+            _alert_ = "You can't Restart me, Get your own Infxchu Userbot"
             await infx_.answer(_alert_, cache_time=0, alert=True)
 
     @tgbot.on(Infx_CallBack(data=re.compile(b"close")))
     async def _infxcallback(infx_):
         if _infxa_ in Ccache:
-            _a_ = await infx_.edit("Pika Pi! Menu Closed!")
+            _a_ = await infx_.edit("Infx Pi! Menu Closed!")
             await asyncio.sleep(3)
             await _a_.delete()
         else:
-            _alert_ = "You can't close this menu ploxx, Get your own Pikachu Userbot"
+            _alert_ = "You can't close this menu ploxx, Get your own Infxchu Userbot"
             await infx_.answer(_alert_, cache_time=0, alert=True)
 
     @tgbot.on(Infx_CallBack(data=re.compile(b"us_plugin_(.*)")))
@@ -3649,7 +3649,7 @@ if pdb.Omega is not None and tgbot is not None:
             iq = await infx_.client.get_me()
             if iq.id == infx_id1:
                 ax[0]
-                _alert_ = "Hi My Peru Master's bot here ,\n\nWhy r u clicking this this.Please get your own PikaBot, and don't use mine!"
+                _alert_ = "Hi My Peru Master's bot here ,\n\nWhy r u clicking this this.Please get your own InfxBot, and don't use mine!"
                 await infx_.answer(_alert_, cache_time=0, alert=True)
 
     @tgbot.on(Infx_CallBack(data=re.compile(b"infxb(.*)")))
@@ -3662,7 +3662,7 @@ if pdb.Omega is not None and tgbot is not None:
             _infx_ = paginate_help(0, _infxcmds, "helpme")
             await infx_.edit(_infx, buttons=_infx_, link_preview=False)
         else:
-            _alert_ = "Please get your own PikaBot, and don't use mine!"
+            _alert_ = "Please get your own InfxBot, and don't use mine!"
             await infx_.answer(_alert_, cache_time=0, alert=True)
 
     @tgbot.on(Infx_CallBack(data=re.compile(b"tools(.*)")))
@@ -3680,7 +3680,7 @@ if pdb.Omega is not None and tgbot is not None:
 
 @tgbot.on(Infx_CallBack(data=re.compile(rb"infx1\((.+?)\)")))
 async def _(_infx):
-    infxcmds = tgbot.PikaAsst
+    infxcmds = tgbot.InfxAsst
     c_p_n = int(_infx.data_match.group(1).decode("UTF-8"))
     buttons = assistent_help(c_p_n + 1, infxcmds, "helpme")
     await infx_.edit(buttons=buttons)
@@ -3688,7 +3688,7 @@ async def _(_infx):
 
 @tgbot.on(Infx_CallBack(data=re.compile(rb"infx2\((.+?)\)")))
 async def _(infx_):
-    infxcmds = tgbot.PikaAsst
+    infxcmds = tgbot.InfxAsst
     c_p_n = int(infx_.data_match.group(1).decode("UTF-8"))
     buttons = assistent_help(c_p_n - 1, infxcmds, "helpme")  # pylint:disable=E0602
     await infx_.edit(buttons=buttons)
@@ -3696,7 +3696,7 @@ async def _(infx_):
 
 @tgbot.on(Infx_CallBack(data=re.compile(b"infx3")))
 async def _(infx_):
-    await infx_.edit("Pika Pi! Restarting wait for 1 Min!")
+    await infx_.edit("Infx Pi! Restarting wait for 1 Min!")
     await asyncio.sleep(4)
     await infx_.delete()
     infx_start()
@@ -3704,7 +3704,7 @@ async def _(infx_):
 
 @tgbot.on(Infx_CallBack(data=re.compile(b"infx4")))
 async def _(infx_):
-    _a_ = await infx_.edit("Pika Pi! Menu Closed!")
+    _a_ = await infx_.edit("Infx Pi! Menu Closed!")
     await asyncio.sleep(3)
     await _a_.delete()
 
@@ -3713,7 +3713,7 @@ async def _(infx_):
 async def _(infx_):
     a = randint(0, 9)
     _rx_ = f"{_emo_[a]}" + f" {rx}"
-    _infxcmds = tgbot.PikaAsst
+    _infxcmds = tgbot.InfxAsst
     _infx_ = infx_.data_match.group(1).decode("UTF-8")
     _infx = _infxcmds[_infx_].__doc__.format(i=_rx_)
     _infxB = [(custom.Button.inline("⫷BacK", data="infx6"))]
@@ -3723,7 +3723,7 @@ async def _(infx_):
 @tgbot.on(Infx_CallBack(data=re.compile(b"infx6(.*)")))
 async def _(infx_):
     _infx = f"""Pïkå¢hµ Úsêrßð† {helpstr}"""
-    _infxcmds = tgbot.PikaAsst
+    _infxcmds = tgbot.InfxAsst
     _infx += "\n**Currently Loaded Plugins**: {}".format(len(_infxcmds))
     _infx_ = assistent_help(0, _infxcmds, "helpme")
     await infx_.edit(_infx, buttons=_infx_, link_preview=False)
@@ -4202,7 +4202,7 @@ async def _gps(event):
 
     await event.edit("Finding This Location In Maps Server.....")
 
-    geolocator = Nominatim(user_agent="Pikachu Userbot")
+    geolocator = Nominatim(user_agent="Infxchu Userbot")
     geoloc = geolocator.geocode(input_str)
 
     if geoloc:
@@ -4472,7 +4472,7 @@ async def _getinfo(event):
     except Exception as e:
         dc_id = "`Need a Profile Picture to check **this**`"
         str(e)
-    caption = """<b>Extracted UserInfo From Telegram Database By PikaBot<b>
+    caption = """<b>Extracted UserInfo From Telegram Database By InfxBot<b>
 <b>🔥Telegram ID</b>: <code>{}</code>
 <b>🤟Permanent Link</b>: <a href='tg://user?id={}'>Click Here</a>
 <b>🗣️First Name</b>: <code>{}</code>
@@ -4927,7 +4927,7 @@ async def _rmbg(event):
     contentType = output_file_name.headers.get("content-type")
     if "image" in contentType:
         with io.BytesIO(output_file_name.content) as remove_bg_image:
-            remove_bg_image.name = "@PikaBot.png"
+            remove_bg_image.name = "@InfxBot.png"
             await event.client.send_file(
                 event.chat_id,
                 remove_bg_image,
@@ -4940,7 +4940,7 @@ async def _rmbg(event):
         ms = (end - start).seconds
         await infx_msg(
             a,
-            "Removed dat annoying Backgroup in {} seconds, powered by Pikachu UserBot".format(
+            "Removed dat annoying Backgroup in {} seconds, powered by Infxchu UserBot".format(
                 ms
             ),
         )
@@ -5325,7 +5325,7 @@ async def apk(e):
             + app_link
             + "'>View in Play Store</a>"
         )
-        app_details += "\n\n•••> **Pikabot** <•••"
+        app_details += "\n\n•••> **Infxbot** <•••"
         await infx_msg(a, app_details, link_preview=True, parse_mode="HTML")
     except IndexError:
         await infx_msg(a, "No result found in search. Please enter **Valid app name**")

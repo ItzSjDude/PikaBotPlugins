@@ -1,4 +1,4 @@
-"""Pikabot plugin for managing uploads,downloads
+"""Infxbot plugin for managing uploads,downloads
 {i}dl <link|filename> or reply to media
 \nUsage: Downloads file to the server.
 {i}ul <path in server>

@@ -174,7 +174,7 @@ async def _(event):
                     event.chat_id,
                     downloaded_file_name,
                     thumb=thumb,
-                    caption="reuploaded by [PikaBot](https://www.github.com/ItzSjDude/PikachuUserbot",
+                    caption="reuploaded by [InfxBot](https://www.github.com/ItzSjDude/InfxchuUserbot",
                     force_document=False,
                     allow_cache=False,
                     reply_to=event.message.id,

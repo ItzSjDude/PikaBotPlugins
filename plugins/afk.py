@@ -1,4 +1,4 @@
-"""**Afk Plugin for PikaBot**\n
+"""**Afk Plugin for InfxBot**\n
 {i}afk [Optional Reason]
 **Usage**: Sets you as afk.
 Replies to anyone who tags/PM's

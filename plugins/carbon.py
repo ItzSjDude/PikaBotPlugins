@@ -1,6 +1,6 @@
 # Ported by @R4v4n4 from paperplane
 
-"""Carbon Module for PikaBot
+"""Carbon Module for InfxBot
 {i}carbon <reply to message>"""
 
 from . import _carbon

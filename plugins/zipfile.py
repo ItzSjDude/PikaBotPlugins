@@ -41,7 +41,7 @@ async def _(event):
             await event.client.send_file(
                 event.chat_id,
                 directory_name + ".zip",
-                caption="Zipped By PikaBot",
+                caption="Zipped By InfxBot",
                 force_document=True,
                 allow_cache=False,
                 reply_to=event.message.id,

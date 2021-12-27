@@ -7,7 +7,7 @@ Available Commands:
 
 import asyncio
 
-DEFAULTUSER = "PikaBot"
+DEFAULTUSER = "InfxBot"
 
 
 @Infinix(outgoing=True, pattern=r"deploy")
@@ -26,17 +26,17 @@ async def _(event):
     await event.edit("Deploying...")
 
     animation_chars = [
-        "**Heroku Connecting To Latest Github Build (ItzSjDude/PikachuUserbot)**",
+        "**Heroku Connecting To Latest Github Build (ItzSjDude/InfxchuUserbot)**",
         "**Build started by user** **{DEFAULTUSER}**",
         "**Deploy** `562a91f0` **by user** **{DEFAULTUSER}**",
         "**Restarting Heroku Server...**",
         "**State changed from up to starting**",
         "**Stopping all processes with SIGTERM**",
         "**Process exited with** `status 143`",
-        "**Starting process with command** `python3 -m Pikabot`",
+        "**Starting process with command** `python3 -m Infxbot`",
         "**State changed from starting to up**",
-        "__INFO:Pikabot:Logged in as 779890498__",
-        "__INFO:PikaBot:Successfully loaded all plugins__",
+        "__INFO:Infxbot:Logged in as 779890498__",
+        "__INFO:InfxBot:Successfully loaded all plugins__",
         "**Build Succeeded**",
     ]
 

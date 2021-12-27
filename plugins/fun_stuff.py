@@ -1,4 +1,4 @@
-"""Bombs Animation Plugin For Pikabot
+"""Bombs Animation Plugin For Infxbot
 {i}bombs"""
 
 import asyncio

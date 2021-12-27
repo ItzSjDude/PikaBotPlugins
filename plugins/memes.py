@@ -221,7 +221,7 @@ async def vapor(vpr):
 async def source(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit(
-            "Click [Here](https://github.com/ItzSjDude/PikachuUserbot) to open this mdafuk'in cool userbot repo ."
+            "Click [Here](https://github.com/ItzSjDude/InfxchuUserbot) to open this mdafuk'in cool userbot repo ."
         )
 
 
