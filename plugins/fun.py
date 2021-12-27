@@ -1,7 +1,5 @@
 import random
 
-from pikabot.utils import ItzSjDude
-
 METOOSTR = [
     "`Me too thanks`",
     "`Haha yes, me too`",
