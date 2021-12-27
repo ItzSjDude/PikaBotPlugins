@@ -3,7 +3,6 @@ Syntax: .count"""
 import logging
 import time
 
-from pikabot.utils import admin_cmd
 from telethon.events import NewMessage
 from telethon.tl.custom import Dialog
 from telethon.tl.types import Channel, Chat, User
