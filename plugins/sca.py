@@ -15,9 +15,6 @@ cancel"""
 
 import asyncio
 
-from pikabot.utils import ItzSjDude
-
-
 @ItzSjDude(outgoing=True, pattern="sca ?(.*)")
 async def _(event):
     if event.fwd_from:
