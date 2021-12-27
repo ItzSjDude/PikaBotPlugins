@@ -1,7 +1,6 @@
 """ Spotify / Deezer downloader plugin by @anubisxx | Syntax: .sdd link"""
 import asyncio
 
-from pikabot.utils import ItzSjDude
 from telethon.errors.rpcerrorlist import (
     UserAlreadyParticipantError,
     YouBlockedUserError,
