@@ -6,8 +6,6 @@ import io
 import time
 
 import aiohttp
-from pikabot.utils import ItzSjDude
-
 
 @ItzSjDude(outgoing=True, pattern="weathers (.*)")
 async def _(event):
