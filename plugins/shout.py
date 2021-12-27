@@ -3,9 +3,6 @@ usage: .shout message
 originaly from : @corsicanu_bot
 """
 
-from pikabot.utils import ItzSjDude
-
-
 @ItzSjDude(outgoing=True, pattern=r"shout")
 async def shout(args):
     if args.fwd_from:
