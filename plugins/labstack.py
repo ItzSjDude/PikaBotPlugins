@@ -3,8 +3,6 @@ import os
 import subprocess
 
 import requests
-from pikabot.utils import ItzSjDude
-
 
 @ItzSjDude(outgoing=True, pattern="labstack ?(.*)")
 async def labstack(event):
