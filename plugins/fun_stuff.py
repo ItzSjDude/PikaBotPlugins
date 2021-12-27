@@ -4,7 +4,6 @@
 import asyncio
 from collections import deque
 
-from pikabot.utils import ItzSjDude
 from telethon.tl.types import InputMediaDice
 
 # EMOJI CONSTANTS
