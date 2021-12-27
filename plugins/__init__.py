@@ -57,7 +57,7 @@ from telethon.errors.rpcerrorlist import (
     YouBlockedUserError,
 )
 from telethon.events import ChatAction
-from telethon.events.callbackquery import CallbackQuery as Pika_CallBack
+from telethon.events.callbackquery import CallbackQuery as Infx_CallBack
 from telethon.tl import functions, types
 from telethon.tl.functions.channels import (
     EditAdminRequest,
@@ -3581,7 +3581,7 @@ if pdb.Omega is not None and tgbot is not None:
             )
         await infx_.answer([result] if result else None)
 
-    @tgbot.on(Pika_CallBack(data=re.compile(rb"helpme_next\((.+?)\)")))
+    @tgbot.on(Infx_CallBack(data=re.compile(rb"helpme_next\((.+?)\)")))
     async def _infxcallback(infx_):
         _infxa_ = (infx_.query).user_id
         if _infxa_ in Ccache:
@@ -3595,7 +3595,7 @@ if pdb.Omega is not None and tgbot is not None:
             _alert_ = "Please get your own PikaBot, and don't use mine!"
             await infx_.answer(_alert_, cache_time=0, alert=True)
 
-    @tgbot.on(Pika_CallBack(data=re.compile(rb"helpme_prev\((.+?)\)")))
+    @tgbot.on(Infx_CallBack(data=re.compile(rb"helpme_prev\((.+?)\)")))
     async def _infxcallback(infx_):
         _infxa_ = (infx_.query).user_id
         if _infxa_ in Ccache:
@@ -3610,7 +3610,7 @@ if pdb.Omega is not None and tgbot is not None:
             _alert_ = "Please get your own PikaBot, and don't use mine!"
             await infx_.answer(_alert_, cache_time=0, alert=True)
 
-    @tgbot.on(Pika_CallBack(data=re.compile(b"restart")))
+    @tgbot.on(Infx_CallBack(data=re.compile(b"restart")))
     async def _infxcallback(infx_):
         _infxa_ = (infx_.query).user_id
         if _infxa_ in Ccache:
@@ -3622,7 +3622,7 @@ if pdb.Omega is not None and tgbot is not None:
             _alert_ = "You can't Restart me, Get your own Pikachu Userbot"
             await infx_.answer(_alert_, cache_time=0, alert=True)
 
-    @tgbot.on(Pika_CallBack(data=re.compile(b"close")))
+    @tgbot.on(Infx_CallBack(data=re.compile(b"close")))
     async def _infxcallback(infx_):
         if _infxa_ in Ccache:
             _a_ = await infx_.edit("Pika Pi! Menu Closed!")
@@ -3632,7 +3632,7 @@ if pdb.Omega is not None and tgbot is not None:
             _alert_ = "You can't close this menu ploxx, Get your own Pikachu Userbot"
             await infx_.answer(_alert_, cache_time=0, alert=True)
 
-    @tgbot.on(Pika_CallBack(data=re.compile(b"us_plugin_(.*)")))
+    @tgbot.on(Infx_CallBack(data=re.compile(b"us_plugin_(.*)")))
     async def _infxcallback(infx_):
         _infxa_ = (infx_.query).user_id
         if _infxa_ in Ccache:
@@ -3652,7 +3652,7 @@ if pdb.Omega is not None and tgbot is not None:
                 _alert_ = "Hi My Peru Master's bot here ,\n\nWhy r u clicking this this.Please get your own PikaBot, and don't use mine!"
                 await infx_.answer(_alert_, cache_time=0, alert=True)
 
-    @tgbot.on(Pika_CallBack(data=re.compile(b"infxb(.*)")))
+    @tgbot.on(Infx_CallBack(data=re.compile(b"infxb(.*)")))
     async def _infxcallback(infx_):
         _infxa_ = (infx_.query).user_id
         if _infxa_ in Ccache:
@@ -3665,7 +3665,7 @@ if pdb.Omega is not None and tgbot is not None:
             _alert_ = "Please get your own PikaBot, and don't use mine!"
             await infx_.answer(_alert_, cache_time=0, alert=True)
 
-    @tgbot.on(Pika_CallBack(data=re.compile(b"tools(.*)")))
+    @tgbot.on(Infx_CallBack(data=re.compile(b"tools(.*)")))
     async def _infxcallback(infx_):
         _infxa_ = (infx_.query).user_id
         if _infxa_ in Ccache:
@@ -3678,7 +3678,7 @@ if pdb.Omega is not None and tgbot is not None:
             await infx_.edit(_infx, buttons=_infxB)
 
 
-@tgbot.on(Pika_CallBack(data=re.compile(rb"infx1\((.+?)\)")))
+@tgbot.on(Infx_CallBack(data=re.compile(rb"infx1\((.+?)\)")))
 async def _(_infx):
     infxcmds = tgbot.PikaAsst
     c_p_n = int(_infx.data_match.group(1).decode("UTF-8"))
@@ -3686,7 +3686,7 @@ async def _(_infx):
     await infx_.edit(buttons=buttons)
 
 
-@tgbot.on(Pika_CallBack(data=re.compile(rb"infx2\((.+?)\)")))
+@tgbot.on(Infx_CallBack(data=re.compile(rb"infx2\((.+?)\)")))
 async def _(infx_):
     infxcmds = tgbot.PikaAsst
     c_p_n = int(infx_.data_match.group(1).decode("UTF-8"))
@@ -3694,7 +3694,7 @@ async def _(infx_):
     await infx_.edit(buttons=buttons)
 
 
-@tgbot.on(Pika_CallBack(data=re.compile(b"infx3")))
+@tgbot.on(Infx_CallBack(data=re.compile(b"infx3")))
 async def _(infx_):
     await infx_.edit("Pika Pi! Restarting wait for 1 Min!")
     await asyncio.sleep(4)
@@ -3702,14 +3702,14 @@ async def _(infx_):
     infx_start()
 
 
-@tgbot.on(Pika_CallBack(data=re.compile(b"infx4")))
+@tgbot.on(Infx_CallBack(data=re.compile(b"infx4")))
 async def _(infx_):
     _a_ = await infx_.edit("Pika Pi! Menu Closed!")
     await asyncio.sleep(3)
     await _a_.delete()
 
 
-@tgbot.on(Pika_CallBack(data=re.compile(b"infx5(.*)")))
+@tgbot.on(Infx_CallBack(data=re.compile(b"infx5(.*)")))
 async def _(infx_):
     a = randint(0, 9)
     _rx_ = f"{_emo_[a]}" + f" {rx}"
@@ -3720,7 +3720,7 @@ async def _(infx_):
     await infx_.edit(_infx, buttons=_infxB)
 
 
-@tgbot.on(Pika_CallBack(data=re.compile(b"infx6(.*)")))
+@tgbot.on(Infx_CallBack(data=re.compile(b"infx6(.*)")))
 async def _(infx_):
     _infx = f"""Pïkå¢hµ Úsêrßð† {helpstr}"""
     _infxcmds = tgbot.PikaAsst
