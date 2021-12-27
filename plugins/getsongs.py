@@ -7,10 +7,6 @@ import glob
 import os
 
 from selenium import webdriver
-from userbot import ALIVE_NAME
-
-DEFAULTUSER = ALIVE_NAME
-
 
 @ItzSjDude(pattern="getsong( (.*)|$)")
 async def _(event):
