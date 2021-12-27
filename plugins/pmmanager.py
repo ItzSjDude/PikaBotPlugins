@@ -10,8 +10,6 @@ import asyncio
 import io
 import os
 
-from pikabot import *
-from pikabot.utils import *
 from telethon import events, functions
 from telethon.tl.functions.users import GetFullUserRequest
 
@@ -28,8 +26,6 @@ duser = {}
 PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
 DEFAULTUSER = (
-    str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
-)
 CUSTOM_MIDDLE_PMP = (
     str(CUSTOM_PMPERMIT)
     if CUSTOM_PMPERMIT
