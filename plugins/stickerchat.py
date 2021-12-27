@@ -22,7 +22,6 @@ from io import BytesIO
 
 import requests
 import telethon
-from pikabot.utils import ItzSjDude
 from PIL import Image
 
 logger = logging.getLogger(__name__)
