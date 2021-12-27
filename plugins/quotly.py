@@ -1,11 +1,7 @@
 """QuotLy: Avaible commands: .qbot
 """
-from pikabot.utils import ItzSjDude
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-
-# @register(outgoing=True, pattern="^.q(?: |$)(.*)")
-
 
 @ItzSjDude(outgoing=True, pattern=r"qbot(?: |$)(.*)")
 async def _(event):
