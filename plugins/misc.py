@@ -10,9 +10,6 @@
 from random import randint
 from time import sleep
 
-from pikabot.utils import ItzSjDude
-
-
 @ItzSjDude(outgoing=True, pattern="random")
 async def randomise(items):
     """ For .random command, get a random item from the list of items. """
