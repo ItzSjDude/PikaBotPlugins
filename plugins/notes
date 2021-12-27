@@ -1,4 +1,4 @@
-from pikabot import bot, bot2, bot3, bot4
+from INFINIX import bot, bot2, bot3, bot4
 
 from . import _add_notes, _allnotes, _remove_notes, admin_cmd, note_incm
 
