@@ -10,9 +10,6 @@
 
 import asyncio
 
-from pikabot.utils import ItzSjDude
-
-
 @ItzSjDude(outgoing=True, pattern="unoob")
 async def _(event):
 
