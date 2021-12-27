@@ -6,8 +6,6 @@ import os
 import sys
 
 import git
-from pikabot.utils import ItzSjDude
-
 # -- Constants -- #
 IS_SELECTED_DIFFERENT_BRANCH = (
     "looks like a custom branch {branch_name} "
