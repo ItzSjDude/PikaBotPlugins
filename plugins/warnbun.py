@@ -1,5 +1,4 @@
 """.admin Plugin for @UniBorg"""
-from pikabot.utils import ItzSjDude
 from telethon.tl.types import ChannelParticipantsAdmins
 
 
