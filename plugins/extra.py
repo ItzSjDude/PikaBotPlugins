@@ -2,7 +2,6 @@ import asyncio
 import time
 from collections import deque
 
-from pikabot.utils import ItzSjDude
 from telethon.tl.functions.channels import LeaveChannelRequest
 from userbot import CMD_HELP, bot
 
