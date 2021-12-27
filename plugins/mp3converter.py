@@ -5,9 +5,6 @@ import asyncio
 import os
 import time
 
- , progress
-
-
 @Infinix(outgoing=True, pattern="convert (.*)")  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
