@@ -6,7 +6,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          token: ${{ secrets.PAT }} 
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@master
         with:
