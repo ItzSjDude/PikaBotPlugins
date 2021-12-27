@@ -11,7 +11,6 @@ import zipfile
 from collections import defaultdict
 from io import BytesIO
 
-from pikabot.utils import admin_cmd
 from PIL import Image
 from telethon.errors import MessageNotModifiedError
 from telethon.errors.rpcerrorlist import StickersetInvalidError
@@ -22,11 +21,8 @@ from telethon.tl.types import (
     InputStickerSetShortName,
     MessageMediaPhoto,
 )
-from userbot import ALIVE_NAME
 
 FILLED_UP_DADDY = "Invalid pack selected."
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "No name set yet nibba"
-
 
 @borg.on(admin_cmd(pattern="kang ?(.*)"))
 async def _(event):
