@@ -9,7 +9,7 @@ import requests
 async def _(event):
     if event.fwd_from:
         return
-    start = pikatime.now()
+    start = infxtime.now()
     input_str = event.pattern_match.group(1)
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
@@ -51,7 +51,7 @@ async def _(event):
                     transcript_confidence += (
                         " " + str(alternatives["confidence"]) + " + "
                     )
-                end = pikatime.now()
+                end = infxtime.now()
                 ms = (end - start).seconds
                 if transcript_response != "":
                     string_to_show = "Language: `{}`\nTRANSCRIPT: `{}`\nTime Taken: {} seconds\nConfidence: `{}`".format(

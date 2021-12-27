@@ -1,7 +1,7 @@
 """WikiMedia.ORG
 Syntax: .wikimedia Query"""
 import requests
-from pikabot.utils import admin_cmd
+from infxbot.utils import admin_cmd
 
 
 @borg.on(admin_cmd(pattern="wikimedia (.*)"))

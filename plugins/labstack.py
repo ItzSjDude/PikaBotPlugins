@@ -47,14 +47,14 @@ async def labstack(event):
         url,
     ]
     try:
-        pikalog.info(command_to_exec)
+        infxlog.info(command_to_exec)
         t_response = subprocess.check_output(command_to_exec, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as exc:
-        pikalog.info("Status : FAIL", exc.returncode, exc.output)
+        infxlog.info("Status : FAIL", exc.returncode, exc.output)
         await event.edit(exc.output.decode("UTF-8"))
         return
     else:
-        pikalog.info(t_response)
+        infxlog.info(t_response)
         t_response_arry = "https://up.labstack.com/api/v1/links/{}/receive".format(
             r2json["code"]
         )

@@ -13,7 +13,7 @@ import time
 import traceback
 import urllib.parse
 from asyncio import sleep
-from datetime import datetime as pikatime
+from datetime import datetime as infxtime
 from os import remove
 from random import choice, randint, uniform
 from re import findall
@@ -88,7 +88,7 @@ CARBONLANG = "auto"
 LANG = "en"
 UpTime = time.time()
 try:
-    from pikabot import bot, bot2, bot3, bot4
+    from infxbot import bot, bot2, bot3, bot4
 except BaseException:
     pass
 try:
@@ -558,11 +558,11 @@ async def atnm(event):
     if event.fwd_from:
         return
     while True:
-        dname = await pikaa(event, "ALIVE_NAME")
+        dname = await infxa(event, "ALIVE_NAME")
         DM = time.strftime("%d-%m-%y")
         HM = time.strftime("%H:%M")
         name = f"🕒{HM} ⚡{dname}⚡ 📅{DM}"
-        pikalog.info(name)
+        infxlog.info(name)
         try:
             await event.client(functions.account.UpdateProfileRequest(first_name=name))
         except FloodWaitError as ex:
@@ -579,7 +579,7 @@ async def atb(event):
         DMY = time.strftime("%d.%m.%Y")
         HM = time.strftime("%H:%M:%S")
         bio = f"📅 {DMY} | {DBIO} | ⌚️ {HM}"
-        pikalog.info(bio)
+        infxlog.info(bio)
         try:
             await event.client(functions.account.UpdateProfileRequest(about=bio))
         except FloodWaitError as ex:
@@ -645,8 +645,8 @@ async def _promote(promt):
         delete_messages=True,
         pin_messages=True,
     )
-    _tg = await get_pika_tg(promt)
-    a = await pika_msg(promt, "`Promoting...`", _tg)
+    _tg = await get_infx_tg(promt)
+    a = await infx_msg(promt, "`Promoting...`", _tg)
     user, rank = await get_user_from_event(promt)
     if not rank:
         # Just in case.
@@ -659,12 +659,12 @@ async def _promote(promt):
     # Try to promote if current user is admin or creator
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await pika_msg(a, "`Promoted Successfully!`")
+        await infx_msg(a, "`Promoted Successfully!`")
 
     # If Telethon spit BadRequestError, assume
     # we don't have Promote permission
     except BadRequestError:
-        await pika_msg(a, NO_PERM)
+        await infx_msg(a, NO_PERM)
         return
 
     # Announce to the logging group if we have promoted successfully
@@ -689,8 +689,8 @@ async def _demote(dmod):
         return
 
     # If passing, declare that we're going to demote
-    _tg = await get_pika_tg(dmod)
-    a = await pika_msg(dmod, _tg, "`Demoting...`")
+    _tg = await get_infx_tg(dmod)
+    a = await infx_msg(dmod, _tg, "`Demoting...`")
     rank = "admin"  # dummy rank, lol.
     user = await get_user_from_event(dmod)
     user = user[0]
@@ -715,9 +715,9 @@ async def _demote(dmod):
     # If we catch BadRequestError from Telethon
     # Assume we don't have permission to demote
     except BadRequestError:
-        await pika_msg(a, NO_PERM)
+        await infx_msg(a, NO_PERM)
         return
-    await pika_msg(a, "`Demoted Successfully!`")
+    await infx_msg(a, "`Demoted Successfully!`")
 
     # Announce to the logging group if we have demoted successfully
     if BOTLOG:
@@ -746,9 +746,9 @@ async def _ban(bon):
         pass
     else:
         return
-    _tg = await get_pika_tg(bon)
+    _tg = await get_infx_tg(bon)
     # Announce that we're going to whack the pest
-    a = await pika_msg(
+    a = await infx_msg(
         bon,
         "`Whacking the pest!`",
         _tg,
@@ -757,7 +757,7 @@ async def _ban(bon):
     try:
         await bon.client(EditBannedRequest(bon.chat_id, user.id, BANNED_RIGHTS))
     except BadRequestError:
-        await pika_msg(a, NO_PERM)
+        await infx_msg(a, NO_PERM)
         return
     # Helps ban group join spammers more easily
     try:
@@ -765,7 +765,7 @@ async def _ban(bon):
         if reply:
             await reply.delete()
     except BadRequestError:
-        await pika_msg(
+        await infx_msg(
             a, "`I dont have message nuking rights! But still he was banned!`"
         )
         return
@@ -773,14 +773,14 @@ async def _ban(bon):
     # is done gracefully
     # Shout out the ID, so that fedadmins can fban later
     if reason:
-        await pika_msg(
+        await infx_msg(
             a,
             f"{user.first_name} was banned !!\
         \nID: `{str(user.id)}`\
         \nReason: {reason}",
         )
     else:
-        await pika_msg(
+        await infx_msg(
             a,
             f"{user.first_name} was banned !!\
         \nID: `{str(user.id)}`",
@@ -809,8 +809,8 @@ async def _unban(unbon):
         return
 
     # If everything goes well...
-    _tg = await get_pika_tg(unbon)
-    a = await pika_msg(unbon, "`Unbanning...`", _tg)
+    _tg = await get_infx_tg(unbon)
+    a = await infx_msg(unbon, "`Unbanning...`", _tg)
 
     user = await get_user_from_event(unbon)
     user = user[0]
@@ -821,7 +821,7 @@ async def _unban(unbon):
 
     try:
         await unbon.client(EditBannedRequest(unbon.chat_id, user.id, UNBAN_RIGHTS))
-        await pika_msg(a, "```Unbanned Successfully```")
+        await infx_msg(a, "```Unbanned Successfully```")
 
         if BOTLOG:
             await unbon.client.send_message(
@@ -831,7 +831,7 @@ async def _unban(unbon):
                 f"CHAT: {unbon.chat.title}(`{unbon.chat_id}`)",
             )
     except UserIdInvalidError:
-        await pika_msg(a, "`Uh oh my unban logic broke!`")
+        await infx_msg(a, "`Uh oh my unban logic broke!`")
 
 
 async def _mute(spdr):
@@ -851,19 +851,19 @@ async def _mute(spdr):
     else:
         return
 
-    _tg = await get_pika_tg(spdr)
+    _tg = await get_infx_tg(spdr)
     self_user = await auto_var(spdr)
 
     if user.id == self_user:
-        await pika_msg(
+        await infx_msg(
             spdr, "`Hands too short, can't duct tape myself...\n(ヘ･_･)ヘ┳━┳`", _tg
         )
         return
 
     # If everything goes well, do announcing and mute
-    a = await pika_msg(spdr, "`Muting...`", _tg)
-    pikamute = mute(self_user, spdr.chat_id, user.id)
-    if pikamute is False:
+    a = await infx_msg(spdr, "`Muting...`", _tg)
+    infxmute = mute(self_user, spdr.chat_id, user.id)
+    if infxmute is False:
         return await spdr.edit("`Error! User probably already muted.`")
     else:
         try:
@@ -871,9 +871,9 @@ async def _mute(spdr):
 
             # Announce that the function is done
             if reason:
-                await pika_msg(a, f"`Safely taped !!`\nReason: {reason}")
+                await infx_msg(a, f"`Safely taped !!`\nReason: {reason}")
             else:
-                await pika_msg(a, "`Safely taped !!`")
+                await infx_msg(a, "`Safely taped !!`")
 
             # Announce to logging group
             if BOTLOG:
@@ -884,7 +884,7 @@ async def _mute(spdr):
                     f"CHAT: {spdr.chat.title}(`{spdr.chat_id}`)",
                 )
         except UserIdInvalidError:
-            return await pika_msg(a, "`Uh oh my mute logic broke!`")
+            return await infx_msg(a, "`Uh oh my mute logic broke!`")
 
 
 async def _unmute(unmot):
@@ -901,9 +901,9 @@ async def _unmute(unmot):
         return
 
     # If admin or creator, inform the user and start unmuting
-    pika_id = await auto_var(unmot)
-    _tg = await get_pika_tg(unmot)
-    a = await pika_msg(unmot, "```Unmuting...```", _tg)
+    infx_id = await auto_var(unmot)
+    _tg = await get_infx_tg(unmot)
+    a = await infx_msg(unmot, "```Unmuting...```", _tg)
     user = await get_user_from_event(unmot)
     user = user[0]
     if user:
@@ -911,16 +911,16 @@ async def _unmute(unmot):
     else:
         return
 
-    pikaumute = unmute(pika_id, unmot.chat_id, user.id)
-    if pikaumute is False:
-        return await pika_msg(a, "`Error! User probably already unmuted.`")
+    infxumute = unmute(infx_id, unmot.chat_id, user.id)
+    if infxumute is False:
+        return await infx_msg(a, "`Error! User probably already unmuted.`")
     else:
 
         try:
             await unmot.client(EditBannedRequest(unmot.chat_id, user.id, UNBAN_RIGHTS))
-            await pika_msg(a, "```Unmuted Successfully```")
+            await infx_msg(a, "```Unmuted Successfully```")
         except UserIdInvalidError:
-            await pika_msg(a, "`Uh oh my unmute logic broke!`")
+            await infx_msg(a, "`Uh oh my unmute logic broke!`")
             return
 
         if BOTLOG:
@@ -936,8 +936,8 @@ async def _ungmute(un_gmute):
     """ For .ungmute command, ungmutes the target in the userbot """
     # Admin or creator check
     await un_gmute.client.get_me()
-    _tg = await get_pika_tg(un_gmute)
-    _pika_id = await auto_var(un_gmute)
+    _tg = await get_infx_tg(un_gmute)
+    _infx_id = await auto_var(un_gmute)
     chat = await un_gmute.get_chat()
     admin = chat.admin_rights
     creator = chat.creator
@@ -955,24 +955,24 @@ async def _ungmute(un_gmute):
         return
 
     # If pass, inform and start ungmuting
-    a = await pika_msg(un_gmute, "```Ungmuting...```", _tg)
+    a = await infx_msg(un_gmute, "```Ungmuting...```", _tg)
 
-    pikaugmute = ungmute(_pika_id, user.id)
-    if pikaugmute is False:
-        await pika_msg(a, "`Error! User probably not gmuted.`")
+    infxugmute = ungmute(_infx_id, user.id)
+    if infxugmute is False:
+        await infx_msg(a, "`Error! User probably not gmuted.`")
     else:
         b = 0
-        if await is_pikatg(un_gmute):
-            id = get_pika_chats()
+        if await is_infxtg(un_gmute):
+            id = get_infx_chats()
             for _umte in id:
                 try:
                     b += 1
                     await un_gmute.client(
                         EditBannedRequest(
-                            int(_umte.pika_id), int(user.id), UNMUTE_RIGHTS
+                            int(_umte.infx_id), int(user.id), UNMUTE_RIGHTS
                         )
                     )
-                    await pika_msg(a, f"Globally UnMuting in {b} Chats")
+                    await infx_msg(a, f"Globally UnMuting in {b} Chats")
                 except BaseException:
                     pass
         else:
@@ -984,10 +984,10 @@ async def _ungmute(un_gmute):
                         await un_gmute.client(
                             EditBannedRequest(ugchat, user.id, UNMUTE_RIGHTS)
                         )
-                        await pika_msg(a, f"Globally UnMuting in {b} Chats")
+                        await infx_msg(a, f"Globally UnMuting in {b} Chats")
                     except BaseException:
                         pass
-        await pika_msg(a, f"**Globally UnMuted User in {b} Chats**")
+        await infx_msg(a, f"**Globally UnMuted User in {b} Chats**")
         if BOTLOG:
             await un_gmute.client.send_message(
                 BOTLOG_CHATID,
@@ -1001,8 +1001,8 @@ async def _gmte(gspdr):
     """ For .gmute command, globally mutes the replied/tagged person """
     # Admin or creator check
     await gspdr.client.get_me()
-    _pika_id = await auto_var(gspdr)
-    _tg = await get_pika_tg(gspdr)
+    _infx_id = await auto_var(gspdr)
+    _tg = await get_infx_tg(gspdr)
     chat = await gspdr.get_chat()
     admin = chat.admin_rights
     creator = chat.creator
@@ -1019,16 +1019,16 @@ async def _gmte(gspdr):
         return
 
     # If pass, inform and start gmuting
-    a = await pika_msg(gspdr, "`Grabs a huge, sticky duct tape!`", _tg)
+    a = await infx_msg(gspdr, "`Grabs a huge, sticky duct tape!`", _tg)
 
-    pikagmute = gmute(_pika_id, user.id)
-    if pikagmute is False:
-        await pika_msg(a, "`Error! User probably already gmuted.\nRe-rolls the tape.`")
+    infxgmute = gmute(_infx_id, user.id)
+    if infxgmute is False:
+        await infx_msg(a, "`Error! User probably already gmuted.\nRe-rolls the tape.`")
     else:
         if reason:
-            await pika_msg(a, f"`Globally taped!`Reason: {reason}")
+            await infx_msg(a, f"`Globally taped!`Reason: {reason}")
         else:
-            await pika_msg(a, "`Globally taped!`")
+            await infx_msg(a, "`Globally taped!`")
 
         if BOTLOG:
             await gspdr.client.send_message(
@@ -1041,16 +1041,16 @@ async def _gmte(gspdr):
 
 async def _rmdacc(show):
     """ For .delusers command, list all the ghost/deleted accounts in a chat. """
-    _tg = await get_pika_tg(show)
+    _tg = await get_infx_tg(show)
     if not show.is_group:
-        await pika_msg(show, "`I don't think this is a group.`", _tg)
+        await infx_msg(show, "`I don't think this is a group.`", _tg)
         return
     con = show.pattern_match.group(1)
     del_u = 0
     del_status = "`No deleted accounts found, Group is cleaned as Hell`"
 
     if con != "clean":
-        a = await pika_msg(show, "`Searching for zombie accounts...`", _tg)
+        a = await infx_msg(show, "`Searching for zombie accounts...`", _tg)
         async for user in show.client.iter_participants(show.chat_id, aggressive=True):
             if user.deleted:
                 del_u += 1
@@ -1059,7 +1059,7 @@ async def _rmdacc(show):
             del_status = f"Found **{del_u}** deleted account(s) in this group,\
             \nclean them by using .delusers clean"
 
-        a = await pika_msg(show, del_status)
+        a = await infx_msg(show, del_status)
         return
 
     # Here laying the sanity check
@@ -1069,10 +1069,10 @@ async def _rmdacc(show):
 
     # Well
     if not admin and not creator:
-        await pika_msg(a, "`I am not an admin here!`")
+        await infx_msg(a, "`I am not an admin here!`")
         return
 
-    await pika_msg(a, "`Deleting deleted accounts...\nOh I can do that?!?!`")
+    await infx_msg(a, "`Deleting deleted accounts...\nOh I can do that?!?!`")
     del_u = 0
     del_a = 0
 
@@ -1083,7 +1083,7 @@ async def _rmdacc(show):
                     EditBannedRequest(show.chat_id, user.id, BANNED_RIGHTS)
                 )
             except ChatAdminRequiredError:
-                await pika_msg(a, "`I don't have ban rights in this group`")
+                await infx_msg(a, "`I don't have ban rights in this group`")
                 return
             except UserAdminInvalidError:
                 del_u -= 1
@@ -1098,7 +1098,7 @@ async def _rmdacc(show):
         del_status = f"Cleaned **{del_u}** deleted account(s) \
         \n**{del_a}** deleted admin accounts are not removed"
 
-    await pika_msg(a, del_status)
+    await infx_msg(a, del_status)
     await sleep(2)
     await show.delete()
 
@@ -1115,8 +1115,8 @@ async def _gadmin(show):
     """ For .admins command, list all of the admins of the chat. """
     info = await show.client.get_entity(show.chat_id)
     title = info.title if info.title else "this chat"
-    _tg = await get_pika_tg(show)
-    a = await pika_msg(show, "Getting admins, please wait...", _tg)
+    _tg = await get_infx_tg(show)
+    a = await infx_msg(show, "Getting admins, please wait...", _tg)
     mentions = f"<b>Admins in {title}:</b> \n"
     try:
         async for user in show.client.iter_participants(
@@ -1130,7 +1130,7 @@ async def _gadmin(show):
                 mentions += f"\nDeleted Account <code>{user.id}</code>"
     except ChatAdminRequiredError as err:
         mentions += " " + str(err) + "\n"
-    await pika_msg(a, mentions, parse_mode="html")
+    await infx_msg(a, mentions, parse_mode="html")
 
 
 async def _pin(msg):
@@ -1144,11 +1144,11 @@ async def _pin(msg):
     if not admin and not creator:
         await msg.edit(NO_ADMIN)
         return
-    _tg = await get_pika_tg(msg)
+    _tg = await get_infx_tg(msg)
     to_pin = msg.reply_to_msg_id
 
     if not to_pin:
-        await pika_msg(msg, "`Reply to a message to pin it.`", _tg)
+        await infx_msg(msg, "`Reply to a message to pin it.`", _tg)
         return
 
     options = msg.pattern_match.group(1)
@@ -1161,10 +1161,10 @@ async def _pin(msg):
     try:
         await msg.client(UpdatePinnedMessageRequest(msg.to_id, to_pin, is_silent))
     except BadRequestError:
-        await pika_msg(msg, NO_PERM, _tg)
+        await infx_msg(msg, NO_PERM, _tg)
         return
 
-    await pika_msg(msg, "`Pinned Successfully!`")
+    await infx_msg(msg, "`Pinned Successfully!`")
 
     user = await get_user_sender_id(msg.sender_id, msg)
 
@@ -1181,7 +1181,7 @@ async def _pin(msg):
 async def _kick(usr):
     """ For .kick command, kicks the replied/tagged person from the group. """
     # Admin or creator check
-    _tg = await get_pika_tg(usr)
+    _tg = await get_infx_tg(usr)
     chat = await usr.get_chat()
     admin = chat.admin_rights
     creator = chat.creator
@@ -1193,25 +1193,25 @@ async def _kick(usr):
 
     user, reason = await get_user_from_event(usr)
     if not user:
-        await pika_msg(usr, "`Couldn't fetch user.`", _tg)
+        await infx_msg(usr, "`Couldn't fetch user.`", _tg)
         return
 
-    a = await pika_msg(usr, "`Kicking...`", _tg)
+    a = await infx_msg(usr, "`Kicking...`", _tg)
 
     try:
         await usr.client.kick_participant(usr.chat_id, user.id)
         await sleep(0.5)
     except Exception as e:
-        await pika_msg(a, NO_PERM + f"\n{str(e)}")
+        await infx_msg(a, NO_PERM + f"\n{str(e)}")
         return
 
     if reason:
-        await pika_msg(
+        await infx_msg(
             a,
             f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`\nReason: {reason}",
         )
     else:
-        await pika_msg(a, f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`")
+        await infx_msg(a, f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`")
 
     if BOTLOG:
         await usr.client.send_message(
@@ -1266,7 +1266,7 @@ async def _gusers(show):
 
 
 async def _muter(moot):
-    _pika_id = await auto_var(moot)
+    _infx_id = await auto_var(moot)
     gmuted = is_gmuted(moot.sender_id)
     rights = ChatBannedRights(
         until_date=None,
@@ -1282,7 +1282,7 @@ async def _muter(moot):
     if not moot.is_private:
         if gmuted:
             for i in gmuted:
-                if i.sender == str(moot.sender_id) and i.pika == _pika_id:
+                if i.sender == str(moot.sender_id) and i.infx == _infx_id:
                     try:
                         await moot.client(
                             EditBannedRequest(moot.chat_id, moot.sender_id, MUTE_RIGHTS)
@@ -1296,7 +1296,7 @@ async def _muter(moot):
     if moot.is_private:
         if gmuted:
             for i in gmuted:
-                if i.sender == str(moot.sender_id) and i.pika == _pika_id:
+                if i.sender == str(moot.sender_id) and i.infx == _infx_id:
                     await moot.delete()
 
 
@@ -1305,30 +1305,30 @@ async def _gban(event):
         return
     import time
 
-    _tg = await get_pika_tg(event)
-    pika_id = await auto_var(event)
+    _tg = await get_infx_tg(event)
+    infx_id = await auto_var(event)
     st = time.time()
-    a = await pika_msg(event, "**GBanning This User !**", _tg)
+    a = await infx_msg(event, "**GBanning This User !**", _tg)
     suc = 0
     bd = 0
 
     user, reason = await get_user_from_event(event)
     if not user:
-        await pika_msg(a, "Kindly, Mention A User To Gban")
+        await infx_msg(a, "Kindly, Mention A User To Gban")
         return
     if not reason or reason is None:
         rson = "#GBanned"
     elif reason:
         rson = reason
     if user.id == bot.uid:
-        await pika_msg(a, "**I Can't Gban You Master ☹️**")
+        await infx_msg(a, "**I Can't Gban You Master ☹️**")
         return
-    if is_gbanned(pika_id, user.id):
-        await pika_msg(a, "**This User Is Already Gbanned.**")
+    if is_gbanned(infx_id, user.id):
+        await infx_msg(a, "**This User Is Already Gbanned.**")
         return
 
-    gban(pika_id, user.id, rson)
-    await pika_msg(a, f"**Trying To GBan [{user.first_name}](tg://user?id={user.id})**")
+    gban(infx_id, user.id, rson)
+    await infx_msg(a, f"**Trying To GBan [{user.first_name}](tg://user?id={user.id})**")
     async for pik in event.client.iter_dialogs():
         if pik.is_group or pik.is_channel:
             try:
@@ -1340,7 +1340,7 @@ async def _gban(event):
                 bd += 0
     et = time.time()
     tott = round(et - st)
-    await pika_msg(
+    await infx_msg(
         a,
         f"**GBanned Successfully !** \n\n"
         f"**User :** [{user.first_name}](tg://user?id={user.id}) \n"
@@ -1354,31 +1354,31 @@ async def _gban(event):
 async def _allnotes(event):
     if event.fwd_from:
         return
-    _tg = await get_pika_tg(event)
-    _pika_id = await auto_var(event)
+    _tg = await get_infx_tg(event)
+    _infx_id = await auto_var(event)
     message = "`There are no saved notes in this chat`"
-    notes = get_notes(event.chat_id, _pika_id)
+    notes = get_notes(event.chat_id, _infx_id)
     for note in notes:
         if message == "`There are no saved notes in this chat`":
             message = "Notes saved in this chat:\n"
             message += "`#{}`\n".format(note.keyword)
         else:
             message += "`#{}`\n".format(note.keyword)
-    await pika_msg(event, message, _tg)
+    await infx_msg(event, message, _tg)
 
 
 async def _remove_notes(event):
     if event.fwd_from:
         return
-    _tg = await get_pika_tg(event)
-    _pika_id = await auto_var(event)
+    _tg = await get_infx_tg(event)
+    _infx_id = await auto_var(event)
     notename = event.pattern_match.group(1)
-    if rm_note(_pika_id, event.chat_id, notename) is False:
-        return await pika_msg(
+    if rm_note(_infx_id, event.chat_id, notename) is False:
+        return await infx_msg(
             event, "`Couldn't find note:` **{}**".format(notename), _tg
         )
     else:
-        return await pika_msg(
+        return await infx_msg(
             event, "`Successfully deleted note:` **{}**".format(notename), _tg
         )
 
@@ -1386,7 +1386,7 @@ async def _remove_notes(event):
 async def _add_notes(event):
     if event.fwd_from:
         return
-    _tg = await get_pika_tg(event)
+    _tg = await get_infx_tg(event)
     client_id = await auto_var(event)
     keyword = event.pattern_match.group(1)
     string = event.text.partition(keyword)[2]
@@ -1406,7 +1406,7 @@ async def _add_notes(event):
             )
             msg_id = msg_o.id
         else:
-            await pika_msg(
+            await infx_msg(
                 event,
                 "Saving media as data for the note requires the BOTLOG_CHATID to be set.",
                 _tg,
@@ -1417,17 +1417,17 @@ async def _add_notes(event):
         string = rep_msg.text
     success = "Note {} successfully. Use #{} to get it"
     if add_note(str(client_id), str(event.chat_id), keyword, string, msg_id) is False:
-        return await pika_msg(event, success.format("updated", keyword), _tg)
+        return await infx_msg(event, success.format("updated", keyword), _tg)
     else:
-        return await pika_msg(event, success.format("added", keyword), _tg)
+        return await infx_msg(event, success.format("added", keyword), _tg)
 
 
 async def note_incm(getnt):
     try:
-        _pika_id = await auto_var(getnt)
+        _infx_id = await auto_var(getnt)
         if not (await getnt.get_sender()).bot:
             notename = getnt.text[1:]
-            note = get_note(_pika_id, getnt.chat_id, notename)
+            note = get_note(_infx_id, getnt.chat_id, notename)
             message_id_to_reply = getnt.message.id
             if not message_id_to_reply:
                 message_id_to_reply = None
@@ -1720,9 +1720,9 @@ async def waifu(animu):
 async def _bash(event):
     if event.fwd_from:
         return
-    _tg = await get_pika_tg(event)
+    _tg = await get_infx_tg(event)
     text = event.text.split(None, 1)[1]
-    xa = await pika_msg(event, "**Processing...**", _tg)
+    xa = await infx_msg(event, "**Processing...**", _tg)
     if "\n" in text:
         code = text.split("\n")
         output = ""
@@ -1736,7 +1736,7 @@ async def _bash(event):
                 )
             except Exception as err:
                 print(err)
-                await pika_msg(
+                await infx_msg(
                     xa, f"**INPUT:**\n```{text}```\n\n**ERROR:**\n```{err}```"
                 )
             output += f"**{code}**\n"
@@ -1760,7 +1760,7 @@ async def _bash(event):
                 value=exc_obj,
                 tb=exc_tb,
             )
-            await pika_msg(
+            await infx_msg(
                 xa,
                 text=f"**INPUT:**\n```{text}```\n\n**ERROR:**\n```{''.join(errors)}```",
             )
@@ -1780,9 +1780,9 @@ async def _bash(event):
             )
             os.remove("output.txt")
             return
-        await pika_msg(xa, f"**INPUT:**\n```{text}```\n\n**OUTPUT:**\n```{output}```")
+        await infx_msg(xa, f"**INPUT:**\n```{text}```\n\n**OUTPUT:**\n```{output}```")
     else:
-        await pika_msg(xa, "**INPUT:**\n```{text}```\n\n**OUTPUT: **\n`No output`")
+        await infx_msg(xa, "**INPUT:**\n```{text}```\n\n**OUTPUT: **\n`No output`")
 
 
 async def batch_upload(event):
@@ -1809,8 +1809,8 @@ async def belo(event):
     if event.fwd_from:
 
         return
-    _tg = await get_pika_tg(event)
-    a = await pika_msg(event, "Typing...", _tg)
+    _tg = await get_infx_tg(event)
+    a = await infx_msg(event, "Typing...", _tg)
 
     await asyncio.sleep(2)
 
@@ -1818,627 +1818,627 @@ async def belo(event):
 
     if x == 1:
 
-        await pika_msg(
+        await infx_msg(
             a, '`"Underwater bubbles and raindrops are total opposites of each other."`'
         )
 
     if x == 2:
 
-        await pika_msg(
+        await infx_msg(
             a, '`"If you buy an eraser you are literally paying for your mistakes."`'
         )
 
     if x == 3:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"The Person you care for most has the potential to destroy you the most."`',
         )
 
     if x == 4:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"If humans colonize the moon, it will probably attract retirement homes as the weaker gravity will allow the elderly to feel stronger."`',
         )
 
     if x == 5:
 
-        await pika_msg(
+        await infx_msg(
             a, '`"Any video with “wait for it” in the title is simply too long."`'
         )
 
     if x == 6:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Your age in years is how many times you’ve circled the Sun, but your age in months is how many times the Moon has circled you."`',
         )
 
     if x == 7:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Biting your tongue while eating is a perfect example of how you can still screw up, even with decades of experience."`',
         )
 
     if x == 8:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Saying that your home is powered by a wireless Nuclear fusion reactor that is 93 Million miles away sounds way cooler than just saying you have solar panels on your roof."`',
         )
 
     if x == 9:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"The most crushing feeling is when someone smiles at you on the street and you don’t react fast enough to smile back."`',
         )
 
     if x == 10:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Teeth constantly require maintenance to prevent their decay when alive, and yet they manage to survive for thousands of years buried as fossils."`',
         )
 
     if x == 11:
 
-        await pika_msg(a, '`"A folder is for things that you don\'t want to fold."`')
+        await infx_msg(a, '`"A folder is for things that you don\'t want to fold."`')
 
     if x == 12:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Waking up in the morning sometimes feels like resuming a shitty movie you decided to quit watching."`',
         )
 
     if x == 13:
 
-        await pika_msg(
+        await infx_msg(
             a, '`"If everything goes seventhly, you probably won\'t remember today."`'
         )
 
     if x == 14:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"When you meet new people in real life, you unlock more characters for your dream world."`',
         )
 
     if x == 15:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Maybe if they renamed sunscreen to “anti-cancer cream” more people would wear it."`',
         )
 
     if x == 16:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"200 years ago, people would never have guessed that humans in the future would communicate by silently tapping on glass."`',
         )
 
     if x == 17:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Parents worry about what their sons download and worry about what their daughters upload."`',
         )
 
     if x == 18:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"It\'s crazy how you can be the same age as someone, but at a completely different stage in your life."`',
         )
 
     if x == 19:
 
-        await pika_msg(
+        await infx_msg(
             a,
             "`\"When you think you wanna die, you really don't wanna die, you just don't wanna live like this.\"`",
         )
 
     if x == 20:
 
-        await pika_msg(a, '`"Technically, no one has ever been in an empty room."`')
+        await infx_msg(a, '`"Technically, no one has ever been in an empty room."`')
 
     if x == 21:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"An onion is the bass player of food. You would probably not enjoy it solo, but you’d miss it if it wasn’t there."`',
         )
 
     if x == 22:
 
-        await pika_msg(
+        await infx_msg(
             a,
             "`\"We run everywhere in videogames because we're too lazy to walk, but In real life we walk everywhere because we're too lazy to run.\"`",
         )
 
     if x == 23:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Every single decision you ever made has brought you to read this sentence."`',
         )
 
     if x == 24:
 
-        await pika_msg(a, "`\"The word 'quiet' is often said very loud.\"`")
+        await infx_msg(a, "`\"The word 'quiet' is often said very loud.\"`")
 
     if x == 25:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Everybody wants you to work hard, but nobody wants to hear about how hard you work."`',
         )
 
     if x == 26:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"We brush our teeth with hair on a stick and brush our hair with teeth on a stick."`',
         )
 
     if x == 27:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"No one remembers your awkward moments but they’re too busy remembering their own."`',
         )
 
     if x == 28:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Dumb people try to say simple ideas as complex as possible while smart people try to say complex ideas as simple as possible."`',
         )
 
     if x == 29:
 
-        await pika_msg(
+        await infx_msg(
             a,
             "`\"Some people think they're better than you because they grew up richer. Some people think they're better than you because they grew up poorer.\"`",
         )
 
     if x == 30:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"The biggest irony is that computers & mobiles were invented to save out time!"`',
         )
 
     if x == 31:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"After honey was first discovered, there was likely a period where people were taste testing any available slime from insects."`',
         )
 
     if x == 32:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"You know you’re getting old when your parents start disappointing you, instead of you disappointing them."`',
         )
 
     if x == 33:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Humans are designed to learn through experience yet the education system has made it so we get no experience."`',
         )
 
     if x == 34:
 
-        await pika_msg(
+        await infx_msg(
             a, '`"By focusing on blinking, you blink slower... Same for breathing."`'
         )
 
     if x == 35:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Drivers in a hurry to beat traffic usually cause the accidents which create the traffic they were trying to avoid."`',
         )
 
     if x == 36:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Characters that get married in fiction were literally made for each other."`',
         )
 
     if x == 37:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Babies are a clean hard drive that can be programmed with any language."`',
         )
 
     if x == 38:
 
-        await pika_msg(
+        await infx_msg(
             a,
             "`\"There could be a miracle drug that cures every disease to man, that we'll never know about because it doesn't work on rats.\"`",
         )
 
     if x == 39:
 
-        await pika_msg(
+        await infx_msg(
             a,
             "`\"Rhinos evolved to grow a horn for protection, but it's what's making them go extinct.\"`",
         )
 
     if x == 40:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Maybe we don\'t find time travelers because we all die in 25-50 years."`',
         )
 
     if x == 41:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Sleep is the trial version of death, It even comes with ads based on your activity."`',
         )
 
     if x == 42:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"The most unrealistic thing about Spy movies is how clean the air ventilation system is!"`',
         )
 
     if x == 43:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"In games we play through easy modes to unlock hard modes. In life we play through hard modes to unlock easy modes."`',
         )
 
     if x == 44:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Silent people seem smarter than loud people, because they keep their stupid thoughts to themselves."`',
         )
 
     if x == 45:
 
-        await pika_msg(a, '`"If Greenland actually turns green, we\'re all screwed."`')
+        await infx_msg(a, '`"If Greenland actually turns green, we\'re all screwed."`')
 
     if x == 46:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"If someone says clever things in your dream, it actually shows your own cleverness."`',
         )
 
     if x == 47:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Famous movie quotes are credited to the actor and not the actual writer who wrote them."`',
         )
 
     if x == 48:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"No one actually teaches you how to ride a bicycle. They just hype you up until you work it out."`',
         )
 
     if x == 49:
 
-        await pika_msg(a, '`"Ask yourself why the the brain ignores the second the."`')
+        await infx_msg(a, '`"Ask yourself why the the brain ignores the second the."`')
 
     if x == 50:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"You’ve probably forgot about 80% of your entire life and most of the memories you do remember are not very accurate to what actually happened."`',
         )
 
     if x == 51:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"It will be a lot harder for kids to win against their parents in video games in the future."`',
         )
 
     if x == 52:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Everyone has flaws, if you don\'t recognize yours, you have a new one."`',
         )
 
     if x == 53:
 
-        await pika_msg(a, '`"Raising a child is training your replacement."`')
+        await infx_msg(a, '`"Raising a child is training your replacement."`')
 
     if x == 54:
 
-        await pika_msg(
+        await infx_msg(
             a,
             "`\"'O'pen starts with a Closed circle, and 'C'lose starts with an open circle.\"`",
         )
 
     if x == 55:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"There\'s always someone who hated you for no reason, and still does."`',
         )
 
     if x == 56:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"After popcorn was discovered, there must have been a lot of random seeds that were roasted to see if it would have the same effect."`',
         )
 
     if x == 57:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"The more important a good night\'s sleep is, the harder it is to fall asleep."`',
         )
 
     if x == 58:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Blessed are those that can properly describe the type of haircut they want to a new stylist."`',
         )
 
     if x == 59:
 
-        await pika_msg(
+        await infx_msg(
             a,
             "`\"Too many people spend money they haven't earned, to buy things they don't want, to impress people they don't like!\"`",
         )
 
     if x == 60:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Theme park employees must be good at telling the difference between screams of horror and excitement."`',
         )
 
     if x == 61:
 
-        await pika_msg(a, '`"6 to 6:30 feels more half-an-hour than 5:50 to 6:20"`')
+        await infx_msg(a, '`"6 to 6:30 feels more half-an-hour than 5:50 to 6:20"`')
 
     if x == 62:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Getting your password right on the last login attempt before lockout is the closest thing to disarming a bomb at the last minute that most of us will experience."`',
         )
 
     if x == 63:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Listening to podcasts before bed is the adult version of story-time."`',
         )
 
     if x == 64:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"If all criminals stopped robbing then the security industry would fall in which they could then easily go back to robbing."`',
         )
 
     if x == 65:
 
-        await pika_msg(a, '`"A ton of whales is really only like half a whale."`')
+        await infx_msg(a, '`"A ton of whales is really only like half a whale."`')
 
     if x == 66:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"When you get old, the old you is technically the new you, and your young self is the old you."`',
         )
 
     if x == 67:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"You probably won\'t find many negative reviews of parachutes on the Internet."`',
         )
 
     if x == 68:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"We show the most love and admiration for people when they\'re no longer around to appreciate it."`',
         )
 
     if x == 69:
 
-        await pika_msg(
+        await infx_msg(
             a,
             "`\"We've practiced sleeping thousands of times, yet can't do it very well or be consistent.\"`",
         )
 
     if x == 70:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Humans are more enthusiastic about moving to another planet with hostile environment than preserving earth - the planet they are perfectly shaped for."`',
         )
 
     if x == 71:
 
-        await pika_msg(
+        await infx_msg(
             a,
             "`\"The happiest stage of most people's lives is when their brains aren't fully developed yet.\"`",
         )
 
     if x == 72:
 
-        await pika_msg(a, '`"The most effective alarm clock is a full bladder."`')
+        await infx_msg(a, '`"The most effective alarm clock is a full bladder."`')
 
     if x == 73:
 
-        await pika_msg(
+        await infx_msg(
             a, '`"You probably just synchronized blinks with millions of people."`'
         )
 
     if x == 74:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Since we test drugs on animals first, rat medicine must be years ahead of human medicine."`',
         )
 
     if x == 75:
 
-        await pika_msg(
+        await infx_msg(
             a, '`"Night before a day off is more satisfying than the actual day off."`'
         )
 
     if x == 76:
 
-        await pika_msg(a, '`"We put paper in a folder to keep it from folding."`')
+        await infx_msg(a, '`"We put paper in a folder to keep it from folding."`')
 
     if x == 77:
 
-        await pika_msg(
+        await infx_msg(
             a, '`"Somewhere, two best friends are meeting for the first time."`'
         )
 
     if x == 78:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Our brain simultaneously hates us, loves us, doesn\'t care about us, and micromanages our every move."`',
         )
 
     if x == 79:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Being a male is a matter of birth. Being a man is a matter of age. But being a gentleman is a matter of choice."`',
         )
 
     if x == 80:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Soon the parents will be hiding their social account from their kids rather than kids hiding their accounts from the parents."`',
         )
 
     if x == 81:
 
-        await pika_msg(a, '`"Wikipedia is what the internet was meant to be."`')
+        await infx_msg(a, '`"Wikipedia is what the internet was meant to be."`')
 
     if x == 82:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"A theme park is the only place that you can hear screams in the distance and not be concerned."`',
         )
 
     if x == 83:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"A wireless phone charger offers less freedom of movement than a wired one."`',
         )
 
     if x == 84:
 
-        await pika_msg(
+        await infx_msg(
             a,
             "`\"If you repeatedly criticize someone for liking something you don't, they won't stop liking it. They'll stop liking you.\"`",
         )
 
     if x == 85:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Somewhere there is a grandmother, whose grandson really is the most handsome boy in the world."`',
         )
 
     if x == 86:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"If someday human teleportation becomes real, people will still be late for work."`',
         )
 
     if x == 87:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"The first humans who ate crabs must have been really hungry to try and eat an armored sea spider"`',
         )
 
     if x == 88:
 
-        await pika_msg(
+        await infx_msg(
             a, '`"Doing something alone is kind of sad, but doing it solo is cool af."`'
         )
 
     if x == 89:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Your brain suddenly becomes perfect at proofreading after you post something."`',
         )
 
     if x == 90:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"There\'s always that one song in your playlist that you always skip but never remove."`',
         )
 
     if x == 91:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"Kids next century will probably hate us for taking all the good usernames."`',
         )
 
     if x == 92:
 
-        await pika_msg(a, '`"Bubbles are to fish what rain is to humans."`')
+        await infx_msg(a, '`"Bubbles are to fish what rain is to humans."`')
 
     if x == 93:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"The more people you meet, the more you realise and appreciate how well your parents raised you."`',
         )
 
     if x == 94:
 
-        await pika_msg(a, '`"A comma is a short pause, a coma is a long pause."`')
+        await infx_msg(a, '`"A comma is a short pause, a coma is a long pause."`')
 
     if x == 95:
 
-        await pika_msg(a, '`"Someday you will either not wake up or not go to sleep."`')
+        await infx_msg(a, '`"Someday you will either not wake up or not go to sleep."`')
 
     if x == 96:
 
-        await pika_msg(
+        await infx_msg(
             a, '`"Bermuda Triangle might be the exit portal of this simulation."`'
         )
 
     if x == 97:
 
-        await pika_msg(
+        await infx_msg(
             a,
             '`"If we put solar panels above parking lots, then our cars wouldn\'t get hot and we would have a lot of clean energy."`',
         )
@@ -2447,39 +2447,39 @@ async def belo(event):
 async def bombs(event):
     if event.fwd_from:
         return
-    _tg = await get_pika_tg(event)
-    a = await pika_msg(
+    _tg = await get_infx_tg(event)
+    a = await infx_msg(
         event, "▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n", _tg
     )
     await asyncio.sleep(0.5)
-    await pika_msg(a, "💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
+    await infx_msg(a, "💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
     await asyncio.sleep(0.5)
-    await pika_msg(a, "▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
+    await infx_msg(a, "▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
     await asyncio.sleep(0.5)
-    await pika_msg(a, "▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
+    await infx_msg(a, "▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
     await asyncio.sleep(0.5)
-    await pika_msg(a, "▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n")
+    await infx_msg(a, "▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n▪️▪️▪️▪️ \n")
     await asyncio.sleep(0.5)
-    await pika_msg(a, "▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n")
+    await infx_msg(a, "▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💣💣💣💣 \n")
     await asyncio.sleep(1)
-    await pika_msg(a, "▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💥💥💥💥 \n")
+    await infx_msg(a, "▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💥💥💥💥 \n")
     await asyncio.sleep(0.5)
-    await pika_msg(a, "▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💥💥💥💥 \n💥💥💥💥 \n")
+    await infx_msg(a, "▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n💥💥💥💥 \n💥💥💥💥 \n")
     await asyncio.sleep(0.5)
-    await pika_msg(a, "▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n😵😵😵😵 \n")
+    await infx_msg(a, "▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n😵😵😵😵 \n")
     await asyncio.sleep(0.5)
-    await pika_msg(a, "`RIP PLOXXX......`")
+    await infx_msg(a, "`RIP PLOXXX......`")
     await asyncio.sleep(2)
 
 
 async def call(event):
     if event.fwd_from:
         return
-    _tg = await get_pika_tg(event)
-    an = await pikaa(event, "ALIVE_NAME")
+    _tg = await get_infx_tg(event)
+    an = await infxa(event, "ALIVE_NAME")
     animation_interval = 3
     animation_ttl = range(0, 18)
-    await pika_msg(event, "Calling", _tg)
+    await infx_msg(event, "Calling", _tg)
     animation_chars = [
         "`Connecting To Telegram Headquarters...`",
         "`Call Connected.`",
@@ -2504,7 +2504,7 @@ async def call(event):
     for i in animation_ttl:
 
         await asyncio.sleep(animation_interval)
-        await pika_msg(a, animation_chars[i % 18])
+        await infx_msg(a, animation_chars[i % 18])
 
 
 async def spm_notify(event):
@@ -2528,8 +2528,8 @@ async def spm_notify(event):
 async def _carbon(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@"):
         """ A Wrapper for carbon.now.sh """
-        _tg = await get_pika_tg(e)
-        a = await pika_msg(e, "`Processing..`", _tg)
+        _tg = await get_infx_tg(e)
+        a = await infx_msg(e, "`Processing..`", _tg)
         CARBON = "https://carbon.now.sh/?l={lang}&code={code}"
         global CARBONLANG
         textx = await e.get_reply_message()
@@ -2540,7 +2540,7 @@ async def _carbon(e):
             pcode = str(textx.message)
 
         code = quote_plus(pcode)
-        await pika_msg(a, "`Meking Carbon...\n25%`")
+        await infx_msg(a, "`Meking Carbon...\n25%`")
         url = CARBON.format(code=code, lang=CARBONLANG)
         chrome_options = Options()
         chrome_options.add_argument("--headless")
@@ -2553,7 +2553,7 @@ async def _carbon(e):
         chrome_options.add_experimental_option("prefs", prefs)
         driver = webdriver.Chrome(executable_path=CHROME_DRIVER, options=chrome_options)
         driver.get(url)
-        await pika_msg(a, "`Be Patient...\n50%`")
+        await infx_msg(a, "`Be Patient...\n50%`")
         download_path = "./"
         driver.command_executor._commands["send_command"] = (
             "POST",
@@ -2565,11 +2565,11 @@ async def _carbon(e):
         }
         driver.execute("send_command", params)
         driver.find_element_by_xpath("//button[contains(text(),'Export')]").click()
-        await pika_msg(a, "`Processing..\n75%`")
+        await infx_msg(a, "`Processing..\n75%`")
         sleep(1)
-        await pika_msg(a, "`Done Dana Done...\n100%`")
+        await infx_msg(a, "`Done Dana Done...\n100%`")
         file = "./carbon.png"
-        await pika_msg(a, "`Uploading..`")
+        await infx_msg(a, "`Uploading..`")
         await e.client.send_file(
             e.chat_id,
             file,
@@ -3489,10 +3489,10 @@ async def dump(message):
 
 
 async def _eval(event):
-    _tg = await get_pika_tg(event)
+    _tg = await get_infx_tg(event)
     if event.fwd_from:
         return
-    ax_ = await pika_msg(event, "Processing ...", _tg)
+    ax_ = await infx_msg(event, "Processing ...", _tg)
     cmd = event.text.split(" ", maxsplit=1)[1]
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
@@ -3539,7 +3539,7 @@ async def _eval(event):
             )
             await event.delete()
     else:
-        await pika_msg(ax_, final_output)
+        await infx_msg(ax_, final_output)
 
 
 async def aexec(code, event):
@@ -3563,170 +3563,170 @@ async def helper(event):
 if pdb.Omega is not None and tgbot is not None:
 
     @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
-    async def inline_handler(pika_):
-        builder = pika_.builder
+    async def inline_handler(infx_):
+        builder = infx_.builder
         result = None
-        query = pika_.text
-        _pikaa_ = (pika_.query).user_id
-        if _pikaa_ in Ccache and query.startswith("Pïkå¢hµ"):
+        query = infx_.text
+        _infxa_ = (infx_.query).user_id
+        if _infxa_ in Ccache and query.startswith("Pïkå¢hµ"):
             rev_text = query[::-1]
-            buttons = paginate_help(0, bot.pika_cmd, "helpme")
+            buttons = paginate_help(0, bot.infx_cmd, "helpme")
             result = builder.article(
                 "©Pikachu Userbot Help",
                 text="{}\nCurrently Loaded Plugins: {}".format(
-                    query, len(bot.pika_cmd)
+                    query, len(bot.infx_cmd)
                 ),
                 buttons=buttons,
                 link_preview=False,
             )
-        await pika_.answer([result] if result else None)
+        await infx_.answer([result] if result else None)
 
     @tgbot.on(Pika_CallBack(data=re.compile(rb"helpme_next\((.+?)\)")))
-    async def _pikacallback(pika_):
-        _pikaa_ = (pika_.query).user_id
-        if _pikaa_ in Ccache:
-            pikacmds = bot.pika_cmd
-            c_p_n = int(pika_.data_match.group(1).decode("UTF-8"))
-            buttons = paginate_help(c_p_n + 1, pikacmds, "helpme")
+    async def _infxcallback(infx_):
+        _infxa_ = (infx_.query).user_id
+        if _infxa_ in Ccache:
+            infxcmds = bot.infx_cmd
+            c_p_n = int(infx_.data_match.group(1).decode("UTF-8"))
+            buttons = paginate_help(c_p_n + 1, infxcmds, "helpme")
             # https://t.me/TelethonChat/115200
-            await pika_.edit(buttons=buttons)
+            await infx_.edit(buttons=buttons)
 
         else:
             _alert_ = "Please get your own PikaBot, and don't use mine!"
-            await pika_.answer(_alert_, cache_time=0, alert=True)
+            await infx_.answer(_alert_, cache_time=0, alert=True)
 
     @tgbot.on(Pika_CallBack(data=re.compile(rb"helpme_prev\((.+?)\)")))
-    async def _pikacallback(pika_):
-        _pikaa_ = (pika_.query).user_id
-        if _pikaa_ in Ccache:
-            pikacmds = bot.pika_cmd
-            c_p_n = int(pika_.data_match.group(1).decode("UTF-8"))
+    async def _infxcallback(infx_):
+        _infxa_ = (infx_.query).user_id
+        if _infxa_ in Ccache:
+            infxcmds = bot.infx_cmd
+            c_p_n = int(infx_.data_match.group(1).decode("UTF-8"))
             buttons = paginate_help(
-                c_p_n - 1, pikacmds, "helpme"  # pylint:disable=E0602
+                c_p_n - 1, infxcmds, "helpme"  # pylint:disable=E0602
             )
-            await pika_.edit(buttons=buttons)
+            await infx_.edit(buttons=buttons)
 
         else:
             _alert_ = "Please get your own PikaBot, and don't use mine!"
-            await pika_.answer(_alert_, cache_time=0, alert=True)
+            await infx_.answer(_alert_, cache_time=0, alert=True)
 
     @tgbot.on(Pika_CallBack(data=re.compile(b"restart")))
-    async def _pikacallback(pika_):
-        _pikaa_ = (pika_.query).user_id
-        if _pikaa_ in Ccache:
-            await pika_.edit("Pika Pi! Restarting wait for 1 Min!")
+    async def _infxcallback(infx_):
+        _infxa_ = (infx_.query).user_id
+        if _infxa_ in Ccache:
+            await infx_.edit("Pika Pi! Restarting wait for 1 Min!")
             await asyncio.sleep(4)
-            await pika_.delete()
-            pika_start()
+            await infx_.delete()
+            infx_start()
         else:
             _alert_ = "You can't Restart me, Get your own Pikachu Userbot"
-            await pika_.answer(_alert_, cache_time=0, alert=True)
+            await infx_.answer(_alert_, cache_time=0, alert=True)
 
     @tgbot.on(Pika_CallBack(data=re.compile(b"close")))
-    async def _pikacallback(pika_):
-        if _pikaa_ in Ccache:
-            _a_ = await pika_.edit("Pika Pi! Menu Closed!")
+    async def _infxcallback(infx_):
+        if _infxa_ in Ccache:
+            _a_ = await infx_.edit("Pika Pi! Menu Closed!")
             await asyncio.sleep(3)
             await _a_.delete()
         else:
             _alert_ = "You can't close this menu ploxx, Get your own Pikachu Userbot"
-            await pika_.answer(_alert_, cache_time=0, alert=True)
+            await infx_.answer(_alert_, cache_time=0, alert=True)
 
     @tgbot.on(Pika_CallBack(data=re.compile(b"us_plugin_(.*)")))
-    async def _pikacallback(pika_):
-        _pikaa_ = (pika_.query).user_id
-        if _pikaa_ in Ccache:
+    async def _infxcallback(infx_):
+        _infxa_ = (infx_.query).user_id
+        if _infxa_ in Ccache:
             a = randint(0, 9)
             _rx_ = f"{_emo_[a]}" + f" {rx}"
-            _pikacmds = bot.pika_cmd
-            _pika_ = pika_.data_match.group(1).decode("UTF-8")
-            _pika = _pikacmds[_pika_].__doc__.format(i=_rx_)
-            _pikaB = [(custom.Button.inline("⫷BacK", data="pikab"))]
-            await pika_.edit(_pika, buttons=_pikaB)
+            _infxcmds = bot.infx_cmd
+            _infx_ = infx_.data_match.group(1).decode("UTF-8")
+            _infx = _infxcmds[_infx_].__doc__.format(i=_rx_)
+            _infxB = [(custom.Button.inline("⫷BacK", data="infxb"))]
+            await infx_.edit(_infx, buttons=_infxB)
 
         else:
             ax = os.environ.get("ALIVE_NAME")
-            iq = await pika_.client.get_me()
-            if iq.id == pika_id1:
+            iq = await infx_.client.get_me()
+            if iq.id == infx_id1:
                 ax[0]
                 _alert_ = "Hi My Peru Master's bot here ,\n\nWhy r u clicking this this.Please get your own PikaBot, and don't use mine!"
-                await pika_.answer(_alert_, cache_time=0, alert=True)
+                await infx_.answer(_alert_, cache_time=0, alert=True)
 
-    @tgbot.on(Pika_CallBack(data=re.compile(b"pikab(.*)")))
-    async def _pikacallback(pika_):
-        _pikaa_ = (pika_.query).user_id
-        if _pikaa_ in Ccache:
-            _pika = f"""Pïkå¢hµ Úsêrßð† {helpstr}"""
-            _pikacmds = bot.pika_cmd
-            _pika += "\n**Currently Loaded Plugins**: {}".format(len(_pikacmds))
-            _pika_ = paginate_help(0, _pikacmds, "helpme")
-            await pika_.edit(_pika, buttons=_pika_, link_preview=False)
+    @tgbot.on(Pika_CallBack(data=re.compile(b"infxb(.*)")))
+    async def _infxcallback(infx_):
+        _infxa_ = (infx_.query).user_id
+        if _infxa_ in Ccache:
+            _infx = f"""Pïkå¢hµ Úsêrßð† {helpstr}"""
+            _infxcmds = bot.infx_cmd
+            _infx += "\n**Currently Loaded Plugins**: {}".format(len(_infxcmds))
+            _infx_ = paginate_help(0, _infxcmds, "helpme")
+            await infx_.edit(_infx, buttons=_infx_, link_preview=False)
         else:
             _alert_ = "Please get your own PikaBot, and don't use mine!"
-            await pika_.answer(_alert_, cache_time=0, alert=True)
+            await infx_.answer(_alert_, cache_time=0, alert=True)
 
     @tgbot.on(Pika_CallBack(data=re.compile(b"tools(.*)")))
-    async def _pikacallback(pika_):
-        _pikaa_ = (pika_.query).user_id
-        if _pikaa_ in Ccache:
+    async def _infxcallback(infx_):
+        _infxa_ = (infx_.query).user_id
+        if _infxa_ in Ccache:
             a = randint(0, 9)
             _rx_ = f"{_emo_[a]}" + f" {rx}"
-            _pikacmds = bot.pika_cmd
-            pika_.data_match.group(1).decode("UTF-8")
-            _pika = _pikacmds["systools"].__doc__.format(i=_rx_)
-            _pikaB = [(custom.Button.inline("⫷BacK", data="pikab"))]
-            await pika_.edit(_pika, buttons=_pikaB)
+            _infxcmds = bot.infx_cmd
+            infx_.data_match.group(1).decode("UTF-8")
+            _infx = _infxcmds["systools"].__doc__.format(i=_rx_)
+            _infxB = [(custom.Button.inline("⫷BacK", data="infxb"))]
+            await infx_.edit(_infx, buttons=_infxB)
 
 
-@tgbot.on(Pika_CallBack(data=re.compile(rb"pika1\((.+?)\)")))
-async def _(_pika):
-    pikacmds = tgbot.PikaAsst
-    c_p_n = int(_pika.data_match.group(1).decode("UTF-8"))
-    buttons = assistent_help(c_p_n + 1, pikacmds, "helpme")
-    await pika_.edit(buttons=buttons)
+@tgbot.on(Pika_CallBack(data=re.compile(rb"infx1\((.+?)\)")))
+async def _(_infx):
+    infxcmds = tgbot.PikaAsst
+    c_p_n = int(_infx.data_match.group(1).decode("UTF-8"))
+    buttons = assistent_help(c_p_n + 1, infxcmds, "helpme")
+    await infx_.edit(buttons=buttons)
 
 
-@tgbot.on(Pika_CallBack(data=re.compile(rb"pika2\((.+?)\)")))
-async def _(pika_):
-    pikacmds = tgbot.PikaAsst
-    c_p_n = int(pika_.data_match.group(1).decode("UTF-8"))
-    buttons = assistent_help(c_p_n - 1, pikacmds, "helpme")  # pylint:disable=E0602
-    await pika_.edit(buttons=buttons)
+@tgbot.on(Pika_CallBack(data=re.compile(rb"infx2\((.+?)\)")))
+async def _(infx_):
+    infxcmds = tgbot.PikaAsst
+    c_p_n = int(infx_.data_match.group(1).decode("UTF-8"))
+    buttons = assistent_help(c_p_n - 1, infxcmds, "helpme")  # pylint:disable=E0602
+    await infx_.edit(buttons=buttons)
 
 
-@tgbot.on(Pika_CallBack(data=re.compile(b"pika3")))
-async def _(pika_):
-    await pika_.edit("Pika Pi! Restarting wait for 1 Min!")
+@tgbot.on(Pika_CallBack(data=re.compile(b"infx3")))
+async def _(infx_):
+    await infx_.edit("Pika Pi! Restarting wait for 1 Min!")
     await asyncio.sleep(4)
-    await pika_.delete()
-    pika_start()
+    await infx_.delete()
+    infx_start()
 
 
-@tgbot.on(Pika_CallBack(data=re.compile(b"pika4")))
-async def _(pika_):
-    _a_ = await pika_.edit("Pika Pi! Menu Closed!")
+@tgbot.on(Pika_CallBack(data=re.compile(b"infx4")))
+async def _(infx_):
+    _a_ = await infx_.edit("Pika Pi! Menu Closed!")
     await asyncio.sleep(3)
     await _a_.delete()
 
 
-@tgbot.on(Pika_CallBack(data=re.compile(b"pika5(.*)")))
-async def _(pika_):
+@tgbot.on(Pika_CallBack(data=re.compile(b"infx5(.*)")))
+async def _(infx_):
     a = randint(0, 9)
     _rx_ = f"{_emo_[a]}" + f" {rx}"
-    _pikacmds = tgbot.PikaAsst
-    _pika_ = pika_.data_match.group(1).decode("UTF-8")
-    _pika = _pikacmds[_pika_].__doc__.format(i=_rx_)
-    _pikaB = [(custom.Button.inline("⫷BacK", data="pika6"))]
-    await pika_.edit(_pika, buttons=_pikaB)
+    _infxcmds = tgbot.PikaAsst
+    _infx_ = infx_.data_match.group(1).decode("UTF-8")
+    _infx = _infxcmds[_infx_].__doc__.format(i=_rx_)
+    _infxB = [(custom.Button.inline("⫷BacK", data="infx6"))]
+    await infx_.edit(_infx, buttons=_infxB)
 
 
-@tgbot.on(Pika_CallBack(data=re.compile(b"pika6(.*)")))
-async def _(pika_):
-    _pika = f"""Pïkå¢hµ Úsêrßð† {helpstr}"""
-    _pikacmds = tgbot.PikaAsst
-    _pika += "\n**Currently Loaded Plugins**: {}".format(len(_pikacmds))
-    _pika_ = assistent_help(0, _pikacmds, "helpme")
-    await pika_.edit(_pika, buttons=_pika_, link_preview=False)
+@tgbot.on(Pika_CallBack(data=re.compile(b"infx6(.*)")))
+async def _(infx_):
+    _infx = f"""Pïkå¢hµ Úsêrßð† {helpstr}"""
+    _infxcmds = tgbot.PikaAsst
+    _infx += "\n**Currently Loaded Plugins**: {}".format(len(_infxcmds))
+    _infx_ = assistent_help(0, _infxcmds, "helpme")
+    await infx_.edit(_infx, buttons=_infx_, link_preview=False)
 
 
 def assistent_help(page_number, loaded_plugins, prefix):
@@ -3740,9 +3740,9 @@ def assistent_help(page_number, loaded_plugins, prefix):
 
     helpable_plugins = sorted(helpable_plugins)
 
-    _data1 = f"pika5{const}"
-    _data2 = f"{const}pika1({const})"
-    _data3 = f"{const}pika2({const})"
+    _data1 = f"infx5{const}"
+    _data2 = f"{const}infx1({const})"
+    _data3 = f"{const}infx2({const})"
 
     modules = [
         custom.Button.inline("{} {} {}".format(xl, x, xl), data=_data1.format(x))
@@ -3807,14 +3807,14 @@ def paginate_help(page_number, loaded_plugins, prefix):
             helpable_plugins.append(p)
 
     helpable_plugins = sorted(helpable_plugins)
-    if loaded_plugins == bot.pika_cmd:
+    if loaded_plugins == bot.infx_cmd:
         _data1 = f"us_plugin_{const}"
         _data2 = f"{const}_prev({const})"
         _data3 = f"{const}_next({const})"
     else:
-        _data1 = f"pika5{const}"
-        _data2 = f"{const}pika1({const})"
-        _data3 = f"{const}pika2({const})"
+        _data1 = f"infx5{const}"
+        _data2 = f"{const}infx1({const})"
+        _data3 = f"{const}infx2({const})"
 
     modules = [
         custom.Button.inline("{} {} {}".format(xl, x, xl), data=_data1.format(x))
@@ -3872,7 +3872,7 @@ def paginate_help(page_number, loaded_plugins, prefix):
 async def _currency(event):
     if event.fwd_from:
         return
-    start = pikatime.now()
+    start = infxtime.now()
     input_str = event.pattern_match.group(1)
     input_sgra = input_str.split(" ")
     if len(input_sgra) == 3:
@@ -3896,7 +3896,7 @@ async def _currency(event):
             await event.edit(str(e))
     else:
         await event.edit("`.currency number from to`")
-    end = pikatime.now()
+    end = infxtime.now()
     (end - start).seconds
 
 
@@ -4165,28 +4165,28 @@ async def _gadmins(event):
 async def _getid(event):
     if event.fwd_from:
         return
-    _tg = await get_pika_tg(event)
-    a = await pika_msg(event, "Getting info, Please wait...", _tg)
+    _tg = await get_infx_tg(event)
+    a = await infx_msg(event, "Getting info, Please wait...", _tg)
     if event.reply_to_msg_id:
         await event.get_input_chat()
         r_msg = await event.get_reply_message()
         if r_msg.media:
             bot_api_file_id = pack_bot_file_id(r_msg.media)
-            await pika_msg(
+            await infx_msg(
                 a,
                 "Current Chat ID: `{}`\nFrom User ID: `{}`\nBot API File ID: `{}`".format(
                     str(event.chat_id), str(r_msg.sender_id), bot_api_file_id
                 ),
             )
         else:
-            await pika_msg(
+            await infx_msg(
                 a,
                 "Current Chat ID: `{}`\nFrom User ID: `{}`".format(
                     str(event.chat_id), str(r_msg.sender_id)
                 ),
             )
     else:
-        await pika_msg(a, "Current Chat ID: `{}`".format(str(event.chat_id)))
+        await infx_msg(a, "Current Chat ID: `{}`".format(str(event.chat_id)))
 
 
 async def _gps(event):
@@ -4239,7 +4239,7 @@ async def _invite(event):
     if event.is_private:
         await event.edit("`.invite` users to a chat, not to a Private Message")
     else:
-        pikalog.info(to_add_users)
+        infxlog.info(to_add_users)
         if not event.is_channel and event.is_group:
             # https://lonamiwebs.github.io/Telethon/methods/messages/add_chat_user.html
             for user_id in to_add_users.split(" "):
@@ -4269,9 +4269,9 @@ async def _invite(event):
 async def _github(event):
     if event.fwd_from:
         return
-    _tg = await get_pika_tg(event)
+    _tg = await get_infx_tg(event)
     input_str = event.pattern_match.group(1)
-    a = await pika_msg(event, "Searching for {}".format(input_str), _tg)
+    a = await infx_msg(event, "Searching for {}".format(input_str), _tg)
     await asyncio.sleep(2)
     url = "https://api.github.com/users/{}".format(input_str)
     r = requests.get(url)
@@ -4304,15 +4304,15 @@ Profile Created: {}""".format(
         )
         await a.delete()
     else:
-        await pika_msg(a, "`{}`: {}".format(input_str, r.text))
+        await infx_msg(a, "`{}`: {}".format(input_str, r.text))
 
 
 async def _gsearch(event):
     """ For .google command, do a Google search. """
     match = event.pattern_match.group(1)
-    _tg = await get_pika_tg(event)
+    _tg = await get_infx_tg(event)
     page = findall(r"page=\d+", match)
-    a = await pika_msg(event, f"Searching for {match}", _tg)
+    a = await infx_msg(event, f"Searching for {match}", _tg)
     try:
         page = page[0]
         page = page.replace("page=", "")
@@ -4332,18 +4332,18 @@ async def _gsearch(event):
         except IndexError:
             break
     finalres = "**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg
-    await pika_msg(a, finalres, link_preview=False)
+    await infx_msg(a, finalres, link_preview=False)
 
 
 langi = "en"
 
 
 async def _imdb(e):
-    _tg = await get_pika_tg(e)
+    _tg = await get_infx_tg(e)
     try:
         movie_name = e.pattern_match.group(1)
         remove_space = movie_name.split(" ")
-        _ax = await pika_msg(e, f"Searching For {movie_name}, Please wait...", _tg)
+        _ax = await infx_msg(e, f"Searching For {movie_name}, Please wait...", _tg)
         final_name = "+".join(remove_space)
         page = requests.get(
             "https://www.imdb.com/find?ref_=nv_sr_fn&q=" + final_name + "&s=all"
@@ -4431,16 +4431,16 @@ async def _imdb(e):
             + story_line
         )
         _html = "HTML"
-        await pika_msg(_ax, imdb_dta, link_preview=True, parse_mode=_html)
+        await infx_msg(_ax, imdb_dta, link_preview=True, parse_mode=_html)
     except IndexError:
-        await pika_msg(_ax, "Plox enter **Valid movie name** kthx")
+        await infx_msg(_ax, "Plox enter **Valid movie name** kthx")
 
 
 async def _getinfo(event):
     if event.fwd_from:
         return
-    _tg = await get_pika_tg(event)
-    a = await pika_msg(event, "Getting User Info. Please wait....", _tg)
+    _tg = await get_infx_tg(event)
+    a = await infx_msg(event, "Getting User Info. Please wait....", _tg)
     replied_user, error_i_a = await get_full_user(event)
     if replied_user is None:
         await event.edit(str(error_i_a))
@@ -4569,8 +4569,8 @@ async def get_full_user(event):
 async def _json(event):
     if event.fwd_from:
         return
-    _tg = await is_pikatg(event)
-    a = await pika_msg(event, "Getting message info. Please wait...", _tg)
+    _tg = await is_infxtg(event)
+    a = await infx_msg(event, "Getting message info. Please wait...", _tg)
     await asyncio.sleep(2)
     the_real_message = None
     reply_to_id = None
@@ -4593,13 +4593,13 @@ async def _json(event):
             )
             await a.delete()
     else:
-        await pika_msg(a, "`{}`".format(the_real_message))
+        await infx_msg(a, "`{}`".format(the_real_message))
 
 
 async def _locks(event):
     input_str = event.pattern_match.group(1).lower()
-    _tg = await get_pika_tg(event)
-    kk = await pika_msg(event, f"Locking {input_str}, Please Wait....", _tg)
+    _tg = await get_infx_tg(event)
+    kk = await infx_msg(event, f"Locking {input_str}, Please Wait....", _tg)
     peer_id = event.chat_id
     msg = None
     media = None
@@ -4671,9 +4671,9 @@ async def _locks(event):
         await event.client(
             EditChatDefaultBannedRightsRequest(peer=peer_id, banned_rights=lock_rights)
         )
-        await pika_msg(kk, "`locked` {} `Because its Rest Time Nimba!!`".format(what))
+        await infx_msg(kk, "`locked` {} `Because its Rest Time Nimba!!`".format(what))
     except BaseException as e:
-        await pika_msg(
+        await infx_msg(
             kk, f"`Do I have proper rights for that ??`\n**Error:** {str(e)}"
         )
         return
@@ -4681,8 +4681,8 @@ async def _locks(event):
 
 async def _rmlocks(event):
     input_str = event.pattern_match.group(1).lower()
-    _tg = await get_pika_tg(event)
-    a = await pika_msg(event, f"Unlocking {input_str}, Please Wait....", _tg)
+    _tg = await get_infx_tg(event)
+    a = await infx_msg(event, f"Unlocking {input_str}, Please Wait....", _tg)
     peer_id = event.chat_id
     msg = None
     media = None
@@ -4738,10 +4738,10 @@ async def _rmlocks(event):
         what = "everything"
     else:
         if not input_str:
-            await pika_msg(a, "`I can't unlock nothing !!`")
+            await infx_msg(a, "`I can't unlock nothing !!`")
             return
         else:
-            await pika_msg(a, f"`Invalid unlock type:` {input_str}")
+            await infx_msg(a, f"`Invalid unlock type:` {input_str}")
             return
 
     unlock_rights = ChatBannedRights(
@@ -4763,9 +4763,9 @@ async def _rmlocks(event):
                 peer=peer_id, banned_rights=unlock_rights
             )
         )
-        await pika_msg(a, f"`Unlocked {what} now Start Chit Chat !!`")
+        await infx_msg(a, f"`Unlocked {what} now Start Chit Chat !!`")
     except BaseException as e:
-        await pika_msg(a, f"`Do I have proper rights for that ??`\n**Error:** {str(e)}")
+        await infx_msg(a, f"`Do I have proper rights for that ??`\n**Error:** {str(e)}")
         return
 
 
@@ -4775,10 +4775,10 @@ async def _pack(event):
     b = open(input_str, "w")
     b.write(str(a.message))
     b.close()
-    _tg = await get_pika_tg(event)
-    _a = await pika_msg(event, f"**Packing into** `{input_str}`", _tg)
+    _tg = await get_infx_tg(event)
+    _a = await infx_msg(event, f"**Packing into** `{input_str}`", _tg)
     await asyncio.sleep(2)
-    await pika_msg(_a, f"**Uploading** `{input_str}`")
+    await infx_msg(_a, f"**Uploading** `{input_str}`")
     await asyncio.sleep(1)
     await event.client.send_file(
         event.chat_id, input_str, caption="Here is your {}".format(input_str)
@@ -4788,7 +4788,7 @@ async def _pack(event):
 
 
 def progress(current, total):
-    pikalog.info(
+    infxlog.info(
         "Downloaded {} of {}\nCompleted {}".format(
             current, total, (current / total) * 100
         )
@@ -4798,10 +4798,10 @@ def progress(current, total):
 async def _deldog(event):
     if event.fwd_from:
         return
-    _tg = await get_pika_tg(event)
-    a = await pika_msg(event, "Pasting on Deldog, Please wait...", _tg)
+    _tg = await get_infx_tg(event)
+    a = await infx_msg(event, "Pasting on Deldog, Please wait...", _tg)
     await asyncio.sleep(1)
-    start = pikatime.now()
+    start = infxtime.now()
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     input_str = event.pattern_match.group(1)
@@ -4830,22 +4830,22 @@ async def _deldog(event):
     url = "https://del.dog/documents"
     r = requests.post(url, data=message.encode("UTF-8")).json()
     url = f"https://del.dog/{r['key']}"
-    end = pikatime.now()
+    end = infxtime.now()
     ms = (end - start).seconds
     if r["isUrl"]:
         nurl = f"https://del.dog/v/{r['key']}"
-        await pika_msg(
+        await infx_msg(
             a, "Dogged to {} in {} seconds. GoTo Original URL: {}".format(url, ms, nurl)
         )
     else:
-        await pika_msg(a, "Deldog: [Here]({})\n**Time Taken**: {}sec".format(url, ms))
+        await infx_msg(a, "Deldog: [Here]({})\n**Time Taken**: {}sec".format(url, ms))
 
 
 # © @Buddhhu , dont remove credits bsdk else u gay * 100
 async def _ncode(event):
     input = event.pattern_match.group(1)
-    _tg = await get_pika_tg(event)
-    a_ = await pika_msg(
+    _tg = await get_infx_tg(event)
+    a_ = await infx_msg(
         event, "Converting file into beautified code image, Please wait...", _tg
     )
     a = await event.client.download_media(
@@ -4877,10 +4877,10 @@ async def _reveal(event):
     a = open(b, "r")
     c = a.read()
     a.close()
-    _tg = await get_pika_tg(event)
-    _a = await pika_msg(event, "**Reading file...**", _tg)
+    _tg = await get_infx_tg(event)
+    _a = await infx_msg(event, "**Reading file...**", _tg)
     if len(c) > 4095:
-        await pika_msg(
+        await infx_msg(
             _a, "`The Total words in this file is more than telegram limits.`"
         )
     else:
@@ -4900,10 +4900,10 @@ async def _rmbg(event):
         await event.edit("You need API token from remove.bg to use this plugin.")
         return False
     input_str = event.pattern_match.group(1)
-    start = pikatime.now()
+    start = infxtime.now()
     message_id = event.message.id
-    _tg = await get_pika_tg(event)
-    a = await pika_msg(
+    _tg = await get_infx_tg(event)
+    a = await infx_msg(
         event, "Processing image for background Removal, Please wait...", _tg
     )
     if event.reply_to_msg_id:
@@ -4915,14 +4915,14 @@ async def _rmbg(event):
                 reply_message, Config.TMP_DOWNLOAD_DIRECTORY
             )
         except Exception as e:
-            await pika_msg(a, str(e))
+            await infx_msg(a, str(e))
 
     if input_str:
-        await pika_msg(a, "Sending Image to ReMove.BG, Please wait...")
+        await infx_msg(a, "Sending Image to ReMove.BG, Please wait...")
         output_file_name = ReTrieveURL(input_str)
 
     if not input_str and event.reply_to_msg_id:
-        await pika_msg(a, HELP_STR)
+        await infx_msg(a, HELP_STR)
 
     contentType = output_file_name.headers.get("content-type")
     if "image" in contentType:
@@ -4936,16 +4936,16 @@ async def _rmbg(event):
                 allow_cache=False,
                 reply_to=message_id,
             )
-        end = pikatime.now()
+        end = infxtime.now()
         ms = (end - start).seconds
-        await pika_msg(
+        await infx_msg(
             a,
             "Removed dat annoying Backgroup in {} seconds, powered by Pikachu UserBot".format(
                 ms
             ),
         )
     if "image" not in contentType:
-        await pika_msg(
+        await infx_msg(
             a,
             "ReMove.BG API returned Errors. Please report to @ItzSjDudeSupport\n`{}".format(
                 output_file_name.content.decode("UTF-8")
@@ -4990,7 +4990,7 @@ def ReTrieveURL(input_url):
 async def _speedtest(event):
     if event.fwd_from:
         return
-    _tg = await get_pika_tg(event)
+    _tg = await get_infx_tg(event)
     input_str = event.pattern_match.group(1)
     as_text = True
     as_document = False
@@ -5000,13 +5000,13 @@ async def _speedtest(event):
         as_document = True
     elif input_str == "text":
         as_text = True
-    a = await pika_msg(event, "`Calculating my internet speed. Please wait!`", _tg)
-    start = pikatime.now()
+    a = await infx_msg(event, "`Calculating my internet speed. Please wait!`", _tg)
+    start = infxtime.now()
     s = speedtest.Speedtest()
     s.get_best_server()
     s.download()
     s.upload()
-    end = pikatime.now()
+    end = infxtime.now()
     ms = (end - start).microseconds / 1000
     response = s.results.dict()
     download_speed = response.get("download")
@@ -5022,7 +5022,7 @@ async def _speedtest(event):
         response = s.results.share()
         speedtest_image = response
         if as_text:
-            await pika_msg(
+            await infx_msg(
                 a,
                 """`SpeedTest completed in {} seconds`
 
@@ -5050,7 +5050,7 @@ async def _speedtest(event):
             )
             await event.delete()
     except Exception as exc:
-        await pika_msg(
+        await infx_msg(
             a,
             """**SpeedTest** completed in {} seconds
 Download: {}
@@ -5080,20 +5080,20 @@ def convert_from_bytes(size):
 
 
 async def _vars(var):
-    _tg = await get_pika_tg(var)
+    _tg = await get_infx_tg(var)
     exe = var.pattern_match.group(1)
     heroku_var = app.config()
     if exe == "get":
-        a = await pika_msg(var, "`Getting information...`", _tg)
+        a = await infx_msg(var, "`Getting information...`", _tg)
         await asyncio.sleep(1.5)
         try:
             variable = var.pattern_match.group(2).split()[0]
             if variable in heroku_var:
-                return await pika_msg(
+                return await infx_msg(
                     a, "**ConfigVars**:" f"\n\n`{variable} = {heroku_var[variable]}`\n"
                 )
             else:
-                return await pika_msg(
+                return await infx_msg(
                     a, "**ConfigVars**:" f"\n\n`Error:\n-> {variable} don't exists`"
                 )
         except IndexError:
@@ -5110,7 +5110,7 @@ async def _vars(var):
                         caption="`Output too large, sending it as a file`",
                     )
                 else:
-                    await pika_msg(
+                    await infx_msg(
                         a,
                         "`[HEROKU]` ConfigVars:\n\n"
                         "================================"
@@ -5120,47 +5120,47 @@ async def _vars(var):
             os.remove("configs.json")
             return
     elif exe == "set":
-        a = await pika_msg(var, "`Setting information...`", _tg)
+        a = await infx_msg(var, "`Setting information...`", _tg)
         variable = var.pattern_match.group(2)
         if not variable:
-            return await pika_msg(a, ">`.set var <ConfigVars-name> <value>`")
+            return await infx_msg(a, ">`.set var <ConfigVars-name> <value>`")
         value = var.pattern_match.group(3)
         if not value:
             variable = variable.split()[0]
             try:
                 value = var.pattern_match.group(2).split()[1]
             except IndexError:
-                return await pika_msg(a, ">`.set var <ConfigVars-name> <value>`")
+                return await infx_msg(a, ">`.set var <ConfigVars-name> <value>`")
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await pika_msg(
+            await infx_msg(
                 a, f"**{variable}**  `successfully changed to`  ->  **{value}**"
             )
         else:
-            await pika_msg(
+            await infx_msg(
                 a, f"**{variable}**  `successfully added with value`  ->  **{value}**"
             )
         heroku_var[variable] = value
     elif exe == "del":
-        a = await pika_msg(var, "`Getting information to deleting variable...`", _tg)
+        a = await infx_msg(var, "`Getting information to deleting variable...`", _tg)
         try:
             variable = var.pattern_match.group(2).split()[0]
         except IndexError:
-            return await pika_msg(a, "`Please specify ConfigVars you want to delete`")
+            return await infx_msg(a, "`Please specify ConfigVars you want to delete`")
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await pika_msg(a, f"**{variable}**  `successfully deleted`")
+            await infx_msg(a, f"**{variable}**  `successfully deleted`")
             del heroku_var[variable]
         else:
-            return await pika_msg(a, f"**{variable}**  `is not exists`")
+            return await infx_msg(a, f"**{variable}**  `is not exists`")
 
 
 async def _dyno(dyno):
     """
     Get your account Dyno Usage
     """
-    _tg = await get_pika_tg(dyno)
-    a = await pika_msg(dyno, "`Calculating your Dyno Usage`", _tg)
+    _tg = await get_infx_tg(dyno)
+    a = await infx_msg(dyno, "`Calculating your Dyno Usage`", _tg)
     useragent = (
         "Mozilla/5.0 (Linux; Android 10; SM-G975F) "
         "AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -5175,7 +5175,7 @@ async def _dyno(dyno):
     path = "/accounts/" + user_id + "/actions/get-quota"
     r = requests.get(heroku_api + path, headers=headers)
     if r.status_code != 200:
-        return await pika_msg(
+        return await infx_msg(
             a, "`Error: something bad happened`\n\n" f">.`{r.reason}`\n"
         )
     result = r.json()
@@ -5204,7 +5204,7 @@ async def _dyno(dyno):
 
     await asyncio.sleep(1.5)
 
-    return await pika_msg(
+    return await infx_msg(
         a,
         "**Dyno Usage**:\n\n"
         f" -> `Dyno usage for`  **{Var.HEROKU_APP_NAME}**:\n"
@@ -5232,8 +5232,8 @@ def prettyjson(obj, indent=2, maxlinelength=80):
 
 
 async def _restart(rstrt):
-    _tg = await get_pika_tg(rstrt)
-    await pika_msg(
+    _tg = await get_infx_tg(rstrt)
+    await infx_msg(
         rstrt,
         "**Boss I am restarting!, Please wait for a min after that do {x}ping or {x}help**".format(
             x=rx
@@ -5246,8 +5246,8 @@ async def _restart(rstrt):
 
 
 async def _logs(dyno):
-    _tg = await get_pika_tg(dyno)
-    a = await pika_msg(dyno, "Getting Logs....", _tg)
+    _tg = await get_infx_tg(dyno)
+    a = await infx_msg(dyno, "Getting Logs....", _tg)
     await asyncio.sleep(1)
     with open("logs.txt", "w") as log:
         log.write(app.get_log())
@@ -5257,7 +5257,7 @@ async def _logs(dyno):
         reply_to=dyno.id,
         caption="logs of 100+ lines",
     )
-    await pika_msg(a, "Sending in Progress.......")
+    await infx_msg(a, "Sending in Progress.......")
     await asyncio.sleep(1)
     await a.delete()
 
@@ -5267,8 +5267,8 @@ async def apk(e):
         app_name = e.pattern_match.group(1)
         remove_space = app_name.split(" ")
         final_name = "+".join(remove_space)
-        _tg = await get_pika_tg(e)
-        a = await pika_msg(
+        _tg = await get_infx_tg(e)
+        a = await infx_msg(
             e, f"Searching for {app_name} on PlayStore, Please Wait...", _tg
         )
         page = requests.get(
@@ -5326,40 +5326,40 @@ async def apk(e):
             + "'>View in Play Store</a>"
         )
         app_details += "\n\n•••> **Pikabot** <•••"
-        await pika_msg(a, app_details, link_preview=True, parse_mode="HTML")
+        await infx_msg(a, app_details, link_preview=True, parse_mode="HTML")
     except IndexError:
-        await pika_msg(a, "No result found in search. Please enter **Valid app name**")
+        await infx_msg(a, "No result found in search. Please enter **Valid app name**")
     except Exception as err:
-        await pika_msg(a, "Exception Occured:- " + str(err))
+        await infx_msg(a, "Exception Occured:- " + str(err))
 
 
-async def _welcome(_pika):
-    _pika_id = await auto_var(_pika)
-    pika_wel = get_welcome(_pika.chat_id, _pika_id)
-    if pika_wel:
-        if (_pika.user_joined or _pika.user_added) and not (await _pika.get_user()).bot:
-            if pika_wel.cl_wc:
+async def _welcome(_infx):
+    _infx_id = await auto_var(_infx)
+    infx_wel = get_welcome(_infx.chat_id, _infx_id)
+    if infx_wel:
+        if (_infx.user_joined or _infx.user_added) and not (await _infx.get_user()).bot:
+            if infx_wel.cl_wc:
                 try:
-                    await _pika.client.delete_messages(_pika.chat_id, pika_wel.prev_wc)
+                    await _infx.client.delete_messages(_infx.chat_id, infx_wel.prev_wc)
                 except Exception as e:
-                    pikalog.warn(str(e))
-            pika1 = await _pika.get_user()
-            chat = await _pika.get_chat()
-            me = await _pika.client.get_me()
+                    infxlog.warn(str(e))
+            infx1 = await _infx.get_user()
+            chat = await _infx.get_chat()
+            me = await _infx.client.get_me()
 
             title = chat.title if chat.title else "this chat"
-            participants = await _pika.client.get_participants(chat)
+            participants = await _infx.client.get_participants(chat)
             count = len(participants)
-            mention = "[{}](tg://user?id={})".format(pika1.first_name, pika1.id)
+            mention = "[{}](tg://user?id={})".format(infx1.first_name, infx1.id)
             my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
-            first = pika1.first_name
-            last = pika1.last_name
+            first = infx1.first_name
+            last = infx1.last_name
             if last:
                 fullname = f"{first} {last}"
             else:
                 fullname = first
-            username = f"@{pika1.username}" if pika1.username else mention
-            userid = pika1.id
+            username = f"@{infx1.username}" if infx1.username else mention
+            userid = infx1.id
             my_first = me.first_name
             my_last = me.last_name
             if my_last:
@@ -5369,15 +5369,15 @@ async def _welcome(_pika):
             my_username = f"@{me.username}" if me.username else my_mention
             file_media = None
             current_saved_welcome_message = None
-            if pika_wel and pika_wel.mf_id:
-                pikamsg = await _pika.client.get_messages(
-                    entity=BOTLOG_CHATID, ids=int(pika_wel.mf_id)
+            if infx_wel and infx_wel.mf_id:
+                infxmsg = await _infx.client.get_messages(
+                    entity=BOTLOG_CHATID, ids=int(infx_wel.mf_id)
                 )
-                file_media = pikamsg.media
-                current_saved_welcome_message = pikamsg.message
-            elif pika_wel and pika_wel.cust_wc:
-                current_saved_welcome_message = pika_wel.cust_wc
-            current_message = await _pika.reply(
+                file_media = infxmsg.media
+                current_saved_welcome_message = infxmsg.message
+            elif infx_wel and infx_wel.cust_wc:
+                current_saved_welcome_message = infx_wel.cust_wc
+            current_message = await _infx.reply(
                 current_saved_welcome_message.format(
                     mention=mention,
                     title=title,
@@ -5395,86 +5395,86 @@ async def _welcome(_pika):
                 ),
                 file=file_media,
             )
-            upd_prev_welcome(_pika.chat_id, _pika_id, current_message.id)
+            upd_prev_welcome(_infx.chat_id, _infx_id, current_message.id)
 
 
-async def set_wlcm(_pika):
-    _pika_id = await auto_var(_pika)
-    _tg = await is_pikatg(_pika)
-    msg = await _pika.get_reply_message()
-    string = _pika.pattern_match.group(1)
-    pikaa_id = None
+async def set_wlcm(_infx):
+    _infx_id = await auto_var(_infx)
+    _tg = await is_infxtg(_infx)
+    msg = await _infx.get_reply_message()
+    string = _infx.pattern_match.group(1)
+    infxa_id = None
     cln_wc = False
-    a = await pika_msg(_pika, "Setting Up Welcome Note, Please Wait...", _tg)
+    a = await infx_msg(_infx, "Setting Up Welcome Note, Please Wait...", _tg)
     if msg and msg.media and not string:
         if BOTLOG_CHATID:
-            await _pika.client.send_message(
+            await _infx.client.send_message(
                 BOTLOG_CHATID,
                 f"#WELCOME_NOTE\
-            \nCHAT ID: {_pika.chat_id}\
+            \nCHAT ID: {_infx.chat_id}\
             \nThe following message is saved as the new welcome note for the chat, please do NOT delete it !!",
             )
-            pikamsg = await _pika.client.forward_messages(
-                entity=BOTLOG_CHATID, messages=msg, from_peer=_pika.chat_id, silent=True
+            infxmsg = await _infx.client.forward_messages(
+                entity=BOTLOG_CHATID, messages=msg, from_peer=_infx.chat_id, silent=True
             )
-            pikaa_id = pikamsg.id
+            infxa_id = infxmsg.id
         else:
-            await pika_msg(
+            await infx_msg(
                 a,
                 "`Saving media as part of the welcome note requires the BOTLOG_CHATID to be set.`",
             )
             return
-    elif _pika.reply_to_msg_id and not string:
-        rep_msg = await _pika.get_reply_message()
+    elif _infx.reply_to_msg_id and not string:
+        rep_msg = await _infx.get_reply_message()
         string = rep_msg.text
     success = "`Welcome note {} for this chat.`"
-    if add_welcome(_pika.chat_id, _pika_id, string, cln_wc, 0, pikaa_id) is True:
-        await pika_msg(a, success.format("saved"))
+    if add_welcome(_infx.chat_id, _infx_id, string, cln_wc, 0, infxa_id) is True:
+        await infx_msg(a, success.format("saved"))
     else:
-        await pika_msg(a, success.format("updated"))
+        await infx_msg(a, success.format("updated"))
 
 
-async def get_welcm(_pika):
-    _pika_id = await auto_var(_pika)
-    pika_wel = get_welcome(_pika.chat_id, _pika_id)
-    _tg = await is_pikatg(_pika)
-    a = await pika_msg(_pika, "Getting Current Welcome Message, Please Wait...", _tg)
-    if not pika_wel:
-        await pika_msg(a, "`No welcome message saved here.`")
+async def get_welcm(_infx):
+    _infx_id = await auto_var(_infx)
+    infx_wel = get_welcome(_infx.chat_id, _infx_id)
+    _tg = await is_infxtg(_infx)
+    a = await infx_msg(_infx, "Getting Current Welcome Message, Please Wait...", _tg)
+    if not infx_wel:
+        await infx_msg(a, "`No welcome message saved here.`")
         return
-    elif pika_wel and pika_wel.mf_id:
-        pikamsg = await _pika.client.get_messages(
-            entity=BOTLOG_CHATID, ids=int(pika_wel.mf_id)
+    elif infx_wel and infx_wel.mf_id:
+        infxmsg = await _infx.client.get_messages(
+            entity=BOTLOG_CHATID, ids=int(infx_wel.mf_id)
         )
-        await pika_msg(
+        await infx_msg(
             a, "`I am currently welcoming new users with this welcome note.`"
         )
-        await _pika.reply(pikamsg.message, file=pikamsg.media)
-    elif pika_wel and pika_wel.cust_wc:
-        await pika_msg(
+        await _infx.reply(infxmsg.message, file=infxmsg.media)
+    elif infx_wel and infx_wel.cust_wc:
+        await infx_msg(
             a, "`I am currently welcoming new users with this welcome note.`"
         )
-        await _pika.reply(pika_wel.cust_wc)
+        await _infx.reply(infx_wel.cust_wc)
 
 
-async def del_welcm(_pika):
-    _tg = await is_pikatg(_pika)
-    _pika_id = await auto_var(_pika)
-    a = await pika_msg(_pika, "Deleting Welcome Note, Please wait...", _tg)
-    if remove_welcome(_pika.chat_id, _pika_id) is True:
-        await pika_msg(a, "`Welcome note deleted for this chat.`")
+async def del_welcm(_infx):
+    _tg = await is_infxtg(_infx)
+    _infx_id = await auto_var(_infx)
+    a = await infx_msg(_infx, "Deleting Welcome Note, Please wait...", _tg)
+    if remove_welcome(_infx.chat_id, _infx_id) is True:
+        await infx_msg(a, "`Welcome note deleted for this chat.`")
     else:
-        await pika_msg(a, "`Do I have a welcome note here ?`")
+        await infx_msg(a, "`Do I have a welcome note here ?`")
 
 
-async def clean_welcm(_pika):
-    _tg = await is_pikatg(_pika)
-    _pika_id = await auto_var(_pika)
-    a = await pika_msg(
-        _pika, "Turning On Welcome Note Auto cleaning AI, Please wait...", _tg
+async def clean_welcm(_infx):
+    _tg = await is_infxtg(_infx)
+    _infx_id = await auto_var(_infx)
+    a = await infx_msg(
+        _infx, "Turning On Welcome Note Auto cleaning AI, Please wait...", _tg
     )
-    clean_welcome(_pika.chat_id, _pika_id, True)
-    await pika_msg(a, "**Sucessfully Turned on Welcome Note Auto cleaning**")
+    clean_welcome(_infx.chat_id, _infx_id, True)
+    await infx_msg(a, "**Sucessfully Turned on Welcome Note Auto cleaning**")
 
 
 async def _telegraph(event):
@@ -5489,33 +5489,33 @@ async def _telegraph(event):
             auth_url
         ),
     )
-    _tg = await get_pika_tg(event)
-    a = await pika_msg(event, "Generating Telegraph Link, Please wait...", _tg)
+    _tg = await get_infx_tg(event)
+    a = await infx_msg(event, "Generating Telegraph Link, Please wait...", _tg)
     optional_title = event.pattern_match.group(2)
     if event.reply_to_msg_id:
-        start = pikatime.now()
+        start = infxtime.now()
         r_message = await event.get_reply_message()
         input_str = event.pattern_match.group(1)
-        await get_pika_tg(event)
+        await get_infx_tg(event)
         if input_str == "m":
             downloaded_file_name = await event.client.download_media(
                 r_message, Config.TMP_DOWNLOAD_DIRECTORY
             )
-            end = pikatime.now()
+            end = infxtime.now()
             ms = (end - start).seconds
             if downloaded_file_name.endswith((".webp")):
                 resize_image(downloaded_file_name)
             try:
-                start = pikatime.now()
+                start = infxtime.now()
                 media_urls = upload_file(downloaded_file_name)
             except exceptions.TelegraphException as exc:
-                await pika_msg(a, "ERROR: " + str(exc))
+                await infx_msg(a, "ERROR: " + str(exc))
                 os.remove(downloaded_file_name)
             else:
-                end = pikatime.now()
+                end = infxtime.now()
                 ms_two = (end - start).seconds
                 os.remove(downloaded_file_name)
-                await pika_msg(
+                await infx_msg(
                     a,
                     "𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐩𝐡.𝐩𝐡 𝐋𝐢𝐧𝐤 👉 `https://telegra.ph{}`".format(
                         media_urls[0], (ms + ms_two)
@@ -5543,15 +5543,15 @@ async def _telegraph(event):
                 os.remove(downloaded_file_name)
             page_content = page_content.replace("\n", "<br>")
             response = telegraph.create_page(title_of_page, html_content=page_content)
-            end = pikatime.now()
+            end = infxtime.now()
             ms = (end - start).seconds
-            await pika_msg(
+            await infx_msg(
                 a,
                 "𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐩𝐡.𝐩𝐡 𝐋𝐢𝐧𝐤 👉 `https://telegra.ph{}`".format(response["path"]),
                 link_preview=True,
             )
     else:
-        await pika_msg(a, "Reply to a msg/media to get a permanent telegra.ph link.")
+        await infx_msg(a, "Reply to a msg/media to get a permanent telegra.ph link.")
 
 
 def resize_image(image):
@@ -5566,7 +5566,7 @@ async def _invite(event):
     if event.is_private:
         await event.edit("`.invite` users to a chat, not to a Private Message")
     else:
-        pikalog.info(to_add_users)
+        infxlog.info(to_add_users)
         if not event.is_channel and event.is_group:
             # https://lonamiwebs.github.io/Telethon/methods/messages/add_chat_user.html
             for user_id in to_add_users.split(" "):
@@ -5596,16 +5596,16 @@ async def _invite(event):
 async def _ping(event):
     if event.fwd_from:
         return
-    if await is_pikatg(event):
+    if await is_infxtg(event):
         az = f"{bot.me.first_name}'s **Assistant**"
     else:
         axx = await auto_var(event, "alivename")
         az = f"𝑴𝒚 𝑩𝒐𝒔𝒔 **{axx}**"
-    _tg = await get_pika_tg(event)
-    start = pikatime.now()
-    a = await pika_msg(event, f"{rx}pikaa", _tg)
-    end = pikatime.now()
+    _tg = await get_infx_tg(event)
+    start = infxtime.now()
+    a = await infx_msg(event, f"{rx}infxa", _tg)
+    end = infxtime.now()
     ms = (end - start).microseconds / 1000
-    await pika_msg(a, "✪ 𝗣𝗂𝗄𝖺 𝗣𝗂𝗄𝖺 𝗣𝗂𝗄𝖺𝖼𝗁𝗎!\n➥{}Ms\n➥{}".format(ms, az))
+    await infx_msg(a, "✪ 𝗣𝗂𝗄𝖺 𝗣𝗂𝗄𝖺 𝗣𝗂𝗄𝖺𝖼𝗁𝗎!\n➥{}Ms\n➥{}".format(ms, az))
     await asyncio.sleep(7)
     await a.delete()

@@ -75,7 +75,7 @@ async def _(event):
             )
 
     async with borg.conversation("@Stickers") as bot_conv:
-        now = datetime.pikatime.now()
+        now = datetime.infxtime.now()
         dt = now + datetime.timedelta(minutes=1)
         if not await stickerset_exists(bot_conv, packshortname):
             await event.edit("`Brewing a new pack! ヽ(´▽｀)ノ`")
@@ -427,7 +427,7 @@ def resize_image(image, save_locaton):
 
 
 def progress(current, total):
-    pikalog.info(
+    infxlog.info(
         "Uploaded: {} of {}\nCompleted {}".format(
             current, total, (current / total) * 100
         )

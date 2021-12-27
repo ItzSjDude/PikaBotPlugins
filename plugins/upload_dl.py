@@ -67,7 +67,7 @@ async def download(target_file):
                     await pik.edit(current_message)
                     display_message = current_message
             except Exception as e:
-                pikalog.info(str(e))
+                infxlog.info(str(e))
         if downloader.isSuccessful():
             await pik.edit(
                 "Downloaded to `{}` successfully !!".format(downloaded_file_name)
@@ -106,7 +106,7 @@ async def uploadir(udir_event):
                 lst_of_files.append(os.path.join(r, file))
             for file in d:
                 lst_of_files.append(os.path.join(r, file))
-        pikalog.info(lst_of_files)
+        infxlog.info(lst_of_files)
         uploaded = 0
         await _axx_.edit(
             "Found {} files. Uploading will start soon. Please wait!".format(
@@ -245,7 +245,7 @@ def extract_w_h(file):
     try:
         t_response = subprocess.check_output(command_to_run, stderr=subprocess.STDOUT)
     except subprocess.CalledProcessError as exc:
-        pikalog.warning(exc)
+        infxlog.warning(exc)
     else:
         x_reponse = t_response.decode("UTF-8")
         response_json = json.loads(x_reponse)

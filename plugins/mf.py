@@ -43,5 +43,5 @@ async def _(event):
         functions.help.GetConfigRequest()
     )  # pylint:disable=E0602
     result = result.stringify()
-    pikalog.info(result)  # pylint:disable=E0602
+    infxlog.info(result)  # pylint:disable=E0602
     await event.edit("""**Telethon UserBot powered by [[ItzSjDude](t.me/ItzSjDude)]""")

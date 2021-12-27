@@ -21,7 +21,7 @@ async def _(event):
         return
     await event.edit("trying to download media file, to my local")
     try:
-        start = pikatime.now()
+        start = infxtime.now()
         c_time = time.time()
         downloaded_file_name = await event.client.download_media(
             reply_message,
@@ -33,7 +33,7 @@ async def _(event):
     except Exception as e:  # pylint:disable=C0103,W0703
         await event.edit(str(e))
     else:
-        end = pikatime.now()
+        end = infxtime.now()
         ms = (end - start).seconds
         await event.edit(
             "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
@@ -83,7 +83,7 @@ async def _(event):
             await event.edit("not supported")
             os.remove(downloaded_file_name)
             return
-        pikalog.info(command_to_run)
+        infxlog.info(command_to_run)
         # TODO: re-write create_subprocess_exec 😉
         process = await asyncio.create_subprocess_exec(
             *command_to_run,
@@ -97,7 +97,7 @@ async def _(event):
         stdout.decode().strip()
         os.remove(downloaded_file_name)
         if os.path.exists(new_required_file_name):
-            end_two = pikatime.now()
+            end_two = infxtime.now()
             await event.client.send_file(
                 entity=event.chat_id,
                 file=new_required_file_name,

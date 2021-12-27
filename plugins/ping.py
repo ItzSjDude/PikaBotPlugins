@@ -1,10 +1,10 @@
 """Ping Module for Pikabot
-{i}pika"""
+{i}infx"""
 
 # Made by @ItzSjDude for Pikabot
 from . import _ping
 
 
-@ItzSjDude(outgoing=True, pattern="pika$")
+@ItzSjDude(outgoing=True, pattern="infx$")
 async def _(event):
     await _ping(event)

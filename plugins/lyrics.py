@@ -25,6 +25,6 @@ async def _(event):
                 await event.edit(lyric_message)
             except BaseException:
                 # TODO: send as file
-                pikalog.info(lyric_message)
+                infxlog.info(lyric_message)
     except ValueError:
         await event.edit("Song not found")

@@ -45,7 +45,7 @@ async def _(event):
     if not os.path.isdir(Var.TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Var.TEMP_DOWNLOAD_DIRECTORY)
     required_file_name = None
-    start = pikatime.now()
+    start = infxtime.now()
     if event.reply_to_msg_id and not input_str:
         reply_message = await event.get_reply_message()
         try:
@@ -58,7 +58,7 @@ async def _(event):
             await mone.edit(str(e))
             return False
         else:
-            end = pikatime.now()
+            end = infxtime.now()
             ms = (end - start).seconds
             required_file_name = downloaded_file_name
             await mone.edit(
@@ -67,14 +67,14 @@ async def _(event):
     elif input_str:
         input_str = input_str.strip()
         if os.path.exists(input_str):
-            end = pikatime.now()
+            end = infxtime.now()
             ms = (end - start).seconds
             required_file_name = input_str
             await mone.edit("Found `{}` in {} seconds.".format(input_str, ms))
         else:
             await mone.edit("File Not found in local server. Give me a file path :((")
             return False
-    # pikalog.info(required_file_name)
+    # infxlog.info(required_file_name)
     if required_file_name:
         # Check if token file exists, if not create it by requesting
         # authorization code
@@ -248,7 +248,7 @@ async def create_directory(http, directory_name, parent_id):
     file = drive_service.files().insert(body=file_metadata).execute()
     file_id = file.get("id")
     drive_service.permissions().insert(fileId=file_id, body=permissions).execute()
-    pikalog.info(
+    infxlog.info(
         "Created Gdrive Folder:\nName: {}\nID: {} ".format(file.get("title"), file_id)
     )
     return file_id
@@ -356,7 +356,7 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
                     await event.edit(current_message)
                     display_message = current_message
                 except Exception as e:
-                    pikalog.info(str(e))
+                    infxlog.info(str(e))
     file_id = response.get("id")
     # Insert new permissions
     drive_service.permissions().insert(fileId=file_id, body=permissions).execute()

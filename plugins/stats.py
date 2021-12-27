@@ -6,7 +6,7 @@ from telethon.tl.types import Channel, Chat, User
 async def _(event):
     if event.fwd_from:
         return
-    start = pikatime.now()
+    start = infxtime.now()
     u = 0
     g = 0
     c = 0
@@ -29,7 +29,7 @@ async def _(event):
                 c += 1
         else:
             print(d)
-    end = pikatime.now()
+    end = infxtime.now()
     ms = (end - start).seconds
     await event.edit(
         """`Your Stats Obtained in {} seconds`

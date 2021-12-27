@@ -53,7 +53,7 @@ from . import (
 )
 
 
-# @bot.on(pika_sudo(from_client=1, pattern=r"setgpic$"))
+# @bot.on(infx_sudo(from_client=1, pattern=r"setgpic$"))
 @ItzSjDude(groups_only=True, pattern=r"setgpic$")
 async def _(gpic):
     await _setgpic(gpic)
