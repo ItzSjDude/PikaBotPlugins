@@ -1,7 +1,4 @@
 import logging
-
-from pikabot.utils import ItzSjDude
-
 logger = logging.getLogger(__name__)
 if 1 == 1:
     name = "Profile Photos"
