@@ -11,8 +11,8 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from telethon.tl.types import DocumentAttributeVideo
 
-thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
-extracted = Config.TMP_DOWNLOAD_DIRECTORY + "extracted/"
+thumb_image_path = "./"+ "/thumb_image.jpg"
+extracted = "./" + "extracted/"
 if not os.path.isdir(extracted):
     os.makedirs(extracted)
 
