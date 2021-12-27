@@ -1,7 +1,5 @@
 import asyncio
 import html
-
-from pikabot.utils import ItzSjDude
 from telethon.tl import functions
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
