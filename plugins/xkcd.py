@@ -3,8 +3,6 @@ Syntax: .xkcd <search>"""
 from urllib.parse import quote
 
 import requests
-from pikabot.utils import ItzSjDude
-
 
 @ItzSjDude(outgoing=True, pattern="xkcd ?(.*)")
 async def _(event):
