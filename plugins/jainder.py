@@ -3,9 +3,6 @@
 
 import random
 
-from pikabot.utils import ItzSjDude
-
-
 @ItzSjDude(outgoing=True, pattern=r"jainder(.*)")
 async def _(event):
     if event.fwd_from:
