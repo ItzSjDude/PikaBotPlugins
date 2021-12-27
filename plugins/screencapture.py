@@ -4,8 +4,6 @@ Syntax: .screencapture <Website URL>"""
 import io
 
 import requests
-from pikabot.utils import ItzSjDude
-
 
 @ItzSjDude(outgoing=True, pattern="screencapture (.*)")
 async def _(event):
