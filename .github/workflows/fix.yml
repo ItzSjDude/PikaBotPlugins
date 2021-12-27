@@ -8,8 +8,8 @@ jobs:
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@master
         with:
-          find: "Pika_"
-          replace: "Infx_"
+          find: "Pika"
+          replace: "Infx"
           include: "plugins/**"
       - name: Create Pull Request
         uses: stefanzweifel/git-auto-commit-action@v4
