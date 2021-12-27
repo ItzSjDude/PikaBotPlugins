@@ -15,8 +15,6 @@ import time
 
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
-from pikabot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY, pikalog
-from pikabot.utils import humanbytes, progress
 from pySmartDL import SmartDL
 from telethon.tl.types import DocumentAttributeVideo
 
@@ -347,13 +345,3 @@ async def uploadas(uas_event):
             await r.edit(str(err))
     else:
         await r.edit("404: File Not Found")
-
-
-CMD_HELP.update(
-    {
-        "download": ".dl <link|filename> or reply to media\
-\nUsage: Downloads file to the server.\
-\n\n.ul <path in server>\
-\nUsage: Uploads a locally stored file to the chat."
-    }
-)
