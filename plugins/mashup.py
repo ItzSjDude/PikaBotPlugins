@@ -63,11 +63,3 @@ async def _(event):
             await event.client.send_file(
                 event.chat_id, response.message, reply_to=reply_to_id
             )
-
-
-CMD_HELP.update(
-    {
-        "mashup": "`.mashup` <text> :\
-      \n**USAGE:** Send you the related video message of given text . "
-    }
-)
