@@ -30,10 +30,9 @@ import speedtest
 from bs4 import BeautifulSoup
 from geopy.geocoders import Nominatim
 from humanize import naturalsize
-from pikabot import *
-from pikabot import get_readable_time as grt
-from pikabot import rawtm
-from pikabot.resources.helpers import *
+from INFINIX import *
+from INFINIX import get_readable_time as grt
+from INFINIX import rawtm
 from PIL import Image, ImageColor, ImageEnhance, ImageOps
 from pygments.formatters import ImageFormatter
 from pygments.lexers import Python3Lexer
