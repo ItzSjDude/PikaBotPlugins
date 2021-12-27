@@ -3,8 +3,6 @@
 
 import asyncio
 
-from pikabot.utils import ItzSjDude
-
 
 @ItzSjDude(outgoing=True, pattern="lovestory")
 async def _(event):
