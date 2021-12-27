@@ -7,7 +7,6 @@ import os
 import random
 import textwrap
 
-from pikabot.utils import ItzSjDude
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterDocument
 
