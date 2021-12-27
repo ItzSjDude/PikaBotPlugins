@@ -1,11 +1,5 @@
 import asyncio
 
-from pikabot.utils import ItzSjDude
-from userbot import ALIVE_NAME
-
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "PikachuUserBot"
-
-
 @ItzSjDude(outgoing=True, pattern=r"police")
 async def _(event):
 
