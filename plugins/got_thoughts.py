@@ -10,9 +10,6 @@ command .gott
 import asyncio
 import random
 
-from pikabot.utils import ItzSjDude
-
-
 @ItzSjDude(outgoing=True, pattern=r"gott")
 async def _(event):
 
