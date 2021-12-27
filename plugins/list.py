@@ -9,9 +9,6 @@ By:- @Zero_cool7870
 
 import os
 
-from pikabot.utils import ItzSjDude
-
-
 @ItzSjDude(outgoing=True, pattern="ls ?(.*)")
 async def lst(event):
     if event.fwd_from:
