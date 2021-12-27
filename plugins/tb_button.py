@@ -3,7 +3,6 @@
 
 import re
 
-from pikabot.utils import ItzSjDude
 from telethon import custom
 
 # regex obtained from:
