@@ -3,8 +3,6 @@ import time
 from collections import deque
 
 from telethon.tl.functions.channels import LeaveChannelRequest
-from userbot import CMD_HELP, bot
-
 
 @ItzSjDude(outgoing=True, pattern="leave$")
 async def leave(e):
@@ -98,7 +96,7 @@ async def _(event):
         deq.rotate(1)
 
 
-CMD_HELP.update({"leave": "Leave a Chat"})
+"""CMD_HELP.update({"leave": "Leave a Chat"})
 CMD_HELP.update({";__;": "You try it!"})
 CMD_HELP.update({"cry": "Cry"})
 CMD_HELP.update({"fp": "Send face palm emoji."})
@@ -110,4 +108,4 @@ CMD_HELP.update({"myusernames": "List of Usernames owned by you."})
 CMD_HELP.update({"oof": "Same as ;__; but ooof"})
 CMD_HELP.update({"earth": "Sends Kensar Earth animation"})
 CMD_HELP.update({"heart": "Try and you'll get your emotions back"})
-CMD_HELP.update({"fap": "Faking orgasm"})
+CMD_HELP.update({"fap": "Faking orgasm"})"""
