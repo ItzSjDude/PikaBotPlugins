@@ -4,8 +4,6 @@
 """Urban Dictionary
 Syntax: .ud Query"""
 import urbandict
-from pikabot.utils import ItzSjDude
-
 
 @ItzSjDude(outgoing=True, pattern="ud (.*)")
 async def _(event):
