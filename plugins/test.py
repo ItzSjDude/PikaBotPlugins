@@ -1,5 +1,3 @@
-from pikabot.utils import ItzSjDude
-
 
 @ItzSjDude(outgoing=True, pattern=r"test")
 async def test(event):
