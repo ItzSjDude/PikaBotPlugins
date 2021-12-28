@@ -8,8 +8,8 @@ jobs:
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@master
         with:
-          find: "Pikabot"
-          replace: "Infinixbot"
+          find: "Config.MAX_MESSAGE_SIZE_LIMIT"
+          replace: "4096"
           include: "plugins/**"
       - name: Create Pull Request
         uses: stefanzweifel/git-auto-commit-action@v4
