@@ -856,7 +856,7 @@ async def _mute(spdr):
         return
 
     _tg = await get_infx_tg(spdr)
-    self_user = await auto_var(spdr)
+    self_user = await infxgvar(spdr)
 
     if user.id == self_user:
         await infx_msg(
@@ -905,7 +905,7 @@ async def _unmute(unmot):
         return
 
     # If admin or creator, inform the user and start unmuting
-    infx_id = await auto_var(unmot)
+    infx_id = await infxgvar(unmot)
     _tg = await get_infx_tg(unmot)
     a = await infx_msg(unmot, "```Unmuting...```", _tg)
     user = await get_user_from_event(unmot)
@@ -941,7 +941,7 @@ async def _ungmute(un_gmute):
     # Admin or creator check
     await un_gmute.client.get_me()
     _tg = await get_infx_tg(un_gmute)
-    _infx_id = await auto_var(un_gmute)
+    _infx_id = await infxgvar(un_gmute)
     chat = await un_gmute.get_chat()
     admin = chat.admin_rights
     creator = chat.creator
@@ -1005,7 +1005,7 @@ async def _gmte(gspdr):
     """ For .gmute command, globally mutes the replied/tagged person """
     # Admin or creator check
     await gspdr.client.get_me()
-    _infx_id = await auto_var(gspdr)
+    _infx_id = await infxgvar(gspdr)
     _tg = await get_infx_tg(gspdr)
     chat = await gspdr.get_chat()
     admin = chat.admin_rights
@@ -1270,7 +1270,7 @@ async def _gusers(show):
 
 
 async def _muter(moot):
-    _infx_id = await auto_var(moot)
+    _infx_id = await infxgvar(moot)
     gmuted = is_gmuted(moot.sender_id)
     rights = ChatBannedRights(
         until_date=None,
@@ -1310,7 +1310,7 @@ async def _gban(event):
     import time
 
     _tg = await get_infx_tg(event)
-    infx_id = await auto_var(event)
+    infx_id = await infxgvar(event)
     st = time.time()
     a = await infx_msg(event, "**GBanning This User !**", _tg)
     suc = 0
@@ -1359,7 +1359,7 @@ async def _allnotes(event):
     if event.fwd_from:
         return
     _tg = await get_infx_tg(event)
-    _infx_id = await auto_var(event)
+    _infx_id = await infxgvar(event)
     message = "`There are no saved notes in this chat`"
     notes = get_notes(event.chat_id, _infx_id)
     for note in notes:
@@ -1375,7 +1375,7 @@ async def _remove_notes(event):
     if event.fwd_from:
         return
     _tg = await get_infx_tg(event)
-    _infx_id = await auto_var(event)
+    _infx_id = await infxgvar(event)
     notename = event.pattern_match.group(1)
     if rm_note(_infx_id, event.chat_id, notename) is False:
         return await infx_msg(
@@ -1391,7 +1391,7 @@ async def _add_notes(event):
     if event.fwd_from:
         return
     _tg = await get_infx_tg(event)
-    client_id = await auto_var(event)
+    client_id = await infxgvar(event)
     keyword = event.pattern_match.group(1)
     string = event.text.partition(keyword)[2]
     msg = await event.get_reply_message()
@@ -1428,7 +1428,7 @@ async def _add_notes(event):
 
 async def note_incm(getnt):
     try:
-        _infx_id = await auto_var(getnt)
+        _infx_id = await infxgvar(getnt)
         if not (await getnt.get_sender()).bot:
             notename = getnt.text[1:]
             note = get_note(_infx_id, getnt.chat_id, notename)
@@ -1508,10 +1508,10 @@ async def get_user_sender_id(user, event):
 async def _alive(event):
     pupt = grt((time.time() - UpTime))
     try:
-        pic = await auto_var(event, "alivepic")
+        pic = await infxgvar(event, "alivepic")
     except BaseException:
         pic = apic
-    az = await auto_var(event, "alivename")
+    az = await infxgvar(event, "alivename")
     await event.delete()
     a = await event.client.send_file(
         event.chat_id, pic, caption=alivestr.format(pupt, az)
@@ -5338,7 +5338,7 @@ async def apk(e):
 
 
 async def _welcome(_infx):
-    _infx_id = await auto_var(_infx)
+    _infx_id = await infxgvar(_infx)
     infx_wel = get_welcome(_infx.chat_id, _infx_id)
     if infx_wel:
         if (_infx.user_joined or _infx.user_added) and not (await _infx.get_user()).bot:
@@ -5403,7 +5403,7 @@ async def _welcome(_infx):
 
 
 async def set_wlcm(_infx):
-    _infx_id = await auto_var(_infx)
+    _infx_id = await infxgvar(_infx)
     _tg = await is_infxtg(_infx)
     msg = await _infx.get_reply_message()
     string = _infx.pattern_match.group(1)
@@ -5439,7 +5439,7 @@ async def set_wlcm(_infx):
 
 
 async def get_welcm(_infx):
-    _infx_id = await auto_var(_infx)
+    _infx_id = await infxgvar(_infx)
     infx_wel = get_welcome(_infx.chat_id, _infx_id)
     _tg = await is_infxtg(_infx)
     a = await infx_msg(_infx, "Getting Current Welcome Message, Please Wait...", _tg)
@@ -5463,7 +5463,7 @@ async def get_welcm(_infx):
 
 async def del_welcm(_infx):
     _tg = await is_infxtg(_infx)
-    _infx_id = await auto_var(_infx)
+    _infx_id = await infxgvar(_infx)
     a = await infx_msg(_infx, "Deleting Welcome Note, Please wait...", _tg)
     if remove_welcome(_infx.chat_id, _infx_id) is True:
         await infx_msg(a, "`Welcome note deleted for this chat.`")
@@ -5473,7 +5473,7 @@ async def del_welcm(_infx):
 
 async def clean_welcm(_infx):
     _tg = await is_infxtg(_infx)
-    _infx_id = await auto_var(_infx)
+    _infx_id = await infxgvar(_infx)
     a = await infx_msg(
         _infx, "Turning On Welcome Note Auto cleaning AI, Please wait...", _tg
     )
@@ -5603,7 +5603,7 @@ async def _ping(event):
     if await is_infxtg(event):
         az = f"{bot.me.first_name}'s **Assistant**"
     else:
-        axx = await auto_var(event, "alivename")
+        axx = await infxgvar(event, "alivename")
         az = f"𝑴𝒚 𝑩𝒐𝒔𝒔 **{axx}**"
     _tg = await get_infx_tg(event)
     start = infxtime.now()
