@@ -3492,7 +3492,7 @@ async def _eval(event):
     _tg = await get_infx_tg(event)
     if event.fwd_from:
         return
-    ax_ = await infx_msg(event, "Processing ...", _tg)
+    ax_ = await infx_msg(event, "Processing & Generating Output", _tg)
     cmd = event.text.split(" ", maxsplit=1)[1]
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
@@ -3524,7 +3524,7 @@ async def _eval(event):
     else:
         evaluation = "Success"
 
-    final_output = "**EVAL**: `{}` \n\n **OUTPUT**: \n`{}` \n".format(cmd, evaluation)
+    final_output = "**Python Code**: \n`{}` \n\n **OUTPUT**: \n`{}` \n".format(cmd, evaluation)
 
     if len(final_output) > 4096:
         with io.BytesIO(str.encode(final_output)) as out_file:
