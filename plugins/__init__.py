@@ -15,6 +15,7 @@ import urllib.parse
 from asyncio import sleep
 from datetime import datetime as infxtime
 from os import remove
+from platform import python_version
 from random import choice, randint, uniform
 from re import findall
 from subprocess import PIPE, Popen
@@ -1514,7 +1515,7 @@ async def _alive(event):
     else:
       data=await infchvar(event,"alive",msgid=4)
     await event.delete()
-    alivestr=data.message.format(infver=infvr,telver=(telethon.__version__),pyver=platform.python_version(),upt=pupt,dbstat=db)
+    alivestr=data.message.format(infver=infvr,telver=(__version__),pyver=python_version(),upt=pupt,dbstat=db)
     a = await event.client.send_file(
         event.chat_id, pic, caption=alivestr.format(pupt, az)
     )
