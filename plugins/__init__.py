@@ -3528,7 +3528,6 @@ async def _eval(event):
     else:
         evaluation = "Success"
       
-  File "/root/ItzSjDude/plugins/__init__.py", line 3546, in aexec"""
     exec(f"async def __aexec(event): " + "".join(f"\n {l}" for l in code.split("\n")))
     final_output = "**Python Code**: \n`{}` \n\n **OUTPUT**: \n`{}` \n".format(cmd, evaluation)
 
