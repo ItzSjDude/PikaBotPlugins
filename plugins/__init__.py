@@ -3526,7 +3526,7 @@ async def _eval(event):
 
     final_output = "**EVAL**: `{}` \n\n **OUTPUT**: \n`{}` \n".format(cmd, evaluation)
 
-    if len(final_output) > Config.MAX_MESSAGE_SIZE_LIMIT:
+    if len(final_output) > 4096:
         with io.BytesIO(str.encode(final_output)) as out_file:
             out_file.name = "eval.text"
             await event.client.send_file(
@@ -4581,7 +4581,7 @@ async def _json(event):
     else:
         the_real_message = event.stringify()
         reply_to_id = event.message.id
-    if len(the_real_message) > Config.MAX_MESSAGE_SIZE_LIMIT:
+    if len(the_real_message) > 4096:
         with io.BytesIO(str.encode(the_real_message)) as out_file:
             out_file.name = "json.text"
             await event.client.send_file(

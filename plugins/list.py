@@ -22,7 +22,7 @@ async def lst(event):
         files = os.listdir(os.getcwd())
     for file in files:
         msg += "`{}`\n".format(file)
-    if len(msg) <= Config.MAX_MESSAGE_SIZE_LIMIT:
+    if len(msg) <= 4096:
         await event.edit(msg)
     else:
         msg = msg.replace("`", "")
