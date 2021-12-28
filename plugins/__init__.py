@@ -37,6 +37,7 @@ from PIL import Image, ImageColor, ImageEnhance, ImageOps
 from pygments.formatters import ImageFormatter
 from pygments.lexers import Python3Lexer
 from requests import get
+
 from search_engine_parser import GoogleSearch
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -111,7 +112,10 @@ if bot4:
     b4 = bot4.me
 else:
     b4 = b1
-
+evlrp ="""File "/root/ItzSjDude/plugins/__init__.py", line 3508, in _eval
+    await aexec(cmd, event)
+  File "/root/ItzSjDude/plugins/__init__.py", line 3547, in aexec
+    return await locals()["__aexec"](event)"""
 emoji = os.environ.get("INLINE_EMOJI", "")
 incols = int(os.environ.get("INLINE_COLUMNS", 3))
 inrows = int(os.environ.get("INLINE_ROWS", 7))
@@ -3518,12 +3522,14 @@ async def _eval(event):
     if exc:
         evaluation = exc
     elif stderr:
-        evaluation = stderr
+        evaluation = stderr.replace(evlrp, "")
     elif stdout:
         evaluation = stdout
     else:
         evaluation = "Success"
-
+      
+  File "/root/ItzSjDude/plugins/__init__.py", line 3546, in aexec"""
+    exec(f"async def __aexec(event): " + "".join(f"\n {l}" for l in code.split("\n")))
     final_output = "**Python Code**: \n`{}` \n\n **OUTPUT**: \n`{}` \n".format(cmd, evaluation)
 
     if len(final_output) > 4096:
