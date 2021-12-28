@@ -3520,7 +3520,7 @@ async def _eval(event):
 
     evaluation = ""
     if exc:
-        evaluation = exc
+        evaluation = exc.replace(evlrp, "")
     elif stderr:
         evaluation = stderr.replace(evlrp, "")
     elif stdout:
