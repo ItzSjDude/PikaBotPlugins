@@ -32,7 +32,7 @@ from geopy.geocoders import Nominatim
 from humanize import naturalsize
 from INFINIX import *
 from INFINIX import get_readable_time as grt
-from INFINIX import rawtm
+from INFINIX import rawtm,infvr
 from PIL import Image, ImageColor, ImageEnhance, ImageOps
 from pygments.formatters import ImageFormatter
 from pygments.lexers import Python3Lexer
