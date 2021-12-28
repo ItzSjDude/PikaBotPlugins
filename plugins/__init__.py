@@ -1506,19 +1506,20 @@ async def get_user_sender_id(user, event):
 
 
 async def _alive(event):
+    alive = await infxgvar(event, "alive")
     pupt = grt((time.time() - UpTime))
-    try:
-        pic = await infxgvar(event, "alivepic")
-    except BaseException:
-        pic = apic
-    az = await infxgvar(event, "alivename")
+    db="Working"
+    if alive:
+      data=await infchvar(event,"alive")
+    else:
+      data=await infchvar(event,"alive",msgid=4)
     await event.delete()
+    alivestr=data.message.format(infver=infvr,telver=(telethon.__version__),pyver=platform.python_version(),upt=pupt,dbstat=db)
     a = await event.client.send_file(
         event.chat_id, pic, caption=alivestr.format(pupt, az)
     )
     await asyncio.sleep(30)
-    await a.delete()
-
+    await a.delete() 
 
 async def magisk(request):
     """ magisk latest releases """
