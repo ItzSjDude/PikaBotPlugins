@@ -3528,7 +3528,6 @@ async def _eval(event):
     else:
         evaluation = "Success"
       
-    exec(f"async def __aexec(event): " + "".join(f"\n {l}" for l in code.split("\n")))
     final_output = "**Python Code**: \n`{}` \n\n **OUTPUT**: \n`{}` \n".format(cmd, evaluation)
 
     if len(final_output) > 4096:
