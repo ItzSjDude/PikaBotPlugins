@@ -3560,9 +3560,7 @@ async def helper(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@"):
         event.pattern_match.group(1)
         help_string = """IɴFɪNɪX {(await infchvar(event,"helpstr",6)).message.format(web=_web,ghub=_gt)}"""
-        results = await event.client.inline_query(  # pylint:disable=E0602
-            pdb.Bf_uname, help_string
-        )
+        results = await event.client.inline_query(pdb.Bf_uname,help_string)
         await results[0].click(
             event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
         )
@@ -3577,7 +3575,7 @@ if pdb.Omega is not None and tgbot is not None:
         result = None
         query = infx_.text
         _infxa_ = (infx_.query).user_id
-        if _infxa_ in Ccache and query.startswith("IɴFɪNɪX"):
+        if _infxa_ in Ccache and query.startswith("IɴFɪNɪX "):
             rev_text = query[::-1]
             buttons = paginate_help(0, bot.infx_cmd, "helpme")
             result = builder.article(
