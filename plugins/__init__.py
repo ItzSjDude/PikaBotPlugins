@@ -14,6 +14,7 @@ import traceback
 import telethon
 import urllib.parse
 from asyncio import sleep
+from telethon import __version__
 from datetime import datetime as infxtime
 from os import remove
 from platform import python_version
