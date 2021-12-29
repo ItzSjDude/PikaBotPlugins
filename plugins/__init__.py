@@ -3559,7 +3559,7 @@ async def aexec(code, event):
 async def helper(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@"):
         event.pattern_match.group(1)
-        help_string = (await infxchvar(event,"helpstr",6)).message.format(web=_web,ghub=_gt)
+        help_string = (await infchvar(event,"helpstr",6)).message.format(web=_web,ghub=_gt)
         results = await event.client.inline_query(  # pylint:disable=E0602
             pdb.Bf_uname, help_string
         )
