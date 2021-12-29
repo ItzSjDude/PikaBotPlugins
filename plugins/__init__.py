@@ -1517,7 +1517,7 @@ async def _alive(event):
     else:
       data=await infchvar(event,"alive",msgid=4)
     await event.delete()
-    alivestr=data.message.format(infver=infvr,telver=(telethon.__version__),pyver=python_version(),upt=pupt,dbstat=db)
+    alivestr=data.message.format(infver=infvr,telver=(__version__),pyver=python_version(),upt=pupt,dbstat=db)
     a = await event.client.send_file(
         event.chat_id, pic, caption=alivestr.format(pupt, az)
     )
