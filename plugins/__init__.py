@@ -1519,7 +1519,7 @@ async def _alive(event):
     await event.delete()
     alivestr=data.message.format(infver=infvr,telver=(__version__),pyver=python_version(),upt=pupt,dbstat=db)
     a = await event.client.send_file(
-        event.chat_id, pic=data.media, caption=alivestr
+        event.chat_id, file=data.media, caption=alivestr
     )
     await asyncio.sleep(30)
     await a.delete() 
