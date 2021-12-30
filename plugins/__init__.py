@@ -3663,7 +3663,7 @@ if pdb.Omega is not None and tgbot is not None:
     async def _infxcallback(infx_):
         _infxa_ = (infx_.query).user_id
         if _infxa_ in Ccache:
-            _infx = f"""Pïkå¢hµ Úsêrßð† {helpstr}"""
+            _infx = f"""IɴFɪNɪX {(await infchvar(event,"helpstr",6)).message.format(web=_web,ghub=_gt)}"""
             _infxcmds = bot.infx_cmd
             _infx += "\n**Currently Loaded Plugins**: {}".format(len(_infxcmds))
             _infx_ = paginate_help(0, _infxcmds, "helpme")
@@ -3729,7 +3729,7 @@ async def _(infx_):
 
 @tgbot.on(Infx_CallBack(data=re.compile(b"infx6(.*)")))
 async def _(infx_):
-    _infx = f"""Pïkå¢hµ Úsêrßð† {helpstr}"""
+    _infx = f"""IɴFɪNɪX {(await infchvar(event,"helpstr",6)).message.format(web=_web,ghub=_gt)}"""
     _infxcmds = tgbot.InfxAsst
     _infx += "\n**Currently Loaded Plugins**: {}".format(len(_infxcmds))
     _infx_ = assistent_help(0, _infxcmds, "helpme")
