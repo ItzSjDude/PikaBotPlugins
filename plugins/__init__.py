@@ -3574,7 +3574,7 @@ if pdb.Omega is not None and tgbot is not None:
         builder = infx_.builder
         result = None
         query = infx_.text
-        _infxa_ = (infx_.query).user_id
+        _infxa_ = infx_.query.user_id
         if _infxa_ in Ccache and query.startswith("IɴFɪNɪX"):
             rev_text = query[::-1]
             buttons = paginate_help(0, bot.infx_cmd, "helpme")
