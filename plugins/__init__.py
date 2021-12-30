@@ -23,7 +23,7 @@ from re import findall
 from subprocess import PIPE, Popen
 from time import sleep
 from urllib.parse import quote_plus
-
+const={}
 import bs4
 import heroku3
 import pyfiglet
