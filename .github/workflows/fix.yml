@@ -8,8 +8,8 @@ jobs:
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@master
         with:
-          find: "auto_var"
-          replace: "infxgvar"
+          find: "Pïkå¢hµ Úsêrßð† {helpstr}"
+          replace: "{(await infchvar(event,"helpstr",6)).message.format(web=_web,ghub=_gt)}"
           include: "plugins/**"
       - name: Create Pull Request
         uses: stefanzweifel/git-auto-commit-action@v4
