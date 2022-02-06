@@ -678,7 +678,7 @@ async def _promote(promt):
     # Announce to the logging group if we have promoted successfully
     if pdb.Botlog_chat:
         await promt.client.send_message(
-            pdb.Botlog_chat_CHATID,
+            pdb.Botlog_chat,
             "#PROMOTE\n"
             f"USER: [{user.first_name}](tg://user?id={user.id})\n"
             f"CHAT: {promt.chat.title}(`{promt.chat_id}`)",
@@ -730,7 +730,7 @@ async def _demote(dmod):
     # Announce to the logging group if we have demoted successfully
     if pdb.Botlog_chat:
         await dmod.client.send_message(
-            pdb.Botlog_chat_CHATID,
+            pdb.Botlog_chat,
             "#DEMOTE\n"
             f"USER: [{user.first_name}](tg://user?id={user.id})\n"
             f"CHAT: {dmod.chat.title}(`{dmod.chat_id}`)",
@@ -797,7 +797,7 @@ async def _ban(bon):
     # successfully!
     if pdb.Botlog_chat:
         await bon.client.send_message(
-            pdb.Botlog_chat_CHATID,
+            pdb.Botlog_chat,
             "#BAN\n"
             f"USER: [{user.first_name}](tg://user?id={user.id})\n"
             f"CHAT: {bon.chat.title}(`{bon.chat_id}`)",
@@ -833,7 +833,7 @@ async def _unban(unbon):
 
         if pdb.Botlog_chat:
             await unbon.client.send_message(
-                pdb.Botlog_chat_CHATID,
+                pdb.Botlog_chat,
                 "#UNBAN\n"
                 f"USER: [{user.first_name}](tg://user?id={user.id})\n"
                 f"CHAT: {unbon.chat.title}(`{unbon.chat_id}`)",
@@ -886,7 +886,7 @@ async def _mute(spdr):
             # Announce to logging group
             if pdb.Botlog_chat:
                 await spdr.client.send_message(
-                    pdb.Botlog_chat_CHATID,
+                    pdb.Botlog_chat,
                     "#MUTE\n"
                     f"USER: [{user.first_name}](tg://user?id={user.id})\n"
                     f"CHAT: {spdr.chat.title}(`{spdr.chat_id}`)",
@@ -933,7 +933,7 @@ async def _unmute(unmot):
 
         if pdb.Botlog_chat:
             await unmot.client.send_message(
-                pdb.Botlog_chat_CHATID,
+                pdb.Botlog_chat,
                 "#UNMUTE\n"
                 f"USER: [{user.first_name}](tg://user?id={user.id})\n"
                 f"CHAT: {unmot.chat.title}(`{unmot.chat_id}`)",
@@ -998,7 +998,7 @@ async def _ungmute(un_gmute):
         await infx_msg(a, f"**Globally UnMuted User in {b} Chats**")
         if pdb.Botlog_chat:
             await un_gmute.client.send_message(
-                pdb.Botlog_chat_CHATID,
+                pdb.Botlog_chat,
                 "#UNGMUTE\n"
                 f"USER: [{user.first_name}](tg://user?id={user.id})\n"
                 f"CHAT: {un_gmute.chat.title}(`{un_gmute.chat_id}`)",
@@ -1040,7 +1040,7 @@ async def _gmte(gspdr):
 
         if pdb.Botlog_chat:
             await gspdr.client.send_message(
-                pdb.Botlog_chat_CHATID,
+                pdb.Botlog_chat,
                 "#GMUTE\n"
                 f"USER: [{user.first_name}](tg://user?id={user.id})\n"
                 f"CHAT: {gspdr.chat.title}(`{gspdr.chat_id}`)",
@@ -1112,7 +1112,7 @@ async def _rmdacc(show):
 
     if pdb.Botlog_chat:
         await show.client.send_message(
-            pdb.Botlog_chat_CHATID,
+            pdb.Botlog_chat,
             "#CLEANUP\n"
             f"Cleaned **{del_u}** deleted account(s) !!\
             \nCHAT: {show.chat.title}(`{show.chat_id}`)",
@@ -1178,7 +1178,7 @@ async def _pin(msg):
 
     if pdb.Botlog_chat:
         await msg.client.send_message(
-            pdb.Botlog_chat_CHATID,
+            pdb.Botlog_chat,
             "#PIN\n"
             f"ADMIN: [{user.first_name}](tg://user?id={user.id})\n"
             f"CHAT: {msg.chat.title}(`{msg.chat_id}`)\n"
@@ -1223,7 +1223,7 @@ async def _kick(usr):
 
     if pdb.Botlog_chat:
         await usr.client.send_message(
-            pdb.Botlog_chat_CHATID,
+            pdb.Botlog_chat,
             "#KICK\n"
             f"USER: [{user.first_name}](tg://user?id={user.id})\n"
             f"CHAT: {usr.chat.title}(`{usr.chat_id}`)\n",
@@ -1401,22 +1401,22 @@ async def _add_notes(event):
     msg = await event.get_reply_message()
     msg_id = None
     if msg and msg.media and not string:
-        if pdb.Botlog_chat_CHATID:
+        if pdb.Botlog_chat:
             await event.client.send_message(
-                pdb.Botlog_chat_CHATID,
+                pdb.Botlog_chat,
                 f"#NOTE\
             \nCHAT ID: {event.chat_id}\
             \nKEYWORD: {keyword}\
             \n\nThe following message is saved as the note's reply data for the chat, please do NOT delete it !!",
             )
             msg_o = await event.client.forward_messages(
-                entity=pdb.Botlog_chat_CHATID, messages=msg, from_peer=event.chat_id, silent=True
+                entity=pdb.Botlog_chat, messages=msg, from_peer=event.chat_id, silent=True
             )
             msg_id = msg_o.id
         else:
             await infx_msg(
                 event,
-                "Saving media as data for the note requires the pdb.Botlog_chat_CHATID to be set.",
+                "Saving media as data for the note requires the pdb.Botlog_chat to be set.",
                 _tg,
             )
             return
@@ -1441,7 +1441,7 @@ async def note_incm(getnt):
                 message_id_to_reply = None
             if note and note.f_mesg_id:
                 msg_o = await getnt.client.get_messages(
-                    entity=pdb.Botlog_chat_CHATID, ids=int(note.f_mesg_id)
+                    entity=pdb.Botlog_chat, ids=int(note.f_mesg_id)
                 )
                 await getnt.client.send_message(
                     getnt.chat_id,
@@ -4067,9 +4067,9 @@ async def _fuck(event):
 async def _fwd(event):
     if event.fwd_from:
         return
-    if Config.pdb.Botlog_chat_CHATID is None:
+    if Config.pdb.Botlog_chat is None:
         await event.edit(
-            "Please set the required environment variable `pdb.Botlog_chat_CHATID` for this plugin to work"
+            "Please set the required environment variable `pdb.Botlog_chat` for this plugin to work"
         )
     else:
         re_message = await event.get_reply_message()
@@ -5378,7 +5378,7 @@ async def _welcome(_infx):
             current_saved_welcome_message = None
             if infx_wel and infx_wel.mf_id:
                 infxmsg = await _infx.client.get_messages(
-                    entity=pdb.Botlog_chat_CHATID, ids=int(infx_wel.mf_id)
+                    entity=pdb.Botlog_chat, ids=int(infx_wel.mf_id)
                 )
                 file_media = infxmsg.media
                 current_saved_welcome_message = infxmsg.message
@@ -5414,21 +5414,21 @@ async def set_wlcm(_infx):
     cln_wc = False
     a = await infx_msg(_infx, "Setting Up Welcome Note, Please Wait...", _tg)
     if msg and msg.media and not string:
-        if pdb.Botlog_chat_CHATID:
+        if pdb.Botlog_chat:
             await _infx.client.send_message(
-                pdb.Botlog_chat_CHATID,
+                pdb.Botlog_chat,
                 f"#WELCOME_NOTE\
             \nCHAT ID: {_infx.chat_id}\
             \nThe following message is saved as the new welcome note for the chat, please do NOT delete it !!",
             )
             infxmsg = await _infx.client.forward_messages(
-                entity=pdb.Botlog_chat_CHATID, messages=msg, from_peer=_infx.chat_id, silent=True
+                entity=pdb.Botlog_chat, messages=msg, from_peer=_infx.chat_id, silent=True
             )
             infxa_id = infxmsg.id
         else:
             await infx_msg(
                 a,
-                "`Saving media as part of the welcome note requires the pdb.Botlog_chat_CHATID to be set.`",
+                "`Saving media as part of the welcome note requires the pdb.Botlog_chat to be set.`",
             )
             return
     elif _infx.reply_to_msg_id and not string:
@@ -5451,7 +5451,7 @@ async def get_welcm(_infx):
         return
     elif infx_wel and infx_wel.mf_id:
         infxmsg = await _infx.client.get_messages(
-            entity=pdb.Botlog_chat_CHATID, ids=int(infx_wel.mf_id)
+            entity=pdb.Botlog_chat, ids=int(infx_wel.mf_id)
         )
         await infx_msg(
             a, "`I am currently welcoming new users with this welcome note.`"

@@ -538,7 +538,7 @@ async def let_me_google_that_for_you(lmgtfy_q):
         await lmgtfy_q.edit(f"[{query}]({r.json()['shorturl']})")
         if pdb.Botlog_chat:
             await bot.send_message(
-                pdb.Botlog_chat_CHATID,
+                pdb.Botlog_chat,
                 "LMGTFY query `" + query + "` was executed successfully",
             )
 

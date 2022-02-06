@@ -33,7 +33,7 @@ async def spammer(e):
     await asyncio.wait([e.respond(spam_message) for i in range(counter)])
     if pdb.Botlog_chat:
         await e.client.send_message(
-            pdb.Botlog_chat_CHATID, "#SPAM\n" "Spam was executed successfully"
+            pdb.Botlog_chat, "#SPAM\n" "Spam was executed successfully"
         )
 
 
