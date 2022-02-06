@@ -8,7 +8,7 @@ jobs:
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@master
         with:
-          find: "BOTLOG"
+          find: "pdb.Botlog_chat_CHATID"
           replace: "pdb.Botlog_chat"
           include: "plugins/**"
       - name: Create Pull Request
