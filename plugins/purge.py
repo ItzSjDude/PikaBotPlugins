@@ -30,9 +30,9 @@ async def fastpurger(purg):
         "`Fast purge complete!\n`Purged " + str(count) + " messages.",
     )
 
-    if BOTLOG:
+    if pdb.Botlog_chat:
         await purg.client.send_message(
-            BOTLOG_CHATID, "Purge of " + str(count) + " messages done successfully."
+            pdb.Botlog_chat_CHATID, "Purge of " + str(count) + " messages done successfully."
         )
     await sleep(2)
     await done.delete()
@@ -55,9 +55,9 @@ async def purgeme(delme):
         delme.chat_id,
         "`Purge complete!` Purged " + str(count) + " messages.",
     )
-    if BOTLOG:
+    if pdb.Botlog_chat:
         await delme.client.send_message(
-            BOTLOG_CHATID, "Purge of " + str(count) + " messages done successfully."
+            pdb.Botlog_chat_CHATID, "Purge of " + str(count) + " messages done successfully."
         )
     await sleep(2)
     i = 1
@@ -72,14 +72,14 @@ async def delete_it(delme):
         try:
             await msg_src.delete()
             await delme.delete()
-            if BOTLOG:
+            if pdb.Botlog_chat:
                 await delme.client.send_message(
-                    BOTLOG_CHATID, "Deletion of message was successful"
+                    pdb.Botlog_chat_CHATID, "Deletion of message was successful"
                 )
         except rpcbaseerrors.BadRequestError:
-            if BOTLOG:
+            if pdb.Botlog_chat:
                 await delme.client.send_message(
-                    BOTLOG_CHATID, "Well, I can't delete a message"
+                    pdb.Botlog_chat_CHATID, "Well, I can't delete a message"
                 )
 
 
@@ -97,9 +97,9 @@ async def editer(edit):
             await edit.delete()
             break
         i = i + 1
-    if BOTLOG:
+    if pdb.Botlog_chat:
         await edit.client.send_message(
-            BOTLOG_CHATID, "Edit query was executed successfully"
+            pdb.Botlog_chat_CHATID, "Edit query was executed successfully"
         )
 
 
@@ -113,7 +113,7 @@ async def selfdestruct(destroy):
     smsg = await destroy.client.send_message(destroy.chat_id, text)
     await sleep(counter)
     await smsg.delete()
-    if BOTLOG:
-        await destroy.client.send_message(BOTLOG_CHATID, "sd query done successfully")
+    if pdb.Botlog_chat:
+        await destroy.client.send_message(pdb.Botlog_chat_CHATID, "sd query done successfully")
 
 

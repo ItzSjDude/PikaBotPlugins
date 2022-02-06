@@ -22,7 +22,7 @@ Usage: Gives you Gendgster Feeling
 
 import asyncio
 
-BOTLOG = pdb.Botlog_chat
+pdb.Botlog_chat = pdb.Botlog_chat
 
 
 @Infinix(outgoing=True, pattern="spam (.*)")
@@ -31,9 +31,9 @@ async def spammer(e):
     spam_message = str(e.pattern_match.group(1).split(" ", 1)[1])
     await e.delete()
     await asyncio.wait([e.respond(spam_message) for i in range(counter)])
-    if BOTLOG:
+    if pdb.Botlog_chat:
         await e.client.send_message(
-            BOTLOG_CHATID, "#SPAM\n" "Spam was executed successfully"
+            pdb.Botlog_chat_CHATID, "#SPAM\n" "Spam was executed successfully"
         )
 
 
@@ -46,9 +46,9 @@ async def bigspam(e):
         for i in range(1, counter):
             await e.respond(spam_message)
         await e.delete()
-        if BOTLOG:
+        if pdb.Botlog_chat:
             await e.client.send_message(
-                BOTLOG, "#BIGSPAM \n\n" "Bigspam was executed successfully"
+                pdb.Botlog_chat, "#BIGSPAM \n\n" "Bigspam was executed successfully"
             )
 
 
@@ -111,9 +111,9 @@ async def tiny_pic_spam(e):
         if range(1, counter):
             await e.client.send_file(e.chat_id, link)
         await e.delete()
-        if BOTLOG:
+        if pdb.Botlog_chat:
             await e.client.send_message(
-                BOTLOG, "#PICSPAM \n\n" "PicSpam was executed successfully"
+                pdb.Botlog_chat, "#PICSPAM \n\n" "PicSpam was executed successfully"
             )
 
 
@@ -128,7 +128,7 @@ async def spammer(e):
             await e.respond(spam_message)
             time.sleep(spamDelay)
         await e.delete()
-        if BOTLOG:
+        if pdb.Botlog_chat:
             await e.client.send_message(
-                BOTLOG, "#DelaySPAM \n\n" "DelaySpam was executed successfully"
+                pdb.Botlog_chat, "#DelaySPAM \n\n" "DelaySpam was executed successfully"
             )

@@ -536,9 +536,9 @@ async def let_me_google_that_for_you(lmgtfy_q):
         payload = {"format": "json", "url": lfy_url}
         r = requests.get("http://is.gd/create.php", params=payload)
         await lmgtfy_q.edit(f"[{query}]({r.json()['shorturl']})")
-        if BOTLOG:
+        if pdb.Botlog_chat:
             await bot.send_message(
-                BOTLOG_CHATID,
+                pdb.Botlog_chat_CHATID,
                 "LMGTFY query `" + query + "` was executed successfully",
             )
 
