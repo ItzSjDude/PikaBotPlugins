@@ -8,7 +8,7 @@ jobs:
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@master
         with:
-          find: "Config.TMP_DOWNLOAD_DIRECTORY"
+          find: "TEMP_DOWNLOAD_DIRECTORY"
           replace: "pdb.Dldir"
           include: "plugins/**"
       - name: Create Pull Request
