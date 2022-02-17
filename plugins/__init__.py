@@ -94,6 +94,7 @@ _web="https://Infinix.ItzSjDude.in"
 CARBONLANG = "auto"
 LANG = "en"
 UpTime = time.time()
+b1=b2=b3=b4=40040
 try:
     from infxbot import bot, bot2, bot3, bot4
 except BaseException:
@@ -102,22 +103,11 @@ try:
     tgbot = bot.tgbot
 except BaseException:
     pass
-if bot:
-    b1 = bot.me
-else:
-    b1 = 40040
-if bot2:
-    b2 = bot2.me
-else:
-    b2 = b1
-if bot3:
-    b3 = bot3.me
-else:
-    b3 = b1
-if bot4:
-    b4 = bot4.me
-else:
-    b4 = b1
+if bot: b1 = bot.me
+if bot2: b2 = bot2.me
+if bot3: b3 = bot3.me
+if bot4: b4 = bot4.me
+
 evlrp ="""File "/root/ItzSjDude/plugins/__init__.py", line 3508, in _eval
     await aexec(cmd, event)
   File "/root/ItzSjDude/plugins/__init__.py", line 3547, in aexec
