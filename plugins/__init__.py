@@ -86,6 +86,8 @@ from telethon.tl.types import (
     MessageEntityMentionName,
     MessageMediaPhoto,
 )
+
+infxlog = getLogger("Plugin:")
 from telethon.utils import get_input_location, pack_bot_file_id
 _gt="https://github.com/ItzSjDude"
 _web="https://Infinix.ItzSjDude.in"
