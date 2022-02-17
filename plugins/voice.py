@@ -25,9 +25,9 @@ async def _(event):
         return
     text = text.strip()
     lan = lan.strip()
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
-    required_file_name = Config.TMP_DOWNLOAD_DIRECTORY + "voice.ogg"
+    if not os.path.isdir(pdb.Dldir):
+        os.makedirs(pdb.Dldir)
+    required_file_name = pdb.Dldir + "voice.ogg"
     try:
         # https://github.com/SpEcHiDe/UniBorg/commit/17f8682d5d2df7f3921f50271b5b6722c80f4106
         tts = gTTS(text, lang=lan)

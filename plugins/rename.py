@@ -44,14 +44,14 @@ async def _(event):
         "Renaming in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big"
     )
     input_str = event.pattern_match.group(1)
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(pdb.Dldir):
+        os.makedirs(pdb.Dldir)
     if event.reply_to_msg_id:
         start = infxtime.now()
         file_name = input_str
         reply_message = await event.get_reply_message()
         # c_time = time.time()
-        to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
+        to_download_directory = pdb.Dldir
         downloaded_file_name = os.path.join(to_download_directory, file_name)
         downloaded_file_name = await event.client.download_media(
             reply_message, downloaded_file_name
@@ -79,13 +79,13 @@ async def _(event):
         "Rename & Upload in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big"
     )
     input_str = event.pattern_match.group(1)
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(pdb.Dldir):
+        os.makedirs(pdb.Dldir)
     if event.reply_to_msg_id:
         start = infxtime.now()
         file_name = input_str
         reply_message = await event.get_reply_message()
-        to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
+        to_download_directory = pdb.Dldir
         downloaded_file_name = os.path.join(to_download_directory, file_name)
         downloaded_file_name = await event.client.download_media(
             reply_message, downloaded_file_name
@@ -125,14 +125,14 @@ async def _(event):
         "Rename & Upload as Streamable in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big"
     )
     input_str = event.pattern_match.group(1)
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(pdb.Dldir):
+        os.makedirs(pdb.Dldir)
     if event.reply_to_msg_id:
         start = infxtime.now()
         file_name = input_str
         reply_message = await event.get_reply_message()
         time.time()
-        to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
+        to_download_directory = pdb.Dldir
         downloaded_file_name = os.path.join(to_download_directory, file_name)
         downloaded_file_name = await event.client.download_media(
             reply_message, downloaded_file_name

@@ -4809,8 +4809,8 @@ async def _deldog(event):
     a = await infx_msg(event, "Pasting on Deldog, Please wait...", _tg)
     await asyncio.sleep(1)
     start = infxtime.now()
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(pdb.Dldir):
+        os.makedirs(pdb.Dldir)
     input_str = event.pattern_match.group(1)
     message = "SYNTAX: `.paste <long text to include>`"
     if input_str:
@@ -4820,7 +4820,7 @@ async def _deldog(event):
         if previous_message.media:
             downloaded_file_name = await event.client.download_media(
                 previous_message,
-                Config.TMP_DOWNLOAD_DIRECTORY,
+                pdb.Dldir,
                 progress_callback=progress,
             )
             m_list = None
@@ -4919,7 +4919,7 @@ async def _rmbg(event):
         # check if media message
         try:
             await event.client.download_media(
-                reply_message, Config.TMP_DOWNLOAD_DIRECTORY
+                reply_message, pdb.Dldir
             )
         except Exception as e:
             await infx_msg(a, str(e))
@@ -5488,8 +5488,8 @@ async def _telegraph(event):
     telegraph = Telegraph()
     r = telegraph.create_account(short_name=Config.TELEGRAPH_SHORT_NAME)
     auth_url = r["auth_url"]
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(pdb.Dldir):
+        os.makedirs(pdb.Dldir)
     await event.client.send_message(
         Config.PLUGIN_CHANNEL,
         "Created New Telegraph account {} for the current session. \n**Do not give this url to anyone, even if they say they are from Telegram!**".format(
@@ -5506,7 +5506,7 @@ async def _telegraph(event):
         await get_infx_tg(event)
         if input_str == "m":
             downloaded_file_name = await event.client.download_media(
-                r_message, Config.TMP_DOWNLOAD_DIRECTORY
+                r_message, pdb.Dldir
             )
             end = infxtime.now()
             ms = (end - start).seconds
@@ -5540,7 +5540,7 @@ async def _telegraph(event):
                 if page_content != "":
                     title_of_page = page_content
                 downloaded_file_name = await event.client.download_media(
-                    r_message, Config.TMP_DOWNLOAD_DIRECTORY
+                    r_message, pdb.Dldir
                 )
                 m_list = None
                 with open(downloaded_file_name, "rb") as fd:

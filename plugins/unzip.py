@@ -22,8 +22,8 @@ async def _(event):
     if event.fwd_from:
         return
     mone = await event.edit("Processing ...")
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(pdb.Dldir):
+        os.makedirs(pdb.Dldir)
     if event.reply_to_msg_id:
         start = infxtime.now()
         reply_message = await event.get_reply_message()
@@ -31,7 +31,7 @@ async def _(event):
             time.time()
             downloaded_file_name = await event.client.download_media(
                 reply_message,
-                Config.TMP_DOWNLOAD_DIRECTORY,
+                pdb.Dldir,
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await mone.edit(str(e))

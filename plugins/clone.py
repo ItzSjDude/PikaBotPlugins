@@ -16,7 +16,7 @@ async def _(event):
         return False
     user_id = replied_user.user.id
     profile_pic = await event.client.download_profile_photo(
-        user_id, Config.TMP_DOWNLOAD_DIRECTORY
+        user_id, pdb.Dldir
     )
     # some people have weird HTML in their names
     first_name = html.escape(replied_user.user.first_name)

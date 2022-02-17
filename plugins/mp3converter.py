@@ -22,7 +22,7 @@ async def _(event):
         c_time = time.time()
         downloaded_file_name = await event.client.download_media(
             reply_message,
-            Config.TMP_DOWNLOAD_DIRECTORY,
+            pdb.Dldir,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                 progress(d, t, event, c_time, "trying to download")
             ),
@@ -44,7 +44,7 @@ async def _(event):
         if input_str == "voice":
             new_required_file_caption = "AUDIO" + str(round(time.time())) + ".opus"
             new_required_file_name = (
-                Config.TMP_DOWNLOAD_DIRECTORY + "/" + new_required_file_caption
+                pdb.Dldir + "/" + new_required_file_caption
             )
             command_to_run = [
                 "ffmpeg",
@@ -65,7 +65,7 @@ async def _(event):
         elif input_str == "mp3":
             new_required_file_caption = "AUDIO" + str(round(time.time())) + ".mp3"
             new_required_file_name = (
-                Config.TMP_DOWNLOAD_DIRECTORY + "/" + new_required_file_caption
+                pdb.Dldir + "/" + new_required_file_caption
             )
             command_to_run = [
                 "ffmpeg",

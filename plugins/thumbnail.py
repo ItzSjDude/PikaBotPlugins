@@ -42,11 +42,11 @@ async def _(event):
     if event.fwd_from:
         return
     await event.edit("Processing ...")
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(pdb.Dldir):
+        os.makedirs(pdb.Dldir)
     if event.reply_to_msg_id:
         downloaded_file_name = await event.client.download_media(
-            await event.get_reply_message(), Config.TMP_DOWNLOAD_DIRECTORY
+            await event.get_reply_message(), pdb.Dldir
         )
         if downloaded_file_name.endswith(".mp4"):
             downloaded_file_name = get_video_thumb(downloaded_file_name)
@@ -90,7 +90,7 @@ async def _(event):
         r = await event.get_reply_message()
         try:
             a = await event.client.download_media(
-                r.media.document.thumbs[0], Config.TMP_DOWNLOAD_DIRECTORY
+                r.media.document.thumbs[0], pdb.Dldir
             )
         except Exception as e:
             await event.edit(str(e))

@@ -14,9 +14,9 @@ async def _(event):
 
     mone = await event.edit("Processing ...")
 
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
+    if not os.path.isdir(pdb.Dldir):
 
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+        os.makedirs(pdb.Dldir)
 
     if event.reply_to_msg_id:
 
@@ -27,7 +27,7 @@ async def _(event):
             time.time()
 
             downloaded_file_name = await event.client.download_media(
-                reply_message, Config.TMP_DOWNLOAD_DIRECTORY
+                reply_message, pdb.Dldir
             )
 
             directory_name = downloaded_file_name
