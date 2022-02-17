@@ -12,7 +12,7 @@ import math
 import os
 import subprocess
 import time
-
+from . import progress
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from pySmartDL import SmartDL
