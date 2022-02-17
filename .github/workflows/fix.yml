@@ -8,8 +8,8 @@ jobs:
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@master
         with:
-          find: "pdb.Botlog_chat_CHATID"
-          replace: "pdb.Botlog_chat"
+          find: "Config.TMP_DOWNLOAD_DIRECTORY"
+          replace: "pdb.Dldir"
           include: "plugins/**"
       - name: Create Pull Request
         uses: stefanzweifel/git-auto-commit-action@v4
