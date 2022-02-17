@@ -24,18 +24,18 @@ async def download(target_file):
     """ For .dl command, download files to the userbot's server. """
     pik = await target_file.reply("Processing using userbot server ( ◜‿◝ )♡")
     input_str = target_file.pattern_match.group(1)
-    if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(pdb.Dldir):
+        os.makedirs(pdb.Dldir)
     if "|" in input_str:
         url, file_name = input_str.split("|")
         url = url.strip()
         # https://stackoverflow.com/a/761825/4723940
         head, tail = os.path.split(file_name)
         if head:
-            if not os.path.isdir(os.path.join(TEMP_DOWNLOAD_DIRECTORY, head)):
-                os.makedirs(os.path.join(TEMP_DOWNLOAD_DIRECTORY, head))
+            if not os.path.isdir(os.path.join(pdb.Dldir, head)):
+                os.makedirs(os.path.join(pdb.Dldir, head))
                 file_name = os.path.join(head, tail)
-        downloaded_file_name = TEMP_DOWNLOAD_DIRECTORY + "" + file_name
+        downloaded_file_name = pdb.Dldir + "" + file_name
         downloader = SmartDL(url, downloaded_file_name, progress_bar=False)
         downloader.start(blocking=False)
         c_time = time.time()
@@ -79,7 +79,7 @@ async def download(target_file):
             c_time = time.time()
             downloaded_file_name = await target_file.client.download_media(
                 await target_file.get_reply_message(),
-                TEMP_DOWNLOAD_DIRECTORY,
+                pdb.Dldir,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                     progress(d, t, pik, c_time, "Downloading...")
                 ),

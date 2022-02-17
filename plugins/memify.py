@@ -26,7 +26,7 @@ async def handler(event):
     if not reply_message.media:
         await eor(event, "Reply to a image/sticker.")
         return
-    file = await borg.download_media(reply_message, Var.TEMP_DOWNLOAD_DIRECTORY)
+    file = await borg.download_media(reply_message, Var.pdb.Dldir)
     a = await event.reply("Memifying this image! (」ﾟﾛﾟ)｣ ")
     text = str(event.pattern_match.group(1)).strip()
     if len(text) < 1:
@@ -144,6 +144,6 @@ async def drawText(image_path, text):
             )
             current_h += u_height + pad
     image_name = "memify.webp"
-    webp_file = os.path.join(Var.TEMP_DOWNLOAD_DIRECTORY, image_name)
+    webp_file = os.path.join(Var.pdb.Dldir, image_name)
     img.save(webp_file, "webp")
     return webp_file
