@@ -4858,7 +4858,7 @@ async def _ncode(event):
         event, "Converting file into beautified code image, Please wait...", _tg
     )
     a = await event.client.download_media(
-        await event.get_reply_message(), Var.pdb.Dldir
+        await event.get_reply_message(), pdb.Dldir
     )
     s = open(a, "r")
     c = s.read()

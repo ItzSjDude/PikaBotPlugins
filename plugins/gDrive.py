@@ -19,7 +19,7 @@ from oauth2client.file import Storage
 from telethon import events
 
 # Path to token json file, it should be in same directory as script
-#G_DRIVE_TOKEN_FILE = Var.pdb.Dldir + "/auth_token.txt"
+#G_DRIVE_TOKEN_FILE = pdb.Dldir + "/auth_token.txt"
 # Copy your credentials from the APIs Console
 #CLIENT_ID = Var.G_DRIVE_CLIENT_ID
 #CLIENT_SECRET = Var.G_DRIVE_CLIENT_SECRET
@@ -42,8 +42,8 @@ async def _(event):
         )
         return False
     input_str = event.pattern_match.group(1)
-    if not os.path.isdir(Var.pdb.Dldir):
-        os.makedirs(Var.pdb.Dldir)
+    if not os.path.isdir(pdb.Dldir):
+        os.makedirs(pdb.Dldir)
     required_file_name = None
     start = infxtime.now()
     if event.reply_to_msg_id and not input_str:
@@ -52,7 +52,7 @@ async def _(event):
             time.time()
             await mone.edit("Downloading to Local...")
             downloaded_file_name = await event.client.download_media(
-                reply_message, Var.pdb.Dldir
+                reply_message, pdb.Dldir
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await mone.edit(str(e))

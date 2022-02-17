@@ -12,9 +12,9 @@ import requests
 
 @Infinix(pattern=r"boobs")
 async def boobs(event):
-    if not os.path.isdir(Var.pdb.Dldir):
-        os.makedirs(Var.pdb.Dldir)
-    pic_loc = os.path.join(Var.pdb.Dldir, "bobs.jpg")
+    if not os.path.isdir(pdb.Dldir):
+        os.makedirs(pdb.Dldir)
+    pic_loc = os.path.join(pdb.Dldir, "bobs.jpg")
     a = await event.reply("`Finding some big bobs 🧐...`")
     await asyncio.sleep(0.5)
     await a.edit("`Sending some big bobs 🌚...`")
@@ -28,9 +28,9 @@ async def boobs(event):
 
 @Infinix(pattern=r"butts")
 async def butts(event):
-    if not os.path.isdir(Var.pdb.Dldir):
-        os.makedirs(Var.pdb.Dldir)
-    pic_loc = os.path.join(Var.pdb.Dldir, "butts.jpg")
+    if not os.path.isdir(pdb.Dldir):
+        os.makedirs(pdb.Dldir)
+    pic_loc = os.path.join(pdb.Dldir, "butts.jpg")
     a = await event.reply("`Finding some beautiful butts 🧐...`")
     await asyncio.sleep(0.5)
     await a.edit("`Sending some beautiful butts 🌚...`")
