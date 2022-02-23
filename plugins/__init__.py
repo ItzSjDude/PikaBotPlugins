@@ -3512,7 +3512,7 @@ async def _eval(event):
         try:
             await aexec(cmd, event)
         except Exception:
-            exc = traceback.print_exc()
+            exc = traceback.print_last()
 
         stdout = redirected_output.getvalue()
         stderr = redirected_error.getvalue()
