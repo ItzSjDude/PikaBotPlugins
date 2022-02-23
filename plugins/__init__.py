@@ -3494,7 +3494,11 @@ async def _eval(event):
     if event.fwd_from:
         return
     ax_ = await infx_msg(event, "Processing & Generating Output", _tg)
-    cmd = event.text.split(" ", maxsplit=1)[1]
+    cmd = None 
+    try:
+        cmd = event.text.split(" ", maxsplit=1)[1]
+    except: 
+        await infx_msg(ax_, "Oops! Code Not found\n\nTry .eval <your code>")
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
