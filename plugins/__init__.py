@@ -3503,13 +3503,12 @@ async def _eval(event):
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
 
-    old_stderr = sys.stderr
-    old_stdout = sys.stdout
-    redirected_output = sys.stdout = io.StringIO()
-    redirected_error = sys.stderr = io.StringIO()
-    stdout, stderr, exc = None, None, None
-
     if cmd: 
+        old_stderr = sys.stderr
+        old_stdout = sys.stdout
+        redirected_output = sys.stdout = io.StringIO()
+        redirected_error = sys.stderr = io.StringIO()
+        stdout, stderr, exc = None, None, None
         try:
             await aexec(cmd, event)
         except Exception:
@@ -3548,9 +3547,9 @@ async def _eval(event):
             await infx_msg(ax_, final_output)
 
 
-    async def aexec(code, event):
-        exec(f"async def __aexec(event): " + "".join(f"\n {l}" for l in code.split("\n")))
-        return await locals()["__aexec"](event)
+async def aexec(code, event):
+    exec(f"async def __aexec(event): " + "".join(f"\n {l}" for l in code.split("\n")))
+    return await locals()["__aexec"](event)
 
 
 async def helper(event):
