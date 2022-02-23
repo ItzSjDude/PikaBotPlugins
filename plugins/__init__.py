@@ -3523,7 +3523,7 @@ async def _eval(event):
         if exc:
             evaluation = exc[276:]
         elif stderr:
-            evaluation = stderr
+            evaluation = stderr[276:]
         elif stdout:
             evaluation = stdout
         else:
