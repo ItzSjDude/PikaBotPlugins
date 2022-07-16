@@ -49,7 +49,7 @@ logger = logging.getLogger(__name__)
 # Bots:\t{}""".format(ms, u, g, c, bc, b))
 
 
-@borg.on(admin_cmd(pattern="count"))
+@Infinix(outgoing=True,pattern="count$")
 async def stats(
     event: NewMessage.Event,
 ) -> None:  # pylint: disable = R0912, R0914, R0915
