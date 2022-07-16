@@ -1,6 +1,4 @@
-
-from telethon.tl.types import Channel, Chat, User
-
+from . import *
 
 @Infinix(outgoing=True, pattern=r"stats")
 async def _(event):
