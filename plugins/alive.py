@@ -8,5 +8,5 @@ from . import _alive
 
 @Infinix(outgoing=True, pattern=r"alive$")
 @Infinix(sudo=True, pattern=r"alive$")
-async def _(event):
+async def _(event.client, event):
     await _alive(event)
