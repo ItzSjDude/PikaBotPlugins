@@ -137,6 +137,7 @@ async def download_video(v_url):
         await v_url.edit("`Fetching data, please wait..`")
         with YoutubeDL(opts) as ytdl:
             ytdl_data = ytdl.extract_info(url)
+            await v_url.client.send_message(v_url.chat_id,ytdl_data)
     except DownloadError as DE:
         await v_url.edit(f"`{str(DE)}`")
         return
