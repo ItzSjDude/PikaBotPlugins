@@ -108,7 +108,7 @@ if bot2: b2 = bot2.me
 if bot3: b3 = bot3.me
 if bot4: b4 = bot4.me
 
-evlrp ="""File "/root/ItzSjDude/plugins/__init__.py", line 3508, in _eval
+evlrp ="""File "/root/ItzSjDude/plugins/__init__.py", line 3508, in f
     await aexec(cmd, event)
   File "/root/ItzSjDude/plugins/__init__.py", line 3547, in aexec
     return await locals()["__aexec"](event)"""
@@ -5271,7 +5271,8 @@ async def apk(e):
         remove_space = app_name.split(" ")
         final_name = "+".join(remove_space)
         _tg = await get_infx_tg(e)
-        a = await infx_msg(
+        
+        ax = await infx_msg(
             e, f"Searching for {app_name} on PlayStore, Please Wait...", _tg
         )
         page = requests.get(
@@ -5329,11 +5330,11 @@ async def apk(e):
             + "'>View in Play Store</a>"
         )
         app_details += "\n\n•••> **Infxbot** <•••"
-        await infx_msg(a, app_details, link_preview=True, parse_mode="HTML")
+        await infx_msg(ax, app_details, link_preview=True, parse_mode="HTML")
     except IndexError:
-        await infx_msg(a, "No result found in search. Please enter **Valid app name**")
+        await infx_msg(ax, "No result found in search. Please enter **Valid app name**")
     except Exception as err:
-        await infx_msg(a, "Exception Occured:- " + str(err))
+        await infx_msg(ax, "Exception Occured:- " + str(err))
 
 
 async def _welcome(_infx):
