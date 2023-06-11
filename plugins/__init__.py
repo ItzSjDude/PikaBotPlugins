@@ -5267,12 +5267,12 @@ async def _logs(dyno):
 
 async def apk(e):
     _tg = await get_infx_tg(e)
-        
+    app_name = e.pattern_match.group(1)    
     ax = await infx_msg(
             e, f"Searching for {app_name} on PlayStore, Please Wait...", _tg
         )
     try:
-        app_name = e.pattern_match.group(1)
+        
         remove_space = app_name.split(" ")
         final_name = "+".join(remove_space)
         page = requests.get(
