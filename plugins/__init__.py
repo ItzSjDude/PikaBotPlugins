@@ -5267,10 +5267,9 @@ async def _logs(dyno):
 
 async def apk(e):
     _tg = await get_infx_tg(e)
-    app_name = e.pattern_match.group(1)    
-    ax = await infx_msg(
-            e, f"Searching for {app_name} on PlayStore, Please Wait...", _tg
-        )
+    app_name = e.pattern_match.group(1)
+    txtx = "Searching for {} on PlayStore, Please Wait...".format(app_name)
+    ax = await infx_msg(e,txtx, _tg)
     try:
         
         remove_space = app_name.split(" ")
