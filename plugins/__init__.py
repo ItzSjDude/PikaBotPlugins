@@ -5266,15 +5266,15 @@ async def _logs(dyno):
 
 
 async def apk(e):
+    _tg = await get_infx_tg(e)
+        
+    ax = await infx_msg(
+            e, f"Searching for {app_name} on PlayStore, Please Wait...", _tg
+        )
     try:
         app_name = e.pattern_match.group(1)
         remove_space = app_name.split(" ")
         final_name = "+".join(remove_space)
-        _tg = await get_infx_tg(e)
-        
-        ax = await infx_msg(
-            e, f"Searching for {app_name} on PlayStore, Please Wait...", _tg
-        )
         page = requests.get(
             "https://play.google.com/store/search?q=" + final_name + "&c=apps"
         )
@@ -5330,7 +5330,9 @@ async def apk(e):
             + "'>View in Play Store</a>"
         )
         app_details += "\n\n•••> **Infxbot** <•••"
-        await infx_msg(ax, app_details, link_preview=True, parse_mode="HTML")
+        
+        await ax.delete()
+        await event.client.send_message(e.chat_id, app_details, link_preview=True, parse_mode="HTML")
     except IndexError:
         await infx_msg(ax, "No result found in search. Please enter **Valid app name**")
     except Exception as err:
