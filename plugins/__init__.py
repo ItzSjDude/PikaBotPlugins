@@ -5608,7 +5608,7 @@ async def _ping(event):
         az = f"𝑴𝒚 𝑩𝒐𝒔𝒔 **{axx}**"
     _tg = await get_infx_tg(event)
     start = infxtime.now()
-    a = await infx_msg(event, f"{rx}infxa", _tg)
+    a = await infx_msg(event, f"**Checking Ping Speed....**", _tg)
     end = infxtime.now()
     ms = (end - start).microseconds / 1000
     await infx_msg(a, "✪ 𝗣𝗂𝗄𝖺 𝗣𝗂𝗄𝖺 𝗣𝗂𝗄𝖺𝖼𝗁𝗎!\n➥{}Ms\n➥{}".format(ms, az))
